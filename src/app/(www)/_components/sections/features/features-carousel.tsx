@@ -5,15 +5,15 @@ import { useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Carousel,
   CarouselApi,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+
+import { FeaturesCarouselItem } from './features-carousel-item'
 
 const categories = ['Designers', 'Career Shifters', 'Students', 'Teams']
 
@@ -96,33 +96,5 @@ export function FeaturesCarousel() {
         </div>
       </Carousel>
     </section>
-  )
-}
-
-type FeaturesCarouselItemProps = {
-  name: string
-  jobTitle: string
-  children: React.ReactNode
-}
-
-function FeaturesCarouselItem({
-  name,
-  jobTitle,
-  children,
-}: FeaturesCarouselItemProps) {
-  return (
-    <CarouselItem className="text-popover-foreground flex h-96 w-full justify-between py-4 text-5xl">
-      <div className="max-w-[60%]">{children}</div>
-      <div className="flex -translate-x-2/4 items-center gap-4 self-end">
-        <Avatar className="size-12">
-          <AvatarImage src={`https://avatar.vercel.sh/${name}`} />
-          <AvatarFallback>{name[0]}</AvatarFallback>
-        </Avatar>
-        <div className="flex flex-col">
-          <p className="text-lg font-medium">{name}</p>
-          <p className="text-muted-foreground text-sm">{jobTitle}</p>
-        </div>
-      </div>
-    </CarouselItem>
   )
 }

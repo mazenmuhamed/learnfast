@@ -8,6 +8,7 @@ import { CareerGrowth } from './_components/sections/career-growth'
 import { Institutions } from './_components/sections/features/institutions'
 import { CompaniesMarquee } from './_components/sections/companies-marquee'
 import { FeaturesCarousel } from './_components/sections/features/features-carousel'
+import { TrustedAndLove } from './_components/sections/trusted-and-love'
 
 export const metadata: Metadata = {
   title: 'Learn & Improve Your Skills - LearnFast',
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Separator />
       <CareerGrowth />
       <Separator />
+      <TrustedAndLove />
       <CompaniesMarquee className="border-y-0 py-4" />
     </>
   )
