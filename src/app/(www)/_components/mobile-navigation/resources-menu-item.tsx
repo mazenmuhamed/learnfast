@@ -17,7 +17,7 @@ import {
 
 import { Separator } from '@/components/ui/separator'
 
-import { MenuItem, MobileNavigationMenu } from './mobile-navigation'
+import { MenuItem, MobileNavigationMenu } from './mobile-navigation-menu'
 
 export function ResourcesMenuItem() {
   return (

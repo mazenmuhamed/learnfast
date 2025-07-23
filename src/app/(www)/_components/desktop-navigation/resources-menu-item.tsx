@@ -15,7 +15,7 @@ import {
   Gift,
 } from 'lucide-react'
 
-import { DesktopNavigationMenu, MenuItem } from './desktop-navigation'
+import { DesktopNavigationMenu, MenuItem } from './desktop-navigation-menu'
 
 export function ResourcesMenuItems() {
   return (

@@ -12,7 +12,7 @@ import {
 
 import { Separator } from '@/components/ui/separator'
 
-import { DesktopNavigationMenu, MenuItem } from './desktop-navigation'
+import { DesktopNavigationMenu, MenuItem } from './desktop-navigation-menu'
 
 export function ProductMenuItems() {
   return (

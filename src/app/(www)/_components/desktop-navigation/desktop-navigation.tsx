@@ -1,27 +1,19 @@
 import Link from 'next/link'
 
-import {
-  Clapperboard,
-  TvMinimalPlay,
-  User2,
-  Users2,
-  type LucideIcon,
-} from 'lucide-react'
-
-import { cn } from '@/lib/utils'
+import { Clapperboard, TvMinimalPlay, User2, Users2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 
 import { ProductMenuItems } from './product-menu-items'
 import { ResourcesMenuItems } from './resources-menu-item'
+import { MenuItem } from './desktop-navigation-menu'
 
 export function DesktopNavigation() {
   return (
@@ -82,55 +74,5 @@ export function DesktopNavigation() {
         <Link href="/">For Teams</Link>
       </Button>
     </>
-  )
-}
-
-export function DesktopNavigationMenu({
-  title,
-  children,
-  className,
-}: {
-  title: string
-  className?: string
-  children?: React.ReactNode
-}) {
-  return (
-    <NavigationMenuItem>
-      <NavigationMenuTrigger className="h-8 px-2 text-base *:[svg]:size-3.5">
-        {title}
-      </NavigationMenuTrigger>
-      <NavigationMenuContent
-        className={cn(
-          'left-2/4 flex min-w-[800px] -translate-x-2/4 !rounded-xl border-none p-6 py-6',
-          className,
-        )}
-      >
-        {children}
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-  )
-}
-
-export function MenuItem({
-  href,
-  label,
-  className,
-  icon: Icon,
-}: {
-  href: string
-  icon?: LucideIcon
-  label: string
-  className?: string
-}) {
-  return (
-    <NavigationMenuLink
-      href={href}
-      className={cn('-mx-2 rounded-lg py-2.5', className)}
-    >
-      <div className="flex items-center gap-2.5">
-        {Icon && <Icon className="size-4" />}
-        <span className="text-sm">{label}</span>
-      </div>
-    </NavigationMenuLink>
   )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -8,19 +10,21 @@ import { DesktopNavigation } from './desktop-navigation'
 
 export function Navbar() {
   return (
-    <nav className="bg-background sticky top-0 w-full">
-      <div className="mx-auto flex h-16 w-full items-center justify-between px-4 md:px-6 lg:px-8 2xl:max-w-6xl 2xl:px-0">
-        <Link href="/" className="flex flex-1 items-center gap-2">
-          <Image
-            src="/brand/logo.svg"
-            alt="LearnFast Logo"
-            width={150}
-            height={40}
-            className="h-8 w-auto select-none dark:invert"
-            priority
-          />
-          <span className="text-xl font-semibold">LearnFast</span>
-        </Link>
+    <nav className="bg-background sticky top-0 z-50 w-full">
+      <div className="main-container flex h-16 items-center justify-between">
+        <div className="flex-1">
+          <Link href="/" className="flex w-fit items-center gap-2">
+            <Image
+              src="/brand/logo.svg"
+              alt="LearnFast Logo"
+              width={150}
+              height={40}
+              className="h-8 w-auto select-none dark:invert"
+              priority
+            />
+            <span className="text-xl font-semibold">LearnFast</span>
+          </Link>
+        </div>
         <div className="flex flex-1 items-center">
           <DesktopNavigation />
         </div>

@@ -1,5 +1,14 @@
 import type { Metadata } from 'next'
 
+import { Separator } from '@/components/ui/separator'
+
+import { Header } from './_components/sections/header'
+import { Features } from './_components/sections/features'
+import { CareerGrowth } from './_components/sections/career-growth'
+import { Institutions } from './_components/sections/features/institutions'
+import { CompaniesMarquee } from './_components/sections/companies-marquee'
+import { FeaturesCarousel } from './_components/sections/features/features-carousel'
+
 export const metadata: Metadata = {
   title: 'Learn & Improve Your Skills - LearnFast',
   description:
@@ -7,5 +16,17 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  return <div>HomePage</div>
+  return (
+    <>
+      <Header />
+      <CompaniesMarquee />
+      <Features />
+      <Institutions />
+      <FeaturesCarousel />
+      <Separator />
+      <CareerGrowth />
+      <Separator />
+      <CompaniesMarquee className="border-y-0 py-4" />
+    </>
+  )
 }
