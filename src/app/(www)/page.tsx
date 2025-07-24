@@ -9,6 +9,8 @@ import { Institutions } from './_components/sections/features/institutions'
 import { CompaniesMarquee } from './_components/sections/companies-marquee'
 import { FeaturesCarousel } from './_components/sections/features/features-carousel'
 import { TrustedAndLove } from './_components/sections/trusted-and-love'
+import { Testimonials } from './_components/sections/testimonials'
+import { Footer } from './_components/footer'
 
 export const metadata: Metadata = {
   title: 'Learn & Improve Your Skills - LearnFast',
@@ -29,6 +31,8 @@ export default function HomePage() {
       <Separator />
       <TrustedAndLove />
       <CompaniesMarquee className="border-y-0 py-4" />
+      <Testimonials />
+      <Footer />
     </>
   )
 }
