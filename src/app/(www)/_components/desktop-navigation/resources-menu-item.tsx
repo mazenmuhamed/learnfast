@@ -24,7 +24,7 @@ export function ResourcesMenuItems() {
         <h3 className="text-muted-foreground mb-3 text-xs font-semibold uppercase">
           Blog
         </h3>
-        <MenuItem href="/" label="Uxcel Blog" icon={MessageCircleMore} />
+        <MenuItem href="/" label="LearnFast Blog" icon={MessageCircleMore} />
         <MenuItem href="/" label="Learner Stories" icon={User2} />
         <MenuItem href="/" label="Customer Stories" icon={UsersRound} />
         <MenuItem href="/" label="Write for US" icon={Pencil} />
@@ -48,10 +48,10 @@ export function ResourcesMenuItems() {
         </h3>
         <MenuItem
           href="/"
-          label="Uxcel for Universities"
+          label="LearnFast for Universities"
           icon={GraduationCap}
         />
-        <MenuItem href="/" label="Uxcel Cares" icon={Cross} />
+        <MenuItem href="/" label="LearnFast Cares" icon={Cross} />
         <MenuItem href="/" label="Affiliate Program" icon={BadgeDollarSign} />
         <MenuItem href="/" label="Gift Membership" icon={Gift} />
       </div>

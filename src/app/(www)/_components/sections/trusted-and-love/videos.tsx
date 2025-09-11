@@ -11,21 +11,22 @@ const data = [
   {
     image: '/images/trusted-and-love/user-1.webp',
     description:
-      "With Uxcel, I've gained so much confidence talking with clients.",
+      "With LearnFast, I've gained so much confidence talking with clients.",
     name: 'Blake Feldman',
     title: 'Product Designer · 15+ years in design',
     video: '/videos/testimonial-blake.mp4',
   },
   {
     image: '/images/trusted-and-love/user-2.webp',
-    description: 'Uxcel helped me level up from a junior to a senior designer',
+    description:
+      'LearnFast helped me level up from a junior to a senior designer',
     name: 'Chieri Wada',
     title: 'UX/UI Designer · 8+ years in design',
     video: '/videos/testimonial-chieri.mp4',
   },
   {
     image: '/images/trusted-and-love/user-3.webp',
-    description: 'Uxcel really helped me during my career change.',
+    description: 'LearnFast really helped me during my career change.',
     name: 'Ryan Blackwell',
     title: 'Full Stack Developer · 5+ years in design',
     video: '/videos/testimonial-ryan.mp4',

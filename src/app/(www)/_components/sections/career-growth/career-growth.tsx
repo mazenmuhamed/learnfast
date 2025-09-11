@@ -8,7 +8,7 @@ export function CareerGrowth() {
           Everything you need for a successful career growth
         </h2>
         <p className="text-muted-foreground sm:text-lg lg:text-xl">
-          Stop bouncing from tool to tool to track your skill growth. Uxcel
+          Stop bouncing from tool to tool to track your skill growth. LearnFast
           offers a complete suite of tools for modern product professionals.
         </p>
       </div>
@@ -16,7 +16,9 @@ export function CareerGrowth() {
       <div className="flex w-full flex-wrap items-center justify-between max-md:justify-center max-md:gap-8">
         <div className="flex flex-col gap-4 max-lg:items-center">
           <p className="text-4xl font-bold lg:text-6xl">400K+</p>
-          <p className="text-muted-foreground">members upskill with Uxcel</p>
+          <p className="text-muted-foreground">
+            members upskill with LearnFast
+          </p>
         </div>
         <div className="flex flex-col gap-4 max-lg:items-center">
           <p className="text-4xl font-bold lg:text-6xl">3M+</p>

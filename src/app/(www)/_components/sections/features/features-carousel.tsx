@@ -39,7 +39,7 @@ export function FeaturesCarousel() {
           height={60}
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="h-10 w-auto object-contain lg:h-14"
+          className="h-10 w-auto object-contain lg:h-12 xl:h-14"
         />
         <div className="flex items-center gap-1">
           {categories.map((category, index) => (
@@ -62,7 +62,7 @@ export function FeaturesCarousel() {
             name="Ryan Blackwell"
             jobTitle="UX Designer & Writer"
           >
-            Uxcel has opened doors to career opportunities I once thought
+            LearnFast has opened doors to career opportunities I once thought
             impossible,{' '}
             <span className="text-primary">
               boosting my confidence and earnings by 20%.
@@ -75,11 +75,11 @@ export function FeaturesCarousel() {
             <span className="text-primary">
               from graphic to product design,
             </span>{' '}
-            Uxcel has been instrumental in expanding my knowledge beyond UI,
+            LearnFast has been instrumental in expanding my knowledge beyond UI,
             helping me master the core UX principles behind effective design.
           </FeaturesCarouselItem>
           <FeaturesCarouselItem name="John Doe" jobTitle="Full Stack Developer">
-            What I like most about Uxcel is its{' '}
+            What I like most about LearnFast is its{' '}
             <span className="text-primary">clear system for studying</span> and
             consolidating knowledge — unlike typical university courses or
             articles on design. It’s a game-changer for my career.
@@ -88,12 +88,13 @@ export function FeaturesCarousel() {
             name="Fujitsu Design Team"
             jobTitle="Design Team"
           >
-            Fujitsu transformed its design team dynamics with Uxcel, fostering a
+            Fujitsu transformed its design team dynamics with LearnFast,
+            fostering a
             <span className="text-primary">culture of continuous learning</span>{' '}
             that improved collaboration and skill advancement.
           </FeaturesCarouselItem>
         </CarouselContent>
-        <div className="absolute top-5 right-10 flex items-center max-md:hidden">
+        <div className="absolute top-5 right-10 flex items-center max-xl:hidden">
           <CarouselPrevious className="size-10 translate-x-2 [&_svg]:!size-5" />
           <CarouselNext className="size-10 [&_svg]:!size-5" />
         </div>

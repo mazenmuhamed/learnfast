@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
   {
     title: 'mobile app',
     content:
-      'Build a learning habit by taking Uxcel with you. Learn on the go with our mobile app.',
+      'Build a learning habit by taking LearnFast with you. Learn on the go with our mobile app.',
     image: '/images/career-growth/card-7.webp',
   },
   {

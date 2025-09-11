@@ -10,6 +10,7 @@ import { CompaniesMarquee } from './_components/sections/companies-marquee'
 import { FeaturesCarousel } from './_components/sections/features/features-carousel'
 import { TrustedAndLove } from './_components/sections/trusted-and-love'
 import { Testimonials } from './_components/sections/testimonials'
+import { ScrollTopButton } from './_components/scroll-top-button'
 import { Footer } from './_components/footer'
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function HomePage() {
       <CompaniesMarquee className="border-y-0 py-6 sm:py-4" />
       <Testimonials />
       <Footer />
+      <ScrollTopButton yHeight={500} />
     </>
   )
 }

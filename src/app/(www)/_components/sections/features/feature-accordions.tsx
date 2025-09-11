@@ -28,13 +28,13 @@ const data = [
     icon: ClipboardList,
     title: 'Skill assessments',
     description:
-      'Track your skills in UX, product, and AI literacy with Uxcel’s adaptive assessments. Our data-driven Skill Graph shows exactly where you stand — and with AI-powered insights, you’ll get personalized guidance on what to improve and how to grow, whether you’re learning solo or scaling a team.',
+      'Track your skills in UX, product, and AI literacy with LearnFast’s adaptive assessments. Our data-driven Skill Graph shows exactly where you stand — and with AI-powered insights, you’ll get personalized guidance on what to improve and how to grow, whether you’re learning solo or scaling a team.',
   },
   {
     icon: FileBadge,
     title: 'Professional certifications',
     description:
-      'Uxcel’s exam-based design certification helps you stand out and showcase your expertise to employers and peers, advancing your career in the competitive design industry.',
+      'LearnFast’s exam-based design certification helps you stand out and showcase your expertise to employers and peers, advancing your career in the competitive design industry.',
   },
   {
     icon: PencilRuler,

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function JoinBox() {
   return (
-    <div className="bg-popover text-popover-foreground my-6 grid w-full grid-cols-2 items-center justify-between rounded-3xl p-12 max-lg:grid-cols-1 max-lg:gap-8 max-md:gap-6 md:my-10 md:p-20 lg:gap-20">
+    <div className="bg-popover text-popover-foreground my-6 grid w-full grid-cols-2 items-center justify-between rounded-3xl p-8 max-lg:grid-cols-1 max-lg:gap-8 max-md:gap-6 sm:p-12 md:my-10 md:p-14 lg:gap-20 lg:p-20">
       <div className="flex flex-col gap-6">
         <Image
           src="/images/trusted-and-love/people.webp"
@@ -15,12 +15,12 @@ export function JoinBox() {
           className="rounded-lg object-cover"
         />
         <h3 className="text-2xl font-bold md:text-4xl lg:text-5xl">
-          Join 400,000+ UX & Product pros who grow their career with Uxcel
+          Join 400,000+ UX & Product pros who grow their career with LearnFast
         </h3>
       </div>
       <div className="flex flex-col gap-8">
         <p className="text-muted-foreground opacity-80 md:text-xl">
-          Thousands of professionals are using Uxcel to learn faster, get
+          Thousands of professionals are using LearnFast to learn faster, get
           promoted, and grow in the AI-powered product world. You’re next.
         </p>
         <div className="flex flex-col gap-2">

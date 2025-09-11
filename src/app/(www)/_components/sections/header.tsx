@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -14,7 +12,7 @@ const images = [
 
 export function Header() {
   return (
-    <header className="main-container flex flex-col items-center space-y-14 py-10 md:py-16 lg:py-20">
+    <header className="main-container flex flex-col items-center space-y-8 py-10 md:space-y-10 md:py-16 lg:space-y-14 lg:py-20">
       <div className="bg-background flex w-fit items-center gap-2 rounded-full border p-1.5 shadow-sm">
         <div className="flex -space-x-1.5">
           {images.map((src, index) => (
@@ -25,6 +23,7 @@ export function Header() {
               width={20}
               height={20}
               alt={`avatar-${index + 1}`}
+              sizes="(max-width: 640px) 20px, 20px"
             />
           ))}
         </div>
@@ -62,6 +61,7 @@ export function Header() {
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
+      <div />
     </header>
   )
 }

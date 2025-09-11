@@ -16,7 +16,7 @@ export function Feedback() {
           Loved & trusted by professionals at the world’s top companies
         </h2>
         <p className="text-muted-foreground text-base sm:text-xl">
-          See why thousands of members have chosen Uxcel to accelerate their
+          See why thousands of members have chosen LearnFast to accelerate their
           professional development.
         </p>
       </div>

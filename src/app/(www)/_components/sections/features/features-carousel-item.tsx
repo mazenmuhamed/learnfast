@@ -9,9 +9,9 @@ type Props = {
 
 export function FeaturesCarouselItem({ name, jobTitle, children }: Props) {
   return (
-    <CarouselItem className="text-popover-foreground flex w-full justify-between py-4 text-2xl max-lg:flex-col max-lg:gap-6 lg:h-96 lg:text-5xl">
-      <div className="select-none lg:max-w-[60%]">{children}</div>
-      <div className="flex items-center gap-4 lg:-translate-x-2/4 lg:self-end">
+    <CarouselItem className="text-popover-foreground flex w-full justify-between py-4 text-2xl max-xl:flex-col max-xl:gap-6 lg:text-3xl xl:h-96 xl:text-5xl">
+      <div className="select-none xl:max-w-[60%]">{children}</div>
+      <div className="flex items-center gap-4 xl:-translate-x-2/4 xl:self-end">
         <Avatar className="size-10 lg:size-12">
           <AvatarImage src={`https://avatar.vercel.sh/${name}`} />
           <AvatarFallback>{name[0]}</AvatarFallback>

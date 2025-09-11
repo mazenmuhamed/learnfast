@@ -32,9 +32,9 @@ const communityLinks = [
   { href: '#', label: 'Community Events' },
   { href: '#', label: 'Designer Rankings' },
   { href: '#', label: 'Discord Community' },
-  { href: '#', label: 'Uxcel Mentors' },
-  { href: '#', label: 'Uxcel Instructors' },
-  { href: '#', label: 'Uxcel Advocates' },
+  { href: '#', label: 'LearnFast Mentors' },
+  { href: '#', label: 'LearnFast Instructors' },
+  { href: '#', label: 'LearnFast Advocates' },
 ]
 
 const resourcesLinks = [
@@ -42,16 +42,16 @@ const resourcesLinks = [
   { href: '#', label: 'Learner Stories' },
   { href: '#', label: 'Customer Stories' },
   { href: '#', label: 'Guides' },
-  { href: '#', label: 'Uxcel for Universities' },
-  { href: '#', label: 'Uxcel for Non-profits' },
+  { href: '#', label: 'LearnFast for Universities' },
+  { href: '#', label: 'LearnFast for Non-profits' },
   { href: '#', label: 'Gift Membership' },
   { href: '#', label: 'Affiliate Program' },
   { href: '#', label: 'Write for Us' },
-  { href: '#', label: 'Compare Uxcel' },
+  { href: '#', label: 'Compare LearnFast' },
 ]
 
 const businessLinks = [
-  { href: '#', label: 'Uxcel Teams' },
+  { href: '#', label: 'LearnFast Teams' },
   { href: '#', label: 'Design Leaders & Managers' },
   { href: '#', label: 'L&D Leaders and HR' },
   { href: '#', label: 'Design Team Training' },
@@ -73,7 +73,7 @@ const popularLinks = [
 ]
 
 const assessmentsLinks = [
-  { href: '#', label: 'Uxcel Pulse' },
+  { href: '#', label: 'LearnFast Pulse' },
   { href: '#', label: 'Figma Assessment' },
   { href: '#', label: 'Product Designer Certification' },
   { href: '#', label: 'UX/UI Designer Certification' },
@@ -156,7 +156,7 @@ export function Footer() {
                   <Dribbble />
                   <Twitch />
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 max-sm:hidden">
                   <Image
                     src="/images/trusted-and-love/Badge-5.svg"
                     alt="Badge"
