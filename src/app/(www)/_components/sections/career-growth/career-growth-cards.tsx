@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
 
 export default function CareerGrowthCards() {
   return (
-    <div className="grid items-baseline gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:items-baseline">
       {testimonials.map(({ title, content, image }, index) => (
         <Card
           key={index}

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function JoinBox() {
   return (
-    <div className="bg-popover text-popover-foreground my-10 grid w-full grid-cols-2 items-center justify-between gap-20 rounded-3xl p-20">
+    <div className="bg-popover text-popover-foreground my-6 grid w-full grid-cols-2 items-center justify-between rounded-3xl p-12 max-lg:grid-cols-1 max-lg:gap-8 max-md:gap-6 md:my-10 md:p-20 lg:gap-20">
       <div className="flex flex-col gap-6">
         <Image
           src="/images/trusted-and-love/people.webp"
@@ -14,12 +14,12 @@ export function JoinBox() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
           className="rounded-lg object-cover"
         />
-        <h3 className="text-5xl font-bold">
+        <h3 className="text-2xl font-bold md:text-4xl lg:text-5xl">
           Join 400,000+ UX & Product pros who grow their career with Uxcel
         </h3>
       </div>
       <div className="flex flex-col gap-8">
-        <p className="text-xl opacity-80">
+        <p className="text-muted-foreground opacity-80 md:text-xl">
           Thousands of professionals are using Uxcel to learn faster, get
           promoted, and grow in the AI-powered product world. You’re next.
         </p>

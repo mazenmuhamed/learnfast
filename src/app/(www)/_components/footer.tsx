@@ -86,83 +86,98 @@ export function Footer() {
   return (
     <div className="bg-popover text-popover-foreground">
       <div className="main-container flex flex-col">
-        <div className="grid grid-cols-[1.6fr_0.4fr] items-center justify-between gap-20 py-20">
-          <h2 className="text-6xl font-bold">
+        <div className="grid items-center gap-8 py-20 md:grid-cols-[1.6fr_0.4fr] md:justify-between md:gap-20">
+          <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             Ready to bring your skills to the next level?
           </h2>
           <Button
             asChild
             size="lg"
-            className="h-12 w-fit justify-self-end text-lg"
+            className="h-12 w-fit text-lg md:justify-self-end"
           >
             <Link href="/sign-up">Join to Community</Link>
           </Button>
         </div>
-        <footer className="flex w-full gap-10 border-y py-20">
-          <div className="flex w-full max-w-72 flex-col gap-8">
-            <Link href="/" className="flex w-fit items-center gap-2">
-              <Image
-                src="/brand/logo.svg"
-                alt="LearnFast Logo"
-                width={120}
-                height={40}
-                className="h-8 w-auto select-none dark:invert"
-                priority
-              />
-              <span className="text-lg font-semibold">LearnFA</span>
-            </Link>
-            <div className="flex flex-col gap-2">
-              {mainLinks.map(link => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="w-fit text-[15px] opacity-80 transition-opacity hover:opacity-100"
-                >
-                  {link.label}
-                </Link>
-              ))}
+        <footer className="flex w-full flex-col gap-10 border-y py-20 lg:flex-row">
+          <div className="flex w-full gap-8 max-lg:items-center lg:max-w-72 lg:flex-col">
+            <div className="flex flex-col gap-8 max-lg:flex-1/2">
+              <Link href="/" className="flex w-fit items-center gap-2">
+                <Image
+                  src="/brand/logo.svg"
+                  alt="LearnFast Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto select-none dark:invert"
+                  priority
+                />
+                <span className="text-lg font-semibold">LearnFA</span>
+              </Link>
+              <div className="flex flex-col gap-2">
+                {mainLinks.map(link => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="w-fit text-[15px] opacity-80 transition-opacity hover:opacity-100"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-2 [&_svg]:size-[18px] [&_svg]:cursor-pointer">
-              <Linkedin />
-              <Facebook />
-              <Github />
-              <Dribbble />
-              <Twitch />
-            </div>
-            <div className="flex flex-col gap-4">
-              <Image
-                src="/icons/AppStore.svg"
-                alt="App Store Logo"
-                width={150}
-                height={60}
-                priority
-              />
-              <Image
-                src="/icons/GooglePlay.svg"
-                alt="Google Play Logo"
-                width={150}
-                height={60}
-                priority
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <Image
-                src="/images/trusted-and-love/Badge-5.svg"
-                alt="Badge"
-                width={80}
-                height={60}
-                priority
-              />
-              <Image
-                src="/images/trusted-and-love/Badge-8.svg"
-                alt="Badge"
-                width={80}
-                height={60}
-                priority
-              />
+            <div className="flex flex-col gap-8 max-sm:flex-col-reverse max-sm:items-center">
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-2 max-lg:hidden [&_svg]:size-[18px] [&_svg]:cursor-pointer">
+                  <Linkedin />
+                  <Facebook />
+                  <Github />
+                  <Dribbble />
+                  <Twitch />
+                </div>
+                <Image
+                  src="/icons/AppStore.svg"
+                  alt="App Store Logo"
+                  width={150}
+                  height={60}
+                  priority
+                />
+                <Image
+                  src="/icons/GooglePlay.svg"
+                  alt="Google Play Logo"
+                  width={150}
+                  height={60}
+                  priority
+                />
+              </div>
+              <div className="flex flex-col max-lg:gap-5">
+                <div className="flex items-center gap-2 lg:hidden [&_svg]:size-[18px] [&_svg]:cursor-pointer">
+                  <Linkedin />
+                  <Facebook />
+                  <Github />
+                  <Dribbble />
+                  <Twitch />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/images/trusted-and-love/Badge-5.svg"
+                    alt="Badge"
+                    width={80}
+                    height={60}
+                    priority
+                    className="h-16 w-auto object-contain lg:h-22"
+                  />
+                  <Image
+                    src="/images/trusted-and-love/Badge-8.svg"
+                    alt="Badge"
+                    width={80}
+                    height={60}
+                    priority
+                    className="h-16 w-auto object-contain lg:h-22"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 justify-between gap-x-5 gap-y-8">
+          <div className="grid grid-cols-2 justify-between gap-x-5 gap-y-8 md:grid-cols-3">
             <FooterColumn title="Products" links={categoriesLinks} />
             <FooterColumn title="Community" links={communityLinks} />
             <FooterColumn title="Resources" links={resourcesLinks} />

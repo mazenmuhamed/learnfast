@@ -30,7 +30,7 @@ export default function HomePage() {
       <CareerGrowth />
       <Separator />
       <TrustedAndLove />
-      <CompaniesMarquee className="border-y-0 py-4" />
+      <CompaniesMarquee className="border-y-0 py-6 sm:py-4" />
       <Testimonials />
       <Footer />
     </>

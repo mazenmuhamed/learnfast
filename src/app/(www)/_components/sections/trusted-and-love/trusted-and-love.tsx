@@ -3,7 +3,7 @@
 import { Feedback } from './feedback'
 import { G2Badges } from './g2-badges'
 import { JoinBox } from './join-box'
-import { Videos } from './vidoes'
+import { Videos } from './videos'
 
 export function TrustedAndLove() {
   return (

@@ -19,7 +19,7 @@ export function Institutions() {
           used by forward-thinking educational institutions
         </span>
       </p>
-      <div className="flex items-center justify-between px-5">
+      <div className="flex flex-wrap items-center justify-center px-5 max-sm:gap-5 sm:justify-between">
         {logos.map((logo, index) => (
           <Image
             key={index}
@@ -27,7 +27,7 @@ export function Institutions() {
             alt={`Company logo ${index + 1}`}
             width={100}
             height={50}
-            className="h-20 w-auto"
+            className="h-10 w-auto sm:h-12 md:h-14 lg:h-20"
           />
         ))}
       </div>

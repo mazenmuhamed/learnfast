@@ -37,13 +37,16 @@ export function FeaturesCarousel() {
           alt="Double quotes"
           width={60}
           height={60}
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="h-10 w-auto object-contain lg:h-14"
         />
         <div className="flex items-center gap-1">
           {categories.map((category, index) => (
             <p
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className="text-muted-foreground cursor-pointer text-lg"
+              className="text-muted-foreground cursor-pointer md:text-lg"
             >
               <span className={cn(index + 1 === current && 'text-primary')}>
                 {category}
@@ -79,7 +82,7 @@ export function FeaturesCarousel() {
             What I like most about Uxcel is its{' '}
             <span className="text-primary">clear system for studying</span> and
             consolidating knowledge — unlike typical university courses or
-            articles on design.
+            articles on design. It’s a game-changer for my career.
           </FeaturesCarouselItem>
           <FeaturesCarouselItem
             name="Fujitsu Design Team"
@@ -90,7 +93,7 @@ export function FeaturesCarousel() {
             that improved collaboration and skill advancement.
           </FeaturesCarouselItem>
         </CarouselContent>
-        <div className="absolute top-5 right-10 flex items-center">
+        <div className="absolute top-5 right-10 flex items-center max-md:hidden">
           <CarouselPrevious className="size-10 translate-x-2 [&_svg]:!size-5" />
           <CarouselNext className="size-10 [&_svg]:!size-5" />
         </div>

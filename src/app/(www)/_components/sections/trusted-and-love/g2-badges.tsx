@@ -3,13 +3,13 @@ import Image from 'next/image'
 export function G2Badges() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <p className="text-muted-foreground opacity-80">
+      <p className="text-muted-foreground opacity-80 max-md:text-center">
         Loved by designers and teams. With 4.8 out of 5 average rating{' '}
         <span className="text-foreground font-medium opacity-100">
           we’re an educational leader on G2
         </span>
       </p>
-      <div className="relative flex items-center gap-4">
+      <div className="relative flex flex-wrap items-center justify-center gap-4">
         <div
           aria-hidden="true"
           aria-orientation="horizontal"
@@ -28,7 +28,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
         <Image
           src="/images/trusted-and-love/badge-3.svg"
@@ -36,7 +36,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
         <Image
           src="/images/trusted-and-love/badge-4.svg"
@@ -44,7 +44,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
         <Image
           src="/images/trusted-and-love/badge-5.svg"
@@ -52,7 +52,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-32 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24 lg:h-32"
         />
         <Image
           src="/images/trusted-and-love/badge-6.svg"
@@ -60,7 +60,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
         <Image
           src="/images/trusted-and-love/badge-7.svg"
@@ -68,7 +68,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
         <Image
           src="/images/trusted-and-love/badge-8.svg"
@@ -76,7 +76,7 @@ export function G2Badges() {
           width={200}
           height={50}
           priority
-          className="h-24 w-auto object-contain"
+          className="h-16 w-auto object-contain md:h-24"
         />
       </div>
     </div>

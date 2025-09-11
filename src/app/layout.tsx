@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Outfit as FontSans } from 'next/font/google'
 
-import { ThemeProvider } from '@/components/theme-provider'
-
 import './globals.css'
 
 const font = FontSans({ subsets: ['latin'] })
@@ -29,16 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={font.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   )
 }

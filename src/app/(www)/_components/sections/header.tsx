@@ -14,7 +14,7 @@ const images = [
 
 export function Header() {
   return (
-    <header className="main-container flex flex-col items-center space-y-14 py-20">
+    <header className="main-container flex flex-col items-center space-y-14 py-10 md:py-16 lg:py-20">
       <div className="bg-background flex w-fit items-center gap-2 rounded-full border p-1.5 shadow-sm">
         <div className="flex -space-x-1.5">
           {images.map((src, index) => (
@@ -28,18 +28,18 @@ export function Header() {
             />
           ))}
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-muted-foreground text-xs md:text-sm">
           Trusted by{' '}
           <strong className="text-foreground font-medium">60K+</strong> design &
           developers professionals.
         </p>
       </div>
       <div className="flex flex-col gap-6">
-        <h1 className="text-center text-6xl">
+        <h1 className="text-center text-3xl font-medium sm:text-4xl md:text-5xl lg:text-6xl">
           Learn <span className="text-primary">Design & Development</span>{' '}
           skills, faster and better with LearnFast
         </h1>
-        <p className="text-muted-foreground mx-auto max-w-3xl text-center text-lg">
+        <p className="text-muted-foreground mx-auto max-w-3xl text-center text-base md:text-lg">
           Bite-sized, interactive learning for busy professionals — master
           design, development, and AI-powered skills to stay ahead in just 5
           minutes a day.
