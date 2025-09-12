@@ -15,7 +15,7 @@ export function LandingPageView() {
   return (
     <>
       <Header />
-      <CompaniesMarquee />
+      {/* <CompaniesMarquee /> */}
       <Features />
       <Institutions />
       <FeaturesCarousel />

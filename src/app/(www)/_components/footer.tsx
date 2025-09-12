@@ -158,24 +158,6 @@ export function Footer() {
                   <Dribbble />
                   <Twitch />
                 </div>
-                <div className="flex items-center gap-2 max-sm:hidden">
-                  <Image
-                    src="/images/trusted-and-love/Badge-5.svg"
-                    alt="Badge"
-                    width={80}
-                    height={60}
-                    priority
-                    className="h-16 w-auto object-contain lg:h-22"
-                  />
-                  <Image
-                    src="/images/trusted-and-love/Badge-8.svg"
-                    alt="Badge"
-                    width={80}
-                    height={60}
-                    priority
-                    className="h-16 w-auto object-contain lg:h-22"
-                  />
-                </div>
               </div>
             </div>
           </div>
