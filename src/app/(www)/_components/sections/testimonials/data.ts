@@ -6,7 +6,7 @@ export type Testimonial = {
   hasRating?: boolean
 }
 
-export const testimonial: Testimonial[] = [
+export const testimonials: Testimonial[] = [
   {
     name: 'Randall Aguirre',
     title: 'Product Designer @ Designful',

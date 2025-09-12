@@ -6,26 +6,29 @@ import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { BlurFade } from '../../animations/blur-fade'
 
 export function FeatureCards() {
   return (
-    <ScrollArea>
-      <div className="flex items-stretch justify-between gap-5">
-        <FeatureCard
-          image="/images/features/card-1.png"
-          title="Designed to help you learn faster"
-        />
-        <FeatureCard
-          image="/images/features/card-2.webp"
-          title="Tailored for focused UX & AI skill development"
-        />
-        <FeatureCard
-          image="/images/features/card-3.svg"
-          title="Optimized for real career results"
-        />
-      </div>
-      <ScrollBar orientation="horizontal" className="opacity-0" />
-    </ScrollArea>
+    <BlurFade inView duration={0.6} delay={0.6} direction="up">
+      <ScrollArea>
+        <div className="flex items-stretch justify-between gap-5">
+          <FeatureCard
+            image="/images/features/card-1.png"
+            title="Designed to help you learn faster"
+          />
+          <FeatureCard
+            image="/images/features/card-2.webp"
+            title="Tailored for focused UX & AI skill development"
+          />
+          <FeatureCard
+            image="/images/features/card-3.svg"
+            title="Optimized for real career results"
+          />
+        </div>
+        <ScrollBar orientation="horizontal" className="opacity-0" />
+      </ScrollArea>
+    </BlurFade>
   )
 }
 

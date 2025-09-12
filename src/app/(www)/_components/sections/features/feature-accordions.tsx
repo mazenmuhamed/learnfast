@@ -16,6 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { BlurFade } from '../../animations/blur-fade'
 
 const data = [
   {
@@ -48,87 +49,43 @@ export function FeatureAccordions() {
   const [activeAccordion, setActiveAccordion] = useState('item-0')
 
   return (
-    <div className="grid grid-cols-1">
-      <div className="mx-auto w-full max-w-3xl">
-        <Accordion
-          type="single"
-          collapsible={true}
-          defaultValue="item-0"
-          onValueChange={value => setActiveAccordion(value)}
-        >
-          {data.map((feature, index) => (
-            <AccordionItem key={index} value={'item-' + index}>
-              <AccordionTrigger className="py-4 text-lg font-semibold hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <feature.icon
-                    className={cn(
-                      'size-6',
-                      activeAccordion === 'item-' + index && 'text-primary',
-                    )}
-                  />
-                  {feature.title}
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="mt-2 flex flex-col gap-3 text-base">
-                {feature.description}
-                <Button
-                  variant="ghost"
-                  className="group text-primary w-fit !px-0 hover:bg-transparent focus:bg-transparent"
-                >
-                  Learn More
-                  <ArrowRight className="transition-transform group-hover:translate-x-1" />
-                </Button>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <BlurFade inView duration={0.6} delay={0.4} direction="up">
+      <div className="grid grid-cols-1">
+        <div className="mx-auto w-full max-w-3xl">
+          <Accordion
+            type="single"
+            collapsible={true}
+            defaultValue="item-0"
+            onValueChange={value => setActiveAccordion(value)}
+          >
+            {data.map((feature, index) => (
+              <AccordionItem key={index} value={'item-' + index}>
+                <AccordionTrigger className="py-4 text-lg font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <feature.icon
+                      className={cn(
+                        'size-6',
+                        activeAccordion === 'item-' + index && 'text-primary',
+                      )}
+                    />
+                    {feature.title}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="mt-2 flex flex-col gap-3 text-base">
+                  {feature.description}
+                  <Button
+                    variant="ghost"
+                    className="group text-primary w-fit !px-0 hover:bg-transparent focus:bg-transparent"
+                  >
+                    Learn More
+                    <ArrowRight className="transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
-    </div>
+    </BlurFade>
   )
 }
-
-/**
- * {data[activeIndex].items && (
-        <div className="flex flex-col gap-3">
-          {data[activeIndex].items.map((item, index) => (
-            <div
-              key={index}
-              className="bg-popover text-popover-foreground flex cursor-pointer items-center gap-4 rounded-xl p-4 shadow"
-            >
-              <Image
-                src={item.url}
-                alt={item.title}
-                width={40}
-                height={40}
-                className="size-auto object-contain"
-                priority
-              />
-              <div className="flex flex-col">
-                <h3 className="text-lg font-bold">{item.title}</h3>
-                <div className="text-muted-foreground flex items-center gap-2">
-                  <span>Course</span>
-                  <span>·</span>
-                  <span>Beginner</span>
-                  <span>·</span>
-                  <span>4 hours</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      {data[activeIndex].image && (
-        <div className="relative">
-          <Image
-            src={data[activeIndex].image}
-            alt="Feature Image"
-            width={1200}
-            height={800}
-            // className="size-72 object-cover"
-            quality={100}
-            priority
-            sizes="(max-width: 768px) 50vw, 33vw"
-          />
-        </div>
-      )}
- */

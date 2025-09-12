@@ -1,25 +1,42 @@
 import Image from 'next/image'
 
+import { TextAnimate } from '../../animations/text-animate'
+
 export function Feedback() {
   return (
     <div className="grid w-full items-center justify-between gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:gap-20">
       <div className="flex flex-col gap-5">
         <Image
           src="/icons/stars.svg"
+          alt="stars"
           width={200}
           height={200}
-          alt="stars"
           sizes="(max-width: 768px) 100px, 200px"
-          priority
-          className="h-10 w-auto select-none"
+          className="mr-auto h-10 w-auto select-none"
         />
-        <h2 className="text-4xl font-medium sm:text-5xl">
+        <TextAnimate
+          once
+          as="h2"
+          by="word"
+          animation="fadeIn"
+          delay={0.2}
+          duration={0.4}
+          className="text-4xl font-medium sm:text-5xl"
+        >
           Loved & trusted by professionals at the world’s top companies
-        </h2>
-        <p className="text-muted-foreground text-base sm:text-xl">
+        </TextAnimate>
+        <TextAnimate
+          once
+          as="p"
+          by="word"
+          animation="fadeIn"
+          delay={0.4}
+          duration={0.4}
+          className="text-muted-foreground text-base sm:text-xl"
+        >
           See why thousands of members have chosen LearnFast to accelerate their
           professional development.
-        </p>
+        </TextAnimate>
       </div>
       <div className="flex lg:justify-end">
         <Image
