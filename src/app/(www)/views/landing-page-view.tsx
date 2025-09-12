@@ -15,13 +15,11 @@ export function LandingPageView() {
   return (
     <>
       <Header />
-      {/* <CompaniesMarquee /> */}
       <Features />
       <Institutions />
       <FeaturesCarousel />
       <Separator />
       <CareerGrowth />
-      <Separator />
       <TrustedAndLove />
       <CompaniesMarquee className="border-y-0 py-6 sm:py-4" />
       <Testimonials />

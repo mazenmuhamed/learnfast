@@ -138,16 +138,14 @@ export function Footer() {
                   alt="App Store Logo"
                   width={150}
                   height={60}
-                  priority
-                  className="h-12 w-auto"
+                  className="h-12 w-fit"
                 />
                 <Image
                   src="/icons/GooglePlay.svg"
                   alt="Google Play Logo"
                   width={150}
                   height={60}
-                  priority
-                  className="h-12 w-auto"
+                  className="h-12 w-fit"
                 />
               </div>
               <div className="flex flex-col max-lg:gap-5">

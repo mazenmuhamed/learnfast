@@ -29,7 +29,7 @@ const logos = [
 export function CompaniesMarquee({ className }: { className?: string }) {
   return (
     <section className={cn('border-y py-6', className)}>
-      <Marquee repeat={200} className="[--duration:45s]">
+      <Marquee repeat={70}>
         {logos.map((logo, index) => (
           <Image
             key={index}
