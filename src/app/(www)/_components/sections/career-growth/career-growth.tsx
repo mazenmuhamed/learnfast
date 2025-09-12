@@ -1,3 +1,5 @@
+'use client'
+
 import CareerGrowthCards from './career-growth-cards'
 
 export function CareerGrowth() {

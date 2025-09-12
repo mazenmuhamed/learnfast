@@ -1,11 +1,13 @@
+import { LucideIcon } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import { cn } from '@/lib/utils'
-import { LucideIcon } from 'lucide-react'
 
 export function DesktopNavigationMenu({
   title,

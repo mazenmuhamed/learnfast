@@ -12,7 +12,7 @@ export function JoinBox() {
           height={180}
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-          className="rounded-lg object-cover"
+          className="h-12 w-fit rounded-lg object-contain"
         />
         <h3 className="text-2xl font-bold md:text-4xl lg:text-5xl">
           Join 400,000+ UX & Product pros who grow their career with LearnFast

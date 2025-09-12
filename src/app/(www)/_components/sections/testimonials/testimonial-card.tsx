@@ -28,7 +28,7 @@ export function TestimonialCard({ testimonial }: Props) {
             alt="Rating stars"
             width={130}
             height={30}
-            className="mt-4"
+            className="mt-4 h-6 w-auto select-none"
           />
         )}
       </CardContent>

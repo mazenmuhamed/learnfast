@@ -11,6 +11,7 @@ export function Feedback() {
           alt="stars"
           sizes="(max-width: 768px) 100px, 200px"
           priority
+          className="h-10 w-auto select-none"
         />
         <h2 className="text-4xl font-medium sm:text-5xl">
           Loved & trusted by professionals at the world’s top companies
@@ -28,7 +29,7 @@ export function Feedback() {
           height={200}
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-          className="rounded-lg object-cover"
+          className="h-14 w-auto rounded-lg object-cover"
         />
       </div>
     </div>

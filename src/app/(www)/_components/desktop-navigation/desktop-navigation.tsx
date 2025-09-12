@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Clapperboard, TvMinimalPlay, User2, Users2 } from 'lucide-react'

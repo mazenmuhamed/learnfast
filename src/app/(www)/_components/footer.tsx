@@ -139,6 +139,7 @@ export function Footer() {
                   width={150}
                   height={60}
                   priority
+                  className="h-12 w-auto"
                 />
                 <Image
                   src="/icons/GooglePlay.svg"
@@ -146,6 +147,7 @@ export function Footer() {
                   width={150}
                   height={60}
                   priority
+                  className="h-12 w-auto"
                 />
               </div>
               <div className="flex flex-col max-lg:gap-5">
