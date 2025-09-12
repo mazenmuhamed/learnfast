@@ -16,7 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { BlurFade } from '../../animations/blur-fade'
+import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
 
 const data = [
   {

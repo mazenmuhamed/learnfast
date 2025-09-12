@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
-import { BlurFade } from '../../animations/blur-fade'
+import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
 import { FeaturesCarouselItem } from './features-carousel-item'
 
 const categories = ['Designers', 'Career Shifters', 'Students', 'Teams']

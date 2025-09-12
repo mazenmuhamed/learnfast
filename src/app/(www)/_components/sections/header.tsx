@@ -5,9 +5,9 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 
-import { BlurFade } from '../animations/blur-fade'
-import { BorderBeam } from '../animations/border-beam'
-import { TextAnimate } from '../animations/text-animate'
+import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+import { BorderBeam } from '@/app/(www)/_components/animations/border-beam'
+import { TextAnimate } from '@/app/(www)/_components/animations/text-animate'
 
 const images = [
   '/images/users/user-1.jpg',
