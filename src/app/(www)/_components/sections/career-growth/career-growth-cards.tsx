@@ -75,7 +75,7 @@ export function CareerGrowthCards() {
   }, [])
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
       {dataChunks.map((chunk, chunkIndex) => (
         <div key={chunkIndex} className="flex flex-col gap-3">
           {chunk.map(({ title, content, image }, index) => (

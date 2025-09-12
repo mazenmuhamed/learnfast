@@ -20,7 +20,7 @@ export function Header() {
   return (
     <header className="main-container flex flex-col items-center space-y-8 py-10 md:space-y-10 md:py-16 lg:space-y-14 lg:py-20">
       <div className="bg-background relative flex w-fit items-center gap-2 overflow-hidden rounded-full border p-1.5 shadow-sm">
-        <div className="flex -space-x-1.5">
+        <div className="flex -space-x-1.5 max-[376px]:hidden">
           {images.map((src, index) => (
             <Image
               key={index}

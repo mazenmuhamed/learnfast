@@ -49,7 +49,7 @@ export function Features() {
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
               quality={100}
-              className="h-auto w-2/4 rounded-2xl object-contain"
+              className="h-auto rounded-2xl object-contain"
             />
           </BlurFade>
         </BlurFade>

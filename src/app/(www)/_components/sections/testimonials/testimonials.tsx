@@ -17,7 +17,7 @@ export function Testimonials() {
   }, [])
 
   return (
-    <section className="main-container grid gap-5 pb-20 md:grid-cols-2 lg:grid-cols-3">
+    <section className="main-container grid gap-3 pb-20 sm:grid-cols-2 md:grid-cols-3 md:gap-5">
       {dataChunks.map((chunk, chunkIndex) => (
         <div key={chunkIndex} className="flex flex-col gap-5">
           {chunk.map((testimonial, index) => (
