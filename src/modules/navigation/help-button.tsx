@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Settings } from 'lucide-react'
+import { BadgeQuestionMark } from 'lucide-react'
 
 import {
   SidebarMenu,
@@ -9,25 +9,24 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 
-import { DesktopSettingsDialog } from '../components/dialogs/desktop-settings-dialog'
-
-export function SettingsNav() {
+export function HelpButton() {
   const [openDialog, setOpenDialog] = useState(false)
+
+  console.log(openDialog)
 
   return (
     <>
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton
-            tooltip="Settings"
+            tooltip="Help"
             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground w-fit"
             onClick={() => setOpenDialog(true)}
           >
-            <Settings />
+            <BadgeQuestionMark />
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
-      <DesktopSettingsDialog open={openDialog} onOpenChange={setOpenDialog} />
     </>
   )
 }

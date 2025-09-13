@@ -28,9 +28,10 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar'
 import { Logo } from '@/modules/components/logo'
+
 import { SubNav } from './sub-nav'
 import { MainNav } from './main-nav'
-import { SettingsNav } from './settings-nav'
+import { HelpButton } from './help-button'
 
 const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
@@ -84,7 +85,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SubNav label="Grow" items={navigationGrowItems} />
       </SidebarContent>
       <SidebarFooter>
-        <SettingsNav />
+        <HelpButton />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

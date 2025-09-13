@@ -2,9 +2,10 @@
 
 import { useMemo } from 'react'
 
-import { testimonials, Testimonial } from './data'
-import { TestimonialCard } from './testimonial-card'
 import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+
+import { TestimonialCard } from './testimonial-card'
+import { testimonials, Testimonial } from './data'
 
 export function Testimonials() {
   const dataChunks = useMemo(() => {

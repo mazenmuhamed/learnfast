@@ -54,7 +54,7 @@ type Props = {
   onOpenChange: (open: boolean) => void
 }
 
-export function SettingsDialog({ open, onOpenChange }: Props) {
+export function DesktopSettingsDialog({ open, onOpenChange }: Props) {
   const [activeTab, setActiveTab] = useState<string>('appearance')
 
   useKeyboardShortcut('ctrl', 's', () => onOpenChange(true))
