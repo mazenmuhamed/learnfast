@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Outfit as FontSans } from 'next/font/google'
 
+import { Toaster } from '@/components/ui/sonner'
+
 import './globals.css'
 
 const font = FontSans({ subsets: ['latin'] })
@@ -27,7 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }
