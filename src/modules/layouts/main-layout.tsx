@@ -1,13 +1,5 @@
 import { Separator } from '@/components/ui/separator'
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
@@ -18,6 +10,7 @@ import { AppSidebar } from '@/modules/navigation/app-sidebar'
 export function MainLayout({ children }: React.PropsWithChildren) {
   return (
     <SidebarProvider
+      defaultOpen={false}
       style={
         {
           '--sidebar-width': '14rem',
@@ -35,27 +28,9 @@ export function MainLayout({ children }: React.PropsWithChildren) {
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            {children}
-          </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
-        </div>
+        <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   )

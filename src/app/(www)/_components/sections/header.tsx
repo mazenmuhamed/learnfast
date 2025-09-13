@@ -47,7 +47,7 @@ export function Header() {
       </div>
       <div className="flex flex-col gap-6">
         <BlurFade inView direction="up">
-          <h1 className="text-center text-3xl font-medium sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
             Learn <span className="text-primary">Design & Development</span>{' '}
             skills, faster and better with LearnFast
           </h1>

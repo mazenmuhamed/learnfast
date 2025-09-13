@@ -25,7 +25,9 @@ export function SubNav({ label, items }: Props) {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="">{label}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[13px] font-medium">
+        {label}
+      </SidebarGroupLabel>
       {items.map((item, index) => (
         <div key={index}>
           <SidebarGroupContent>

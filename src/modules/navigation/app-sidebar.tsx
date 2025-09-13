@@ -27,10 +27,10 @@ import {
   SidebarSeparator,
   useSidebar,
 } from '@/components/ui/sidebar'
-
 import { Logo } from '@/modules/components/logo'
-import { MainNav } from './main-nav'
 import { SubNav } from './sub-nav'
+import { MainNav } from './main-nav'
+import { SettingsNav } from './settings-nav'
 
 const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
@@ -58,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" className="!items-center" {...props}>
-      <SidebarHeader className="px-3">
+      <SidebarHeader className="mt-2 px-3">
         <Logo
           href="/home"
           className={cn(
@@ -68,12 +68,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent className="-space-y-2">
         <MainNav items={navigationMainItems} />
-        <SidebarSeparator className="mx-auto !w-[80%]" />
+        <SidebarSeparator
+          className={cn(
+            'mx-auto',
+            state === 'collapsed' ? '!w-[50%]' : '!w-[85%]',
+          )}
+        />
         <SubNav label="Learn" items={navigationLearnItems} />
-        <SidebarSeparator className="mx-auto !w-[80%]" />
+        <SidebarSeparator
+          className={cn(
+            'mx-auto',
+            state === 'collapsed' ? '!w-[50%]' : '!w-[85%]',
+          )}
+        />
         <SubNav label="Grow" items={navigationGrowItems} />
       </SidebarContent>
-      <SidebarFooter></SidebarFooter>
+      <SidebarFooter>
+        <SettingsNav />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

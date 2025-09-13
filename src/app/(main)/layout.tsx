@@ -7,16 +7,14 @@ export const metadata: Metadata = {}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <MainLayout>
-      <ThemeProvider
-        storageKey="app-theme"
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
-    </MainLayout>
+    <ThemeProvider
+      storageKey="app-theme"
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <MainLayout>{children}</MainLayout>
+    </ThemeProvider>
   )
 }
