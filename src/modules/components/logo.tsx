@@ -19,8 +19,8 @@ export function Logo({ href, className }: Props) {
         alt="Logo"
         width={27}
         height={27}
-        className="object-contain"
         priority
+        className="object-contain"
       />
       <span className="text-lg font-semibold">LearnFast</span>
     </Link>

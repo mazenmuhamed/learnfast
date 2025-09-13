@@ -27,7 +27,7 @@ export function Institutions() {
             alt={`Company logo ${index + 1}`}
             width={100}
             height={50}
-            className="h-10 w-auto sm:h-12 md:h-14 lg:h-20"
+            className="h-10 w-auto sm:h-12 md:h-14 lg:h-20 dark:invert"
           />
         ))}
       </div>

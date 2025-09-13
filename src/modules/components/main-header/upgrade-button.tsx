@@ -2,8 +2,8 @@ import { Gem } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 
-import { ShineBorder } from '@/app/(www)/_components/animations/shine-border'
 import { Button } from '@/components/ui/button'
+import { ShineBorder } from '@/app/(www)/_components/animations/shine-border'
 
 export function UpgradeButton({ className }: { className?: string }) {
   return (

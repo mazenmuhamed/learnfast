@@ -1,18 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  BookA,
-  Calculator,
-  Calendar,
-  CreditCard,
-  Search,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-react'
+import { BookA, Search } from 'lucide-react'
 
 import { useKeyboardShortcut } from '@/hooks/use-keyboard-shortcut'
+import {
+  navigationMainItems,
+  navigationGrowItems,
+  navigationLearnItems,
+} from '@/lib/constants'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -50,42 +46,36 @@ export function Searchbar() {
         <Separator orientation="vertical" className="ml-auto !h-[60%]" />
         <BookA className="mx-1" />
       </Button>
-
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Calendar />
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <Calculator />
-              <span>Calculator</span>
-            </CommandItem>
+          <CommandGroup heading="Main">
+            {navigationMainItems.map(item => (
+              <CommandItem key={item.title} onSelect={() => setOpen(false)}>
+                <item.icon />
+                <span>{item.title}</span>
+                <CommandShortcut>⌘{item.title.charAt(0)}</CommandShortcut>
+              </CommandItem>
+            ))}
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
+          <CommandGroup heading="Learn">
+            {navigationLearnItems.map(item => (
+              <CommandItem key={item.title} onSelect={() => setOpen(false)}>
+                <item.icon />
+                <span>{item.title}</span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Grow">
+            {navigationGrowItems.map(item => (
+              <CommandItem key={item.title} onSelect={() => setOpen(false)}>
+                <item.icon />
+                <span>{item.title}</span>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

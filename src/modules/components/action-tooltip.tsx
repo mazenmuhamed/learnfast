@@ -16,6 +16,7 @@ type Props = {
   children?: React.ReactNode
   side?: TooltipContentProps['side']
   contentClassName?: string
+  onClick?: VoidFunction
 }
 
 export function ActionTooltip({
@@ -25,10 +26,15 @@ export function ActionTooltip({
   asChild,
   className,
   contentClassName,
+  onClick,
 }: Props) {
   return (
     <Tooltip>
-      <TooltipTrigger asChild={asChild ?? true} className={className}>
+      <TooltipTrigger
+        asChild={asChild ?? true}
+        className={className}
+        onClick={onClick}
+      >
         {children}
       </TooltipTrigger>
       <TooltipContent

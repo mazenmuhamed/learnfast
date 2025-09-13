@@ -37,7 +37,7 @@ export function CompaniesMarquee({ className }: { className?: string }) {
             alt="Company Logo"
             width={100}
             height={32}
-            className="mx-8 h-12 w-auto"
+            className="mx-8 h-12 w-auto dark:invert"
           />
         ))}
       </Marquee>

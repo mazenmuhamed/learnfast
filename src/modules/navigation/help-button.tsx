@@ -9,10 +9,13 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 
+import { ShortcutsDialog } from '../components/dialogs/shortcuts-dialog'
+import { useKeyboardShortcut } from '@/hooks/use-keyboard-shortcut'
+
 export function HelpButton() {
   const [openDialog, setOpenDialog] = useState(false)
 
-  console.log(openDialog)
+  useKeyboardShortcut('ctrl', '/', () => setOpenDialog(true))
 
   return (
     <>
@@ -27,6 +30,7 @@ export function HelpButton() {
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
+      <ShortcutsDialog open={openDialog} onOpenChange={setOpenDialog} />
     </>
   )
 }

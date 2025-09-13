@@ -1,22 +1,13 @@
 'use client'
 
 import * as React from 'react'
-import {
-  BadgeDollarSign,
-  Bookmark,
-  BookOpen,
-  Briefcase,
-  FileBadge,
-  GraduationCap,
-  Home,
-  Medal,
-  PencilRuler,
-  Route,
-  Trophy,
-  TvMinimal,
-} from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import {
+  navigationMainItems,
+  navigationGrowItems,
+  navigationLearnItems,
+} from '@/lib/constants'
 
 import {
   Sidebar,
@@ -27,32 +18,11 @@ import {
   SidebarSeparator,
   useSidebar,
 } from '@/components/ui/sidebar'
-import { Logo } from '@/modules/components/logo'
 
+import { Logo } from '@/modules/components/logo'
 import { SubNav } from './sub-nav'
 import { MainNav } from './main-nav'
 import { HelpButton } from './help-button'
-
-const navigationMainItems = [
-  { title: 'Home', url: '/home', icon: Home },
-  { title: 'Bookmarks', url: '/bookmarks', icon: Bookmark },
-  { title: 'Leagues', url: 'leagues', icon: Trophy },
-]
-
-const navigationLearnItems = [
-  { title: 'Courses', url: '/courses', icon: GraduationCap },
-  { title: 'Briefs', url: '/briefs', icon: PencilRuler },
-  { title: 'Career Path', url: '/career-path', icon: Route },
-  { title: 'Assessments', url: '/assessments', icon: FileBadge },
-  { title: 'Tutorials', url: '/tutorials', icon: BookOpen },
-]
-
-const navigationGrowItems = [
-  { title: 'Showcase', url: '/showcase', icon: TvMinimal },
-  { title: 'Certifications', url: '/certifications', icon: Medal },
-  { title: 'Salary Explorer', url: '/salary-explorer', icon: BadgeDollarSign },
-  { title: 'Job Board', url: '/job-board', icon: Briefcase },
-]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar()

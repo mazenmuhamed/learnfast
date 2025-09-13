@@ -10,10 +10,10 @@ import { Separator } from '@/components/ui/separator'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 
 import { Logo } from '@/modules/components/logo'
-import { UpgradeButton } from '@/modules/components/upgrade-button'
 
 import { UserMenu } from './user-menu'
 import { Searchbar } from './searchbar'
+import { UpgradeButton } from './upgrade-button'
 import { NotificationButton } from './notification-button'
 
 const currentUser = cache(async () => {
@@ -32,7 +32,7 @@ export async function MainHeader() {
   const user = await currentUser()
 
   return (
-    <header className="bg-background flex h-14 shrink-0 items-center justify-between gap-2 px-4 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-14">
+    <header className="bg-background flex h-14 shrink-0 items-center justify-between gap-2 border-b px-4 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-14">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
         <Separator

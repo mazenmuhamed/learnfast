@@ -4,8 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Dribbble, Facebook, Github, Linkedin, Twitch } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+
+import { Logo } from '@/modules/components/logo'
+import { Button } from '@/components/ui/button'
 
 const mainLinks = [
   { href: '#', label: 'About Us' },
@@ -101,17 +103,7 @@ export function Footer() {
         <footer className="flex w-full flex-col gap-10 border-y py-20 lg:flex-row">
           <div className="flex w-full gap-8 max-lg:items-center lg:max-w-72 lg:flex-col">
             <div className="flex flex-col gap-8 max-lg:flex-1/2">
-              <Link href="/" className="flex w-fit items-center gap-2">
-                <Image
-                  src="/brand/logo.svg"
-                  alt="LearnFast Logo"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto select-none dark:invert"
-                  priority
-                />
-                <span className="text-lg font-semibold">LearnFA</span>
-              </Link>
+              <Logo className="[&_img]:size-8" />
               <div className="flex flex-col gap-2">
                 {mainLinks.map(link => (
                   <Link
