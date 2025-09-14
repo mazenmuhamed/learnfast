@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRightIcon, XIcon } from 'lucide-react'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
 
@@ -11,7 +11,7 @@ export function DiscountBanner() {
   const [hide, setHide] = useState(false)
 
   const trpc = useTRPC()
-  const { data } = useSuspenseQuery(trpc.user.checkAuth.queryOptions())
+  const { data } = useQuery(trpc.user.checkAuth.queryOptions())
 
   if (hide || data) return null
 

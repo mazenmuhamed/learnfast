@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { Separator } from '@/components/ui/separator'
 
@@ -13,6 +14,8 @@ import { Testimonials } from './_components/sections/testimonials'
 import { ScrollTopButton } from './_components/scroll-top-button'
 import { Footer } from './_components/footer'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Learn & Improve Your Skills - LearnFast',
   description:
@@ -20,9 +23,13 @@ export const metadata: Metadata = {
 }
 
 export default async function LandingPage() {
+  prefetch(trpc.user.checkAuth.queryOptions())
+
   return (
     <>
-      <Header />
+      <HydrateClient>
+        <Header />
+      </HydrateClient>
       <Features />
       <Institutions />
       <FeaturesCarousel />

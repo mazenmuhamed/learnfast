@@ -2,10 +2,13 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { authClient } from '@/lib/auth-client'
 
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
 import { BorderBeam } from '@/app/(www)/_components/animations/border-beam'
@@ -77,11 +80,16 @@ export function Header() {
           <Button asChild size="lg" variant="outline" className="text-base">
             <Link href="/courses">Discover Courses</Link>
           </Button>
-          <Button asChild size="lg" className="text-base">
-            <Link href={user ? '/home' : '/sign-in'}>
-              {user ? 'Go to App' : 'Get Started'}
-            </Link>
-          </Button>
+          {/* TODO: Change this later */}
+          <ErrorBoundary fallback={<div>Failed to load data</div>}>
+            <Suspense fallback={<Skeleton className="h-10 w-32 rounded-md" />}>
+              <Button asChild size="lg" className="text-base">
+                <Link href={user ? '/home' : '/sign-in'}>
+                  {user ? 'Go to App' : 'Get Started'}
+                </Link>
+              </Button>
+            </Suspense>
+          </ErrorBoundary>
         </BlurFade>
       </div>
       <BlurFade inView direction="up" delay={0.5}>
