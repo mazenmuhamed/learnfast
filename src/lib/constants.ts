@@ -14,7 +14,6 @@ import {
 } from 'lucide-react'
 
 export const publicRoutes = [
-  '/',
   '/sign-in',
   '/sign-up',
   '/forgot-password',

@@ -8,6 +8,10 @@ export async function middleware(request: NextRequest) {
 
   const isAuthRoute = publicRoutes.includes(request.nextUrl.pathname)
 
+  if (request.nextUrl.pathname === '/') {
+    return NextResponse.next()
+  }
+
   if (!session && !isAuthRoute) {
     return NextResponse.redirect(new URL('/sign-in', request.url))
   }

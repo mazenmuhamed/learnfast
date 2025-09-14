@@ -28,7 +28,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar()
 
   return (
-    <Sidebar collapsible="icon" className="!items-center" {...props}>
+    <Sidebar variant="sidebar" collapsible="icon" {...props}>
       <SidebarHeader className="mt-2 px-3">
         <Logo
           href="/home"

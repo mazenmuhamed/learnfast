@@ -18,7 +18,9 @@ export function MainLayout({ children }: React.PropsWithChildren) {
       <AppSidebar />
       <SidebarInset>
         <MainHeader />
-        <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
+        <main className="flex flex-1 p-4">
+          <div className="mx-auto w-full max-w-6xl p-4">{children}</div>
+        </main>
       </SidebarInset>
     </SidebarProvider>
   )

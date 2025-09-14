@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { authClient } from '@/lib/auth-client'
+
 import { Button } from '@/components/ui/button'
 
 import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
@@ -17,6 +19,8 @@ const images = [
 ]
 
 export function Header() {
+  const { data: user } = authClient.useSession()
+
   return (
     <header className="main-container flex flex-col items-center space-y-8 py-10 md:space-y-10 md:py-16 lg:space-y-14 lg:py-20">
       <div className="bg-background relative flex w-fit items-center gap-2 overflow-hidden rounded-full border p-1.5 shadow-sm">
@@ -71,10 +75,10 @@ export function Header() {
           delay={0.3}
         >
           <Button asChild size="lg" variant="outline" className="text-base">
-            <Link href="/">Discover Courses</Link>
+            <Link href="/courses">Discover Courses</Link>
           </Button>
           <Button asChild size="lg" className="text-base">
-            <Link href="/sign-in">Get Started</Link>
+            <Link href={user ? '/home' : '/sign-in'}>Get Started</Link>
           </Button>
         </BlurFade>
       </div>
