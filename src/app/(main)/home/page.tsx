@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import { cache } from 'react'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
 
+import { HomeView } from '@/modules/views/home-view'
+
 export const metadata: Metadata = {
   title: 'Home - LearnFast',
 }
 
-const currentUser = cache(async () => {
+export default async function HomePage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   })
@@ -18,11 +19,5 @@ const currentUser = cache(async () => {
     return redirect('/sign-in')
   }
 
-  return session.user
-})
-
-export default async function HomePage() {
-  await currentUser()
-
-  return <div>HomePage</div>
+  return <HomeView />
 }

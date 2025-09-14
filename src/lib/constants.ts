@@ -24,7 +24,7 @@ export const publicRoutes = [
 export const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
   { title: 'Bookmarks', url: '/bookmarks', icon: Bookmark },
-  { title: 'Leagues', url: 'leagues', icon: Trophy },
+  { title: 'Leagues', url: '/leagues', icon: Trophy },
 ]
 
 export const navigationLearnItems = [
@@ -38,6 +38,10 @@ export const navigationLearnItems = [
 export const navigationGrowItems = [
   { title: 'Showcase', url: '/showcase', icon: TvMinimal },
   { title: 'Certifications', url: '/certifications', icon: Medal },
-  { title: 'Salary Explorer', url: '/salary-explorer', icon: BadgeDollarSign },
+  {
+    title: 'Salary Explorer',
+    url: '/salary-explorer',
+    icon: BadgeDollarSign,
+  },
   { title: 'Job Board', url: '/job-board', icon: Briefcase },
 ]

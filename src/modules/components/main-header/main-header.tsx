@@ -32,7 +32,7 @@ export async function MainHeader() {
   const user = await currentUser()
 
   return (
-    <header className="bg-background flex h-14 shrink-0 items-center justify-between gap-2 border-b px-4 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-14">
+    <header className="bg-background sticky top-0 z-50 flex h-14 shrink-0 items-center justify-between gap-2 border-b px-4 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-14">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
         <Separator

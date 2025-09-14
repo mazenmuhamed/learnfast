@@ -14,7 +14,6 @@ export function JoinBox() {
             alt="People"
             width={180}
             height={180}
-            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
             className="h-auto rounded-lg object-contain"
           />

@@ -28,12 +28,12 @@ export function Header() {
           {images.map((src, index) => (
             <Image
               key={index}
-              className="ring-background rounded-full ring-1"
               src={src}
               width={20}
               height={20}
               alt={`avatar-${index + 1}`}
               sizes="(max-width: 640px) 20px, 20px"
+              className="ring-background rounded-full ring-1"
             />
           ))}
         </div>
@@ -78,7 +78,9 @@ export function Header() {
             <Link href="/courses">Discover Courses</Link>
           </Button>
           <Button asChild size="lg" className="text-base">
-            <Link href={user ? '/home' : '/sign-in'}>Get Started</Link>
+            <Link href={user ? '/home' : '/sign-in'}>
+              {user ? 'Go to App' : 'Get Started'}
+            </Link>
           </Button>
         </BlurFade>
       </div>
