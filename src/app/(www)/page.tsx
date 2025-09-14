@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Be the best version of yourself with LearnFast. Explore our resources to learn and improve your skills.',
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
       <Header />

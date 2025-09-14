@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Outfit as FontSans } from 'next/font/google'
 
 import { Toaster } from '@/components/ui/sonner'
+import { TRPCReactProvider } from '@/trpc/client'
 
 import './globals.css'
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={font.className}>
-        {children}
+        <TRPCReactProvider>{children}</TRPCReactProvider>
         <Toaster />
       </body>
     </html>

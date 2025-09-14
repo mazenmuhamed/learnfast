@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
-import { authClient } from '@/lib/auth-client'
+import { useTRPC } from '@/trpc/client'
 
 import { Logo } from '@/modules/components/logo'
 import { Button } from '@/components/ui/button'
@@ -12,7 +13,10 @@ import { MobileNavigation } from './mobile-navigation'
 import { DesktopNavigation } from './desktop-navigation'
 
 export function Navbar() {
-  const { data: user, isPending } = authClient.useSession()
+  const trpc = useTRPC()
+  const { data: user, isPending } = useSuspenseQuery(
+    trpc.user.checkAuth.queryOptions(),
+  )
 
   return (
     <nav className="bg-background sticky top-0 z-50 w-full">

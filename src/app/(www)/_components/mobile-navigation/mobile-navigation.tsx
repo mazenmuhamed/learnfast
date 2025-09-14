@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import {
   MenuIcon,
   User2,
@@ -8,7 +9,10 @@ import {
   TvMinimalPlay,
 } from 'lucide-react'
 
+import { useTRPC } from '@/trpc/client'
+
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { Separator } from '@/components/ui/separator'
 import {
   Sheet,
@@ -24,6 +28,11 @@ import { ResourcesMenuItem } from './resources-menu-item'
 import { MenuItem, MobileNavigationMenu } from './mobile-navigation-menu'
 
 export function MobileNavigation() {
+  const trpc = useTRPC()
+  const { data: user, isPending } = useSuspenseQuery(
+    trpc.user.checkAuth.queryOptions(),
+  )
+
   return (
     <div className="lg:hidden">
       <Sheet>
@@ -75,14 +84,22 @@ export function MobileNavigation() {
               For Teams
             </Link>
             <Separator className="my-4" />
-            <div className="flex flex-col gap-2">
+            {isPending && <Skeleton className="h-8 w-full rounded-md" />}
+            {!isPending && user && (
               <Button asChild variant="outline" className="text-[15px]">
-                <Link href="/sign-in">Sign in</Link>
+                <Link href="/home">Go to App</Link>
               </Button>
-              <Button asChild className="text-[15px]">
-                <Link href="/sign-up">Get Started</Link>
-              </Button>
-            </div>
+            )}
+            {!isPending && !user && (
+              <div className="flex flex-col gap-2">
+                <Button asChild variant="outline" className="text-[15px]">
+                  <Link href="/sign-in">Sign in</Link>
+                </Button>
+                <Button asChild className="text-[15px]">
+                  <Link href="/sign-up">Get Started</Link>
+                </Button>
+              </div>
+            )}
           </div>
         </SheetContent>
       </Sheet>

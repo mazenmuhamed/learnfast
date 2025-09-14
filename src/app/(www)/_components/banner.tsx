@@ -3,11 +3,17 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRightIcon, XIcon } from 'lucide-react'
+import { useSuspenseQuery } from '@tanstack/react-query'
+
+import { useTRPC } from '@/trpc/client'
 
 export function DiscountBanner() {
   const [hide, setHide] = useState(false)
 
-  if (hide) return null
+  const trpc = useTRPC()
+  const { data } = useSuspenseQuery(trpc.user.checkAuth.queryOptions())
+
+  if (hide || data) return null
 
   return (
     <div className="bg-secondary dark:bg-popover dark:text-popover-foreground text-secondary-foreground relative px-4 py-3 max-sm:hidden">
