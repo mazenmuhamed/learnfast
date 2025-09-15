@@ -17,6 +17,7 @@ import { DetailsSection } from '../course/course-details/details-section'
 import { CourseOverview } from '../course/course-details/course-overview'
 import { UpgradeBox } from '../widgets/upgrade-box'
 import { SkillsGainSection } from '../course/course-details/skills-gain-section'
+import { LessonsSection } from '../course/course-details/lessons-section'
 
 type Props = { id: string }
 
@@ -61,9 +62,10 @@ function CourseDetailsViewSuspense({ id }: Props) {
           createdAt={course.createdAt}
         />
         <SkillsGainSection data={course.whatYouWillLearn} />
+        <LessonsSection lessons={course.lessons} />
       </div>
       <div className="relative h-full max-[1100px]:hidden">
-        <div className="sticky top-24 grid gap-5">
+        <div className="sticky top-28 grid gap-5">
           <CourseOverview cover={course.cover} title={course.title} />
           <UpgradeBox />
         </div>

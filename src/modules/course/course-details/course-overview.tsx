@@ -40,7 +40,7 @@ export function CourseOverview({
               <span>0%</span>
               <span>Complete</span>
             </p>
-          </div>{' '}
+          </div>
           <p className="text-muted-foreground my-1 line-clamp-2 text-sm">
             Complete the course to earn your certificate of completion and
             showcase your expertise.
