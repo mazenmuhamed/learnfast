@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { TextAnimate } from '@/app/(www)/_components/animations/text-animate'
+import { TextAnimate } from '@/app/(www)/(landing)/_components/animations/text-animate'
 
 export function Feedback() {
   return (

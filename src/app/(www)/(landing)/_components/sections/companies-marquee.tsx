@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 
-import { Marquee } from '@/app/(www)/_components/animations/marquee'
+import { Marquee } from '@/app/(www)/(landing)/_components/animations/marquee'
 
 const logos = [
   '/icons/companies/logo-1.svg',

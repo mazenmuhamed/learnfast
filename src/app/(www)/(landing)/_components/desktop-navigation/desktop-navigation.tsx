@@ -52,13 +52,13 @@ export function DesktopNavigation() {
             <NavigationMenuContent className="left-2/4 flex min-w-68 -translate-x-2/4 !rounded-xl border-none">
               <div className="flex w-full flex-col">
                 <MenuItem
-                  href="/"
+                  href="/pricing"
                   label="For Individuals"
                   icon={User2}
                   className="-mx-0 w-full"
                 />
                 <MenuItem
-                  href="/"
+                  href="/pricing"
                   label="For Teams"
                   icon={Users2}
                   className="-mx-0 w-full"

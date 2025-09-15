@@ -13,7 +13,9 @@ import {
   TvMinimal,
 } from 'lucide-react'
 
-export const publicRoutes = [
+export const publicRoutes = ['/', '/pricing']
+
+export const authRoutes = [
   '/sign-in',
   '/sign-up',
   '/forgot-password',

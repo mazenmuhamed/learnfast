@@ -6,7 +6,7 @@ import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
 
 export function FeatureCards() {
   return (

@@ -10,9 +10,9 @@ import { authClient } from '@/lib/auth-client'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
-import { BorderBeam } from '@/app/(www)/_components/animations/border-beam'
-import { TextAnimate } from '@/app/(www)/_components/animations/text-animate'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
+import { BorderBeam } from '@/app/(www)/(landing)/_components/animations/border-beam'
+import { TextAnimate } from '@/app/(www)/(landing)/_components/animations/text-animate'
 
 const images = [
   '/images/users/user-1.jpg',

@@ -1,6 +1,6 @@
 'use client'
 
-import { TextAnimate } from '@/app/(www)/_components/animations/text-animate'
+import { TextAnimate } from '@/app/(www)/(landing)/_components/animations/text-animate'
 import { CareerGrowthCards } from './career-growth-cards'
 
 export function CareerGrowth() {

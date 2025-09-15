@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
 
 import { TestimonialCard } from './testimonial-card'
 import { testimonials, Testimonial } from './data'

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
 
 export function JoinBox() {
   return (

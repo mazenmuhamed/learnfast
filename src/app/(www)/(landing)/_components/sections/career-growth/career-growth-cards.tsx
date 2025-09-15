@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { cn } from '@/lib/utils'
 
 import { Card, CardContent } from '@/components/ui/card'
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
 
 type Data = { title: string; content: string; image: string }
 

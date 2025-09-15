@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 
-import { BlurFade } from '@/app/(www)/_components/animations/blur-fade'
-import { TextAnimate } from '@/app/(www)/_components/animations/text-animate'
+import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
+import { TextAnimate } from '@/app/(www)/(landing)/_components/animations/text-animate'
 import { FeatureCards } from './feature-cards'
 import { FeatureAccordions } from './feature-accordions'
 
