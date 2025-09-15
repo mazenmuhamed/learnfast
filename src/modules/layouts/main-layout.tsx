@@ -2,6 +2,7 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
 import { AppSidebar } from '@/modules/navigation/app-sidebar'
 import { MainHeader } from '@/modules/components/main-header'
+import { UpgradeBanner } from '../components/upgrade-banner'
 
 export function MainLayout({ children }: React.PropsWithChildren) {
   return (
@@ -18,7 +19,8 @@ export function MainLayout({ children }: React.PropsWithChildren) {
       <AppSidebar />
       <SidebarInset>
         <MainHeader />
-        <main className="flex flex-1 p-4 pt-8">
+        <UpgradeBanner />
+        <main className="relative flex flex-1 p-4 pt-8">
           <div className="mx-auto w-full max-w-6xl p-4">{children}</div>
         </main>
       </SidebarInset>
