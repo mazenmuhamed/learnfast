@@ -1,4 +1,11 @@
-export interface Course {
+import type { inferRouterOutputs } from '@trpc/server'
+import type { AppRouter } from '@/trpc/routers/_app'
+
+type RouterOutput = inferRouterOutputs<AppRouter>
+
+export type CourseOutput = RouterOutput['course']['getAll'][number]
+
+export interface ICourse {
   title: string
   summary: string
   cover: string // URL to the course image

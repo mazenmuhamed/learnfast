@@ -1,10 +1,10 @@
 import { PrismaClient } from '../src/lib/generated/prisma'
 
-import { Course, CourseLevel } from '@/lib/types'
+import { ICourse, CourseLevel } from '@/lib/types'
 
 const prisma = new PrismaClient()
 
-const courses: Course[] = [
+const courses: ICourse[] = [
   {
     title: 'Introduction to ChatGPT',
     summary:

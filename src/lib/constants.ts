@@ -21,27 +21,28 @@ export const publicRoutes = [
   '/verify-account',
 ]
 
+// TODO: Replace placeholder routes with actual routes when available
 export const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
-  { title: 'Bookmarks', url: '/bookmarks', icon: Bookmark },
-  { title: 'Leagues', url: '/leagues', icon: Trophy },
+  { title: 'Bookmarks', url: '#', icon: Bookmark },
+  { title: 'Leagues', url: '#', icon: Trophy },
 ]
 
 export const navigationLearnItems = [
   { title: 'Courses', url: '/courses', icon: GraduationCap },
-  { title: 'Briefs', url: '/briefs', icon: PencilRuler },
-  { title: 'Career Path', url: '/career-path', icon: Route },
-  { title: 'Assessments', url: '/assessments', icon: FileBadge },
-  { title: 'Tutorials', url: '/tutorials', icon: BookOpen },
+  { title: 'Briefs', url: '#', icon: PencilRuler },
+  { title: 'Career Path', url: '#', icon: Route },
+  { title: 'Assessments', url: '#', icon: FileBadge },
+  { title: 'Tutorials', url: '#', icon: BookOpen },
 ]
 
 export const navigationGrowItems = [
-  { title: 'Showcase', url: '/showcase', icon: TvMinimal },
-  { title: 'Certifications', url: '/certifications', icon: Medal },
+  { title: 'Showcase', url: '#', icon: TvMinimal },
+  { title: 'Certifications', url: '#', icon: Medal },
   {
     title: 'Salary Explorer',
-    url: '/salary-explorer',
+    url: '#',
     icon: BadgeDollarSign,
   },
-  { title: 'Job Board', url: '/job-board', icon: Briefcase },
+  { title: 'Job Board', url: '#', icon: Briefcase },
 ]

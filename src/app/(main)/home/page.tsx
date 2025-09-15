@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
+import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { HomeView } from '@/modules/views/home-view'
 
@@ -19,5 +20,11 @@ export default async function HomePage() {
     return redirect('/sign-in')
   }
 
-  return <HomeView />
+  prefetch(trpc.course.getAll.queryOptions())
+
+  return (
+    <HydrateClient>
+      <HomeView />
+    </HydrateClient>
+  )
 }

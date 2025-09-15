@@ -1,6 +1,7 @@
 'use client'
 
 import { useSidebar } from '@/components/ui/sidebar'
+import { useBreakPoint } from '@/hooks/use-break-point'
 
 import { GoalsBox } from '@/modules/widgets/goals-box'
 import { StreakBox } from '@/modules/widgets/streak-box'
@@ -11,10 +12,11 @@ import { UpgradeBox } from '@/modules/widgets/upgrade-box'
 import { SkillGraphBox } from '@/modules/widgets/skill-graph-box'
 import { BulletinBoard } from '@/modules/widgets/bulletin-board'
 import { ContinueLearning } from '@/modules/widgets/continue-learning'
-import { useBreakPoint } from '@/hooks/use-break-point'
+import { RecommendedForYou } from '../widgets/recommended-for-you'
 
 export function HomeView() {
   const { state } = useSidebar()
+
   const isTabletScreen = useBreakPoint(1110)
 
   return (
@@ -25,6 +27,7 @@ export function HomeView() {
       <div className="grid gap-16">
         <ContinueLearning />
         <BulletinBoard />
+        <RecommendedForYou />
         <EventsBox />
         {isTabletScreen ? null : <Resources />}
       </div>
