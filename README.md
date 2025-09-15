@@ -77,6 +77,6 @@ If you’d like to suggest improvements, feel free to open an issue or submit a 
 ## 📧 Contact
 
 Developed by **Mazen Mohamed**  
-[LinkedIn](#) | [GitHub](https://github.com/mazenmuhamed)
+[LinkedIn](https://www.linkedin.com/in/mazen-mohamed-5b0716247/) | [GitHub](https://github.com/mazenmuhamed)
 
 ---
