@@ -107,12 +107,12 @@ export function SignInForm() {
             <FormItem>
               <div className="flex items-center justify-between">
                 <FormLabel>Password</FormLabel>
-                <Link
+                {/* <Link
                   href="/forgot-password"
                   className="text-muted-foreground text-[13px] hover:underline"
                 >
                   Forgot password?
-                </Link>
+                </Link> */}
               </div>
               <FormControl>
                 <div className="relative">

@@ -18,6 +18,7 @@ import { CourseOverview } from '../course/course-details/course-overview'
 import { UpgradeBox } from '../widgets/upgrade-box'
 import { SkillsGainSection } from '../course/course-details/skills-gain-section'
 import { LessonsSection } from '../course/course-details/lessons-section'
+import { InstructorSection } from '../course/course-details/instructor-section'
 
 type Props = { id: string }
 
@@ -42,34 +43,42 @@ function CourseDetailsViewSuspense({ id }: Props) {
   }
 
   return (
-    <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
-      <div className="grid gap-8">
-        <CourseHeader
-          title={course.title}
-          summary={course.summary}
-          duration={course.duration}
-          level={course.level}
-          exp={course.exp}
-        />
-        <Separator />
-        <CourseDescription content={course.description} />
-        <DetailsSection
-          instructorName={course.author.name}
-          instructorAvatar={course.author.avatar}
-          duration={course.duration}
-          level={course.level}
-          lessonsCount={course.lessons.length}
-          createdAt={course.createdAt}
-        />
-        <SkillsGainSection data={course.whatYouWillLearn} />
-        <LessonsSection lessons={course.lessons} />
-      </div>
-      <div className="relative h-full max-[1100px]:hidden">
-        <div className="sticky top-28 grid gap-5">
-          <CourseOverview cover={course.cover} title={course.title} />
-          <UpgradeBox />
+    <div className="grid gap-20">
+      <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
+        <div className="grid gap-8">
+          <CourseHeader
+            title={course.title}
+            summary={course.summary}
+            duration={course.duration}
+            level={course.level}
+            exp={course.exp}
+          />
+          <Separator />
+          <CourseDescription content={course.description} />
+          <DetailsSection
+            instructorName={course.author.name}
+            instructorAvatar={course.author.avatar}
+            duration={course.duration}
+            level={course.level}
+            lessonsCount={course.lessons.length}
+            createdAt={course.createdAt}
+          />
+          <SkillsGainSection data={course.whatYouWillLearn} />
+          <LessonsSection lessons={course.lessons} />
+        </div>
+        <div className="relative h-full max-[1100px]:hidden">
+          <div className="sticky top-28 grid gap-5">
+            <CourseOverview cover={course.cover} title={course.title} />
+            <UpgradeBox />
+          </div>
         </div>
       </div>
+      <InstructorSection
+        bio={course.author.bio}
+        avatar={course.author.avatar}
+        name={course.author.name}
+        role={course.author.role}
+      />
     </div>
   )
 }

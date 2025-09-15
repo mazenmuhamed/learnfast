@@ -5,14 +5,14 @@ import { XIcon } from 'lucide-react'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
-const routes = ['/home', '/courses']
+const routes = ['/courses']
 
 export function UpgradeBanner() {
   const [hide, setHide] = useState(false)
 
   const pathname = usePathname()
 
-  if (hide || routes.includes(pathname)) return null
+  if (hide || !routes.some(route => pathname.startsWith(route))) return null
 
   return (
     <div className="bg-secondary/80 dark:bg-popover dark:text-popover-foreground text-secondary-foreground sticky inset-x-0 top-14 z-50 px-4 py-3 max-sm:hidden">
