@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/lib/generated/prisma"
 }
 
 datasource db {
@@ -65,4 +66,53 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model Course {
+  id               String   @id @default(uuid())
+  title            String
+  summary          String
+  cover            String
+  exp              Int
+  duration         Int
+  level            String
+  description      String
+  whatYouWillLearn String[]
+  lessons          Lesson[]
+  authorId         String
+
+  author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("course")
+}
+
+model Lesson {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  courseId    String? @default(uuid())
+
+  course Course? @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("lesson")
+}
+
+model Author {
+  id     String   @id @default(uuid())
+  name   String
+  bio    String
+  avatar String
+  role   String
+  Course Course[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("author")
 }
