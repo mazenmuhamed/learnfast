@@ -7,12 +7,16 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
 
+import { Separator } from '@/components/ui/separator'
+
 import { CourseHeader } from '../course/course-details/course-header'
 import { LoadingIndicator } from '../components/loading-indicator'
 import { ErrorBoundaryMessage } from '../components/error-boundary-message'
-import { Separator } from '@/components/ui/separator'
 import { CourseDescription } from '../course/course-details/course-desciption'
-import { DetailsBox } from '../course/course-details/details-box'
+import { DetailsSection } from '../course/course-details/details-section'
+import { CourseOverview } from '../course/course-details/course-overview'
+import { UpgradeBox } from '../widgets/upgrade-box'
+import { SkillsGainSection } from '../course/course-details/skills-gain-section'
 
 type Props = { id: string }
 
@@ -37,7 +41,7 @@ function CourseDetailsViewSuspense({ id }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-[1.5fr_1fr] gap-8">
+    <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
       <div className="grid gap-8">
         <CourseHeader
           title={course.title}
@@ -48,7 +52,7 @@ function CourseDetailsViewSuspense({ id }: Props) {
         />
         <Separator />
         <CourseDescription content={course.description} />
-        <DetailsBox
+        <DetailsSection
           instructorName={course.author.name}
           instructorAvatar={course.author.avatar}
           duration={course.duration}
@@ -56,6 +60,13 @@ function CourseDetailsViewSuspense({ id }: Props) {
           lessonsCount={course.lessons.length}
           createdAt={course.createdAt}
         />
+        <SkillsGainSection data={course.whatYouWillLearn} />
+      </div>
+      <div className="relative h-full max-[1100px]:hidden">
+        <div className="sticky top-24 grid gap-5">
+          <CourseOverview cover={course.cover} title={course.title} />
+          <UpgradeBox />
+        </div>
       </div>
     </div>
   )

@@ -39,7 +39,7 @@ export function CourseHeader({ title, summary, duration, level, exp }: Props) {
           {title}
         </h1>
         <p className="text-muted-foreground">{summary}</p>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-1.5">
             <Clock className="text-muted-foreground size-4" />
             <span className="text-muted-foreground text-[15px]">

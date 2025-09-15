@@ -21,7 +21,7 @@ type Props = {
   createdAt: Date
 }
 
-export function DetailsBox({
+export function DetailsSection({
   instructorName,
   instructorAvatar,
   duration,
@@ -74,7 +74,7 @@ export function DetailsBox({
           </div>
         </div>
       </div>
-      <div className="grid gap-2">
+      <div className="my-2 grid gap-2">
         <h2 className="text-muted-foreground text-[13px] font-semibold uppercase opacity-80">
           Pre requisites
         </h2>
