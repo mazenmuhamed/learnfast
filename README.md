@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LearnFast
 
-## Getting Started
+LearnFast is an interactive learning platform inspired by [uxcel.com](https://uxcel.com).  
+It’s designed to provide users with a clean and intuitive experience while exploring courses and improving their skills.
 
-First, run the development server:
+🚀 **Live Demo**: [https://learnfast-ecru.vercel.app](https://learnfast-ecru.vercel.app)  
+💻 **GitHub Repository**: [https://github.com/mazenmuhamed/learnfast](https://github.com/mazenmuhamed/learnfast)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 Project Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+LearnFast aims to make online learning engaging and efficient.  
+The platform includes authentication, a modern UI, and user-friendly features like keyboard shortcuts to enhance productivity.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is still **under development**, but it demonstrates the foundation of a scalable learning application.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ✅ Implemented
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Authentication System**
+  - Email/Password login and signup
+  - Social logins (Google, GitHub, etc.)
+  - Email verification
 
-## Deploy on Vercel
+- **UI/UX**
+  - Clean, modern, and responsive layout
+  - Reusable components with Tailwind CSS and shadcn/ui
+  - Accessible and user-friendly design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Core Functionality**
+  - Landing page with platform overview
+  - Courses page to browse available courses
+  - Modal with keyboard shortcuts for easier navigation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 🛠️ In Progress
+
+- Course details and interactive lessons
+- Progress tracking system
+- User dashboard with personalized recommendations
+- Gamification (badges, points, leaderboards)
+
+---
+
+## 🧑‍💻 Tech Stack
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS v4, shadcn/ui
+- **Authentication**: NextAuth (Auth.js)
+- **Database**: PostgreSQL (Neon) + Prisma ORM
+- **Deployment**: Vercel
+
+---
+
+## 📌 Roadmap
+
+- [ ] Add interactive course player
+- [ ] Implement quizzes and challenges
+- [ ] Build an admin panel for course management
+- [ ] Add dark mode toggle
+- [ ] Integrate payment system for premium content
+
+---
+
+## 🤝 Contributing
+
+This is a personal learning project, but contributions and feedback are welcome!  
+If you’d like to suggest improvements, feel free to open an issue or submit a pull request.
+
+---
+
+## 📧 Contact
+
+Developed by **Mazen Mohamed**  
+[LinkedIn](#) | [GitHub](https://github.com/mazenmuhamed)
+
+---
