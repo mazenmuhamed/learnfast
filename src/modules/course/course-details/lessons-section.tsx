@@ -30,7 +30,7 @@ export function LessonsSection({ lessons }: { lessons: Lesson[] }) {
                 <div className="bg-primary text-primary-foreground flex size-7 min-h-7 min-w-7 items-center justify-center rounded-full">
                   {index + 1}
                 </div>
-                <h3 className="text-popover-foreground text-lg font-medium">
+                <h3 className="text-popover-foreground text-base font-medium sm:text-lg">
                   {lesson.title}
                 </h3>
               </div>

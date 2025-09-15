@@ -15,7 +15,7 @@ export function InstructorSection({ bio, avatar, name, role }: Props) {
       <h2 className="text-popover-foreground text-2xl font-semibold">
         Meet your course instructor
       </h2>
-      <div className="grid max-[1100px]:grid-cols-1 md:gap-8 lg:grid-cols-[1fr_2fr] lg:gap-12">
+      <div className="grid gap-4 max-[1100px]:grid-cols-1 md:gap-8 lg:grid-cols-[1fr_2fr] lg:gap-12">
         <Card className="card-hover group min-h-fit gap-3 rounded-2xl pt-0 max-lg:max-w-80">
           <div className="relative m-1.5 min-h-[20rem] w-auto overflow-hidden rounded-2xl border pb-0">
             <Image

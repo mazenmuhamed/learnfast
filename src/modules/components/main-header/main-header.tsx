@@ -39,7 +39,7 @@ export async function MainHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-5"
         />
-        <Logo className="sm:hidden" />
+        <Logo href="/home" className="sm:hidden" />
         <Searchbar />
       </div>
       <div className="flex items-center gap-3 sm:gap-5">

@@ -74,7 +74,7 @@ export function DetailsSection({
           </div>
         </div>
       </div>
-      <div className="my-2 grid gap-2">
+      <div className="my-6 grid gap-2">
         <h2 className="text-muted-foreground text-[13px] font-semibold uppercase opacity-80">
           Pre requisites
         </h2>

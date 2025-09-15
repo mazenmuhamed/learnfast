@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Suspense } from 'react'
+import { Suspense, useMemo } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
+import { cn } from '@/lib/utils'
 import { useTRPC } from '@/trpc/client'
 
 import { Button } from '@/components/ui/button'
@@ -12,19 +13,38 @@ import { CourseBox } from '@/modules/course/course-box'
 import { LoadingIndicator } from '@/modules/components/loading-indicator'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
-export function RecommendedForYou() {
+type Props = {
+  /**
+   * Number of courses to display (default: 2)
+   */
+  numberOfCourses?: number
+}
+
+export function RecommendedForYou({ numberOfCourses = 2 }: Props) {
+  if (numberOfCourses > 4 || numberOfCourses < 2) {
+    throw new Error('The number of courses must be between 2 and 4')
+  }
+
   return (
     <ErrorBoundary fallback={<ErrorBoundaryMessage className="my-8" />}>
       <Suspense fallback={<LoadingIndicator className="my-16" />}>
-        <RecommendedForYouSuspense />
+        <RecommendedForYouSuspense numberOfCourses={numberOfCourses} />
       </Suspense>
     </ErrorBoundary>
   )
 }
 
-function RecommendedForYouSuspense() {
+function RecommendedForYouSuspense({ numberOfCourses = 2 }: Props) {
   const trpc = useTRPC()
   const { data: courses } = useSuspenseQuery(trpc.course.getAll.queryOptions())
+
+  const randomStartIndex = useMemo(
+    () =>
+      Math.floor(
+        Math.random() * Math.max(1, courses.length - numberOfCourses - 1),
+      ),
+    [courses.length, numberOfCourses],
+  )
 
   return (
     <div className="grid gap-4">
@@ -34,10 +54,18 @@ function RecommendedForYouSuspense() {
           <Link href="/courses">View all</Link>
         </Button>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
-        {courses.slice(2, 4).map(course => (
-          <CourseBox key={course.id} course={course} />
-        ))}
+      <div
+        className={cn(
+          'grid gap-4 md:grid-cols-2',
+          numberOfCourses === 3 && 'lg:grid-cols-3',
+          numberOfCourses >= 4 && 'lg:grid-cols-4',
+        )}
+      >
+        {courses
+          .slice(randomStartIndex, randomStartIndex + numberOfCourses)
+          .map(course => (
+            <CourseBox key={course.id} course={course} />
+          ))}
       </div>
     </div>
   )

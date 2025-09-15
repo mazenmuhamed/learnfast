@@ -40,6 +40,7 @@ export default async function CoursePage({ params }: Props) {
     return redirect('/sign-in')
   }
 
+  prefetch(trpc.course.getAll.queryOptions())
   prefetch(trpc.course.findById.queryOptions({ id }))
 
   return (

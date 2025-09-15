@@ -15,8 +15,8 @@ export function UpgradeBanner() {
   if (hide || !routes.some(route => pathname.startsWith(route))) return null
 
   return (
-    <div className="bg-secondary/80 dark:bg-popover dark:text-popover-foreground text-secondary-foreground sticky inset-x-0 top-14 z-50 px-4 py-3 max-sm:hidden">
-      <p className="mx-auto flex w-full justify-center text-center text-[15px] max-md:max-w-md">
+    <div className="bg-secondary/80 dark:bg-popover dark:text-popover-foreground text-secondary-foreground sticky inset-x-0 top-14 z-50 px-4 py-3 max-[780]:hidden">
+      <p className="mx-auto flex w-full justify-center text-center text-sm max-md:max-w-md md:text-[15px]">
         <Link href="/pricing" className="hover:underline">
           You can complete the first level of every course on the Starter plan.{' '}
           <span className="text-primary font-semibold">

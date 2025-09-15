@@ -19,6 +19,9 @@ import { UpgradeBox } from '../widgets/upgrade-box'
 import { SkillsGainSection } from '../course/course-details/skills-gain-section'
 import { LessonsSection } from '../course/course-details/lessons-section'
 import { InstructorSection } from '../course/course-details/instructor-section'
+import { RatingSection } from '../course/course-details/rating-section'
+import { JoinBox } from '../course/course-details/join-box'
+import { RecommendedForYou } from '../widgets/recommended-for-you'
 
 type Props = { id: string }
 
@@ -79,6 +82,9 @@ function CourseDetailsViewSuspense({ id }: Props) {
         name={course.author.name}
         role={course.author.role}
       />
+      <RatingSection />
+      <JoinBox />
+      <RecommendedForYou numberOfCourses={3} />
     </div>
   )
 }
