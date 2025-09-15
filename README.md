@@ -51,7 +51,7 @@ This project is still **under development**, but it demonstrates the foundation 
 
 - **Framework**: Next.js 15
 - **Styling**: Tailwind CSS v4, shadcn/ui
-- **Authentication**: NextAuth (Auth.js)
+- **Authentication**: BetterAuth
 - **Database**: PostgreSQL (Neon) + Prisma ORM
 - **Deployment**: Vercel
 
