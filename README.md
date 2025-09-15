@@ -62,7 +62,7 @@ This project is still **under development**, but it demonstrates the foundation 
 - [ ] Add interactive course player
 - [ ] Implement quizzes and challenges
 - [ ] Build an admin panel for course management
-- [ ] Add dark mode toggle
+- [x] Add dark mode toggle
 - [ ] Integrate payment system for premium content
 
 ---
