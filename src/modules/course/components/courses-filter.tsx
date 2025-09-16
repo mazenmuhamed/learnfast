@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { ActionTooltip } from '../components/action-tooltip'
+import { ActionTooltip } from '@/modules/components/action-tooltip'
 
 const categories = ['All', 'UX', 'Product Design']
 

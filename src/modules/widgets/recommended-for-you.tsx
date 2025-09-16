@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Suspense, useMemo } from 'react'
+import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import { useTRPC } from '@/trpc/client'
 
 import { Button } from '@/components/ui/button'
-import { CourseBox } from '@/modules/course/course-box'
+import { CourseBox } from '@/modules/course/components/course-box'
 import { LoadingIndicator } from '@/modules/components/loading-indicator'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
@@ -38,14 +38,6 @@ function RecommendedForYouSuspense({ numberOfCourses = 2 }: Props) {
   const trpc = useTRPC()
   const { data: courses } = useSuspenseQuery(trpc.course.getAll.queryOptions())
 
-  const randomStartIndex = useMemo(
-    () =>
-      Math.floor(
-        Math.random() * Math.max(1, courses.length - numberOfCourses - 1),
-      ),
-    [courses.length, numberOfCourses],
-  )
-
   return (
     <div className="grid gap-4">
       <div className="flex items-center justify-between">
@@ -61,11 +53,9 @@ function RecommendedForYouSuspense({ numberOfCourses = 2 }: Props) {
           numberOfCourses >= 4 && 'lg:grid-cols-4',
         )}
       >
-        {courses
-          .slice(randomStartIndex, randomStartIndex + numberOfCourses)
-          .map(course => (
-            <CourseBox key={course.id} course={course} />
-          ))}
+        {courses.slice(4, 4 + numberOfCourses).map(course => (
+          <CourseBox key={course.id} course={course} />
+        ))}
       </div>
     </div>
   )

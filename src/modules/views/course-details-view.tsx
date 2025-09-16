@@ -9,19 +9,19 @@ import { useTRPC } from '@/trpc/client'
 
 import { Separator } from '@/components/ui/separator'
 
-import { CourseHeader } from '../course/course-details/course-header'
+import { CourseHeader } from '../course/components/course-details/course-header'
 import { LoadingIndicator } from '../components/loading-indicator'
 import { ErrorBoundaryMessage } from '../components/error-boundary-message'
-import { CourseDescription } from '../course/course-details/course-desciption'
-import { DetailsSection } from '../course/course-details/details-section'
-import { CourseOverview } from '../course/course-details/course-overview'
+import { CourseDescription } from '../course/components/course-details/course-desciption'
+import { DetailsSection } from '../course/components/course-details/details-section'
+import { CourseOverview } from '../course/components/course-details/course-overview'
 import { UpgradeBox } from '../widgets/upgrade-box'
-import { SkillsGainSection } from '../course/course-details/skills-gain-section'
-import { LessonsSection } from '../course/course-details/lessons-section'
-import { InstructorSection } from '../course/course-details/instructor-section'
-import { RatingSection } from '../course/course-details/rating-section'
-import { JoinBox } from '../course/course-details/join-box'
+import { SkillsGainSection } from '../course/components/course-details/skills-gain-section'
+import { LessonsSection } from '../course/components/course-details/lessons-section'
+import { InstructorSection } from '../course/components/course-details/instructor-section'
+import { RatingSection } from '../course/components/course-details/rating-section'
 import { RecommendedForYou } from '../widgets/recommended-for-you'
+import { JoinBox } from '../course/components/course-details/join-box'
 
 type Props = { id: string }
 
@@ -50,6 +50,7 @@ function CourseDetailsViewSuspense({ id }: Props) {
       <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
         <div className="grid gap-8">
           <CourseHeader
+            id={course.id}
             title={course.title}
             summary={course.summary}
             duration={course.duration}

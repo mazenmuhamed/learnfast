@@ -21,6 +21,7 @@ export default async function HomePage() {
   }
 
   prefetch(trpc.course.getAll.queryOptions())
+  prefetch(trpc.bookmark.getUserBookmarks.queryOptions())
 
   return (
     <HydrateClient>

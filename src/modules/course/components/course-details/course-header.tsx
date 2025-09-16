@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import {
   Bookmark,
@@ -5,14 +7,19 @@ import {
   ChevronRight,
   Clock,
   HandCoins,
+  Loader,
   Star,
   Users2,
 } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+import { useBookmark } from '@/modules/course/hooks/use-bookmark'
 
 import { Button } from '@/components/ui/button'
 import { ActionTooltip } from '@/modules/components/action-tooltip'
 
 type Props = {
+  id: string
   title: string
   summary: string
   duration: number
@@ -20,8 +27,15 @@ type Props = {
   exp: number
 }
 
-export function CourseHeader({ title, summary, duration, level, exp }: Props) {
-  function handleBookmarkClick() {}
+export function CourseHeader({
+  id,
+  title,
+  summary,
+  duration,
+  level,
+  exp,
+}: Props) {
+  const { isBookmarked, handleAddBookmark, isPending } = useBookmark(id)
 
   return (
     <div className="grid gap-4">
@@ -75,9 +89,18 @@ export function CourseHeader({ title, summary, duration, level, exp }: Props) {
               size="icon"
               variant="ghost"
               className="size-10 rounded-lg"
-              onClick={handleBookmarkClick}
+              onClick={handleAddBookmark}
             >
-              <Bookmark className="size-[22px]" />
+              {isPending ? (
+                <Loader className="size-5 animate-spin" />
+              ) : (
+                <Bookmark
+                  className={cn(
+                    'size-5',
+                    isBookmarked && 'text-primary fill-primary',
+                  )}
+                />
+              )}
             </Button>
           </ActionTooltip>
         </div>

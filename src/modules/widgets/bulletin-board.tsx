@@ -43,7 +43,7 @@ const boards = [
   },
   {
     category: 'Not sure where to start?',
-    title: 'Take the Uxcel career quiz',
+    title: 'Take the LearnFast career quiz',
     description:
       'Complete our short test and get personalized learning recommendations tailored to your role and level.',
     link: '#',

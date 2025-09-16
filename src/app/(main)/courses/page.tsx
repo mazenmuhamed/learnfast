@@ -6,9 +6,9 @@ import { auth } from '@/lib/auth'
 import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { PageHeader } from '@/modules/components/page-header'
-import { CoursesFilter } from '@/modules/course/courses-filter'
+import { CoursesFilter } from '@/modules/course/components/courses-filter'
 import { Separator } from '@/components/ui/separator'
-import { CoursesList } from '@/modules/course/courses-list'
+import { CoursesList } from '@/modules/course/components/courses-list'
 
 export const metadata: Metadata = {
   title: 'Courses - LearnFast',
@@ -24,6 +24,7 @@ export default async function CoursesPage() {
   }
 
   prefetch(trpc.course.getAll.queryOptions())
+  prefetch(trpc.bookmark.getUserBookmarks.queryOptions())
 
   return (
     <HydrateClient>

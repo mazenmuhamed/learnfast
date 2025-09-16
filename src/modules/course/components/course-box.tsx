@@ -2,20 +2,26 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Bookmark, ChartNoAxesCombined, Clock, StarIcon } from 'lucide-react'
 
+import {
+  Bookmark,
+  ChartNoAxesCombined,
+  Clock,
+  Loader,
+  StarIcon,
+} from 'lucide-react'
+
+import { cn } from '@/lib/utils'
 import { CourseOutput } from '@/lib/types'
+import { useBookmark } from '@/modules/course/hooks/use-bookmark'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 
-import { ActionTooltip } from '../components/action-tooltip'
+import { ActionTooltip } from '@/modules/components/action-tooltip'
 
 export function CourseBox({ course }: { course: CourseOutput }) {
-  function handleBookmarkClick(e: React.MouseEvent) {
-    e.preventDefault()
-    e.stopPropagation()
-  }
+  const { handleAddBookmark, isBookmarked, isPending } = useBookmark(course.id)
 
   return (
     <Link href={`/courses/${course.id}`}>
@@ -31,14 +37,25 @@ export function CourseBox({ course }: { course: CourseOutput }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="h-auto object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <ActionTooltip tooltip="Bookmark">
+          <ActionTooltip
+            tooltip={isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
+          >
             <Button
               size="icon"
               variant="ghost"
               className="absolute top-2 right-2 size-8"
-              onClick={handleBookmarkClick}
+              onClick={handleAddBookmark}
             >
-              <Bookmark className="size-5" />
+              {isPending ? (
+                <Loader className="animate-spin" />
+              ) : (
+                <Bookmark
+                  className={cn(
+                    'size-5',
+                    isBookmarked && 'text-primary fill-primary',
+                  )}
+                />
+              )}
             </Button>
           </ActionTooltip>
         </div>
@@ -50,7 +67,7 @@ export function CourseBox({ course }: { course: CourseOutput }) {
               width={35}
               height={35}
               quality={100}
-              className="h-full rounded-full object-cover"
+              className="h-auto rounded-full object-cover"
             />
           </div>
           <span className="text-muted-foreground text-[13px] font-semibold uppercase">

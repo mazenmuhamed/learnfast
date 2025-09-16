@@ -1,3 +1,7 @@
+import { Check } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,8 +12,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import { Check } from 'lucide-react'
+
+import { BorderBeam } from '@/app/(www)/(landing)/_components/animations/border-beam'
 
 type Props = {
   type: 'Starter' | 'Pro'
@@ -37,10 +41,13 @@ export function PriceCard({
   return (
     <Card
       className={cn(
-        'bg-input/30 w-full max-w-96 rounded-3xl p-8 lg:w-96',
-        type === 'Pro' && 'bg-secondary text-secondary-foreground',
+        'bg-input/30 relative w-full max-w-96 rounded-3xl p-8 lg:w-96',
+        type === 'Pro' && 'bg-primary/15 text-primary-foreground',
       )}
     >
+      {type === 'Pro' && <BorderBeam size={100} />}
+      {type === 'Pro' && <BorderBeam size={100} delay={100} />}
+      {type === 'Pro' && <BorderBeam size={100} delay={200} />}
       <CardHeader className="p-0">
         <CardTitle>
           <div className="grid gap-5">
@@ -58,7 +65,7 @@ export function PriceCard({
         <CardDescription
           className={cn(
             'mt-1.5 text-base',
-            type === 'Pro' && 'text-secondary-foreground',
+            type === 'Pro' && 'text-primary-foreground',
           )}
         >
           {note.includes(' | ') ? (
@@ -97,12 +104,7 @@ export function PriceCard({
           <ul className="grid gap-4">
             {features.map(feature => (
               <li key={feature} className="flex items-center gap-3">
-                <div
-                  className={cn(
-                    'bg-secondary text-secondary-foreground flex size-5 min-h-5 min-w-5 items-center justify-center rounded-full',
-                    type === 'Pro' && 'bg-popover text-popover-foreground',
-                  )}
-                >
+                <div className="bg-secondary text-secondary-foreground flex size-5 min-h-5 min-w-5 items-center justify-center rounded-full">
                   <Check className="size-[15px]" />
                 </div>
                 <span

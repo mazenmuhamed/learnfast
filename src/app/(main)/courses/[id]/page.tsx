@@ -42,6 +42,8 @@ export default async function CoursePage({ params }: Props) {
 
   prefetch(trpc.course.getAll.queryOptions())
   prefetch(trpc.course.findById.queryOptions({ id }))
+  prefetch(trpc.bookmark.getUserBookmarks.queryOptions())
+  prefetch(trpc.bookmark.checkIfBookmarked.queryOptions({ courseId: id }))
 
   return (
     <HydrateClient>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Notfound() {
   return (
-    <main className="flex h-svh flex-col items-center justify-center gap-8">
+    <main className="dark bg-background text-foreground flex h-svh flex-col items-center justify-center gap-8">
       <Image
         src="/brand/logo.svg"
         alt="ShipX Logo"

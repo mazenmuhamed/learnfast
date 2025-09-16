@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import { XIcon } from 'lucide-react'
-import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const routes = ['/courses']
 
@@ -11,6 +11,11 @@ export function UpgradeBanner() {
   const [hide, setHide] = useState(false)
 
   const pathname = usePathname()
+
+  // To fix navigation to the same position issue
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [pathname])
 
   if (hide || !routes.some(route => pathname.startsWith(route))) return null
 

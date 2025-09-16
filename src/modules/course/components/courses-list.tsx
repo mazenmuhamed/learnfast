@@ -7,8 +7,8 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTRPC } from '@/trpc/client'
 
 import { CourseBox } from './course-box'
-import { LoadingIndicator } from '../components/loading-indicator'
-import { ErrorBoundaryMessage } from '../components/error-boundary-message'
+import { LoadingIndicator } from '@/modules/components/loading-indicator'
+import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
 export function CoursesList() {
   return (

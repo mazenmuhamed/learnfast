@@ -3,7 +3,7 @@
 import { User } from 'better-auth'
 import { toast } from 'sonner'
 import { useTheme } from 'next-themes'
-import { DoorOpen, LayoutGrid, Monitor, Moon, Sun, User2 } from 'lucide-react'
+import { DoorOpen, Monitor, Moon, Sun, User2 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { authClient } from '@/lib/auth-client'
@@ -116,14 +116,9 @@ export function UserMenu({ user }: { user: User }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="py-1">
           <DropdownMenuItem>
-            <LayoutGrid />
-            Dashboard
-          </DropdownMenuItem>
-          <DropdownMenuItem>
             <User2 />
             Account
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
           <DropdownMenuItem onSelect={handleLogout}>
             <DoorOpen />
             Logout
