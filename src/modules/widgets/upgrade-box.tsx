@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import Link from 'next/link'
 
 const individualFeatures = [
   { title: '100+ courses, projects & assessments', icon: GraduationCap },
@@ -62,7 +63,9 @@ export function UpgradeBox() {
                   </li>
                 ))}
               </ul>
-              <Button className="mt-2 w-full">Get full access with Pro</Button>
+              <Button asChild className="mt-2 w-full">
+                <Link href="/pricing">Get full access with Pro</Link>
+              </Button>
               <p className="text-muted-foreground text-center text-xs">
                 Billed monthly or annually. Cancel anytime.
               </p>
@@ -77,7 +80,9 @@ export function UpgradeBox() {
                 Empower your entire team with full access to LearnFast&lsquo;s
                 feature set and learning library.
               </p>
-              <Button className="mt-2 w-full">LearnFast for Teams</Button>
+              <Button asChild className="mt-2 w-full">
+                <Link href="/pricing">LearnFast for Teams</Link>
+              </Button>
               <p className="text-muted-foreground text-center text-xs">
                 Billed monthly or annually. Cancel anytime.
               </p>

@@ -58,7 +58,10 @@ export function CoursesFilter() {
               For you <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="min-w-56" align="end">
+          <DropdownMenuContent
+            className="min-w-56 rounded-2xl border-none drop-shadow-xl"
+            align="end"
+          >
             <DropdownMenuLabel>Sort by</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -77,7 +80,10 @@ export function CoursesFilter() {
               Filter
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="min-w-56" align="end">
+          <DropdownMenuContent
+            className="min-w-56 rounded-2xl border-none drop-shadow-xl"
+            align="end"
+          >
             <DropdownMenuLabel>Filter by</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>

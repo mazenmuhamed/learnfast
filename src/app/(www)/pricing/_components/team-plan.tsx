@@ -11,7 +11,7 @@ const logos = [
 
 export function TeamPlan() {
   return (
-    <div className="bg-muted w-full max-xl:p-5 xl:h-24">
+    <div className="bg-muted w-full py-4 max-xl:p-5">
       <div className="mx-auto flex h-full max-w-5xl flex-col items-center gap-3 xl:flex-row xl:gap-20">
         <p className="text-primary-foreground">Looking for a team plan?</p>
         <div className="flex flex-wrap items-center gap-2 max-md:justify-center max-sm:gap-0.5 md:gap-8">

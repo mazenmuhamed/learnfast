@@ -45,9 +45,7 @@ export function PriceCard({
         type === 'Pro' && 'bg-primary/15 text-primary-foreground',
       )}
     >
-      {type === 'Pro' && <BorderBeam size={100} />}
-      {type === 'Pro' && <BorderBeam size={100} delay={100} />}
-      {type === 'Pro' && <BorderBeam size={100} delay={200} />}
+      {type === 'Pro' && <BorderBeam size={200} />}
       <CardHeader className="p-0">
         <CardTitle>
           <div className="grid gap-5">

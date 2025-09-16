@@ -48,7 +48,7 @@ function CourseDetailsViewSuspense({ id }: Props) {
   return (
     <div className="grid gap-20">
       <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
-        <div className="grid gap-8">
+        <div className="grid gap-12">
           <CourseHeader
             id={course.id}
             title={course.title}

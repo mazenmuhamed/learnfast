@@ -12,10 +12,10 @@ export function SkillsGainSection({ data }: { data: string[] }) {
           const description = skill.split('—')[1]
           return (
             <div key={index} className="flex min-h-10 items-start gap-3">
-              <div className="bg-primary text-primary-foreground flex size-5 min-h-6 min-w-6 translate-y-0.5 items-center justify-center rounded-full sm:size-6">
+              <div className="bg-primary text-primary-foreground flex size-5 min-h-5 min-w-5 translate-y-1 items-center justify-center rounded-full sm:size-[22px] sm:min-h-[22px] sm:min-w-[22px]">
                 <Check className="size-4 sm:size-[18px]" />
               </div>
-              <p className="text-[15px] leading-normal sm:text-[17px]">
+              <p className="text-[15px] leading-normal sm:text-base">
                 <span className="font-semibold">{heading}</span>
                 <span>— {description}</span>
               </p>
