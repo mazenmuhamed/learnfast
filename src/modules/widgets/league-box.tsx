@@ -36,7 +36,7 @@ export function LeagueBox() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="bg-secondary/80 dark:bg-input/40 flex size-full h-36 flex-col items-center justify-center gap-3 rounded-2xl border">
+        <div className="bg-secondary/30 dark:bg-input/40 flex size-full h-36 flex-col items-center justify-center gap-3 rounded-2xl border">
           <HandCoins className="text-muted-foreground size-10" />
           <span className="text-muted-foreground text-sm">
             Earn pixels to join this week’s league

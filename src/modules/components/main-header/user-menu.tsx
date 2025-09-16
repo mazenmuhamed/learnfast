@@ -73,7 +73,7 @@ export function UserMenu({ user }: { user: User }) {
         <DropdownMenuGroup>
           <DropdownMenuItem className="flex items-center justify-between py-1 hover:!bg-transparent focus:!bg-transparent">
             <span className="text-sm font-medium">Appearance</span>
-            <div className="bg-input/60 flex items-center space-x-1 rounded-full p-1.5">
+            <div className="dark:bg-input/50 bg-secondary/70 flex items-center space-x-1 rounded-full p-1.5">
               <ActionTooltip
                 asChild={false}
                 tooltip="Light"

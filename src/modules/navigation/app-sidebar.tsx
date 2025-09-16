@@ -1,8 +1,10 @@
 'use client'
 
 import * as React from 'react'
+import { useRouter } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
+import { useKeyboardShortcut } from '@/hooks/use-keyboard-shortcut'
 import {
   navigationMainItems,
   navigationGrowItems,
@@ -26,6 +28,11 @@ import { HelpButton } from './help-button'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar()
+
+  const router = useRouter()
+
+  useKeyboardShortcut('ctrl', 'h', () => router.push('/home'))
+  useKeyboardShortcut('ctrl', 's', () => router.push('/saved'))
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" {...props}>

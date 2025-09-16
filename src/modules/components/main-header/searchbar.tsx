@@ -20,7 +20,6 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from '@/components/ui/command'
 
 export function Searchbar() {
@@ -55,7 +54,6 @@ export function Searchbar() {
               <CommandItem key={item.title} onSelect={() => setOpen(false)}>
                 <item.icon />
                 <span>{item.title}</span>
-                <CommandShortcut>⌘{item.title.charAt(0)}</CommandShortcut>
               </CommandItem>
             ))}
           </CommandGroup>

@@ -1,4 +1,6 @@
+import { useMemo, useState } from 'react'
 import {
+  BookMarked,
   EyeClosed,
   Keyboard,
   PencilRuler,
@@ -9,19 +11,38 @@ import {
 } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
 
 import { AppDialog } from '../app-dialog'
-import { Input } from '@/components/ui/input'
-import { useState } from 'react'
 
-const SHORTCUTS = [
-  { label: 'Search', command: 'K', icon: Search },
-  { label: 'Navigate to settings page', command: 'S', icon: Settings },
-  { label: 'Open shortcuts dialog', command: '/', icon: Keyboard },
-  { label: 'Toggle the sidebar', command: 'B', icon: Sidebar },
-  { label: 'Close popups', command: 'ESC', icon: EyeClosed, singleKey: true },
+const shortcuts = [
+  {
+    type: 'navigation',
+    actions: [
+      { label: 'Home', command: 'H', icon: Settings },
+      { label: 'Bookmarks', command: 'S', icon: BookMarked },
+    ],
+  },
+  {
+    type: 'command',
+    actions: [
+      { label: 'Search', command: 'K', icon: Search },
+      {
+        label: 'Open shortcuts dialog',
+        command: '/',
+        icon: Keyboard,
+      },
+      { label: 'Toggle the sidebar', command: 'B', icon: Sidebar },
+      {
+        label: 'Close popups',
+        command: 'ESC',
+        icon: EyeClosed,
+        singleKey: true,
+      },
+    ],
+  },
 ]
 
 export function ShortcutsDialog({
@@ -33,10 +54,21 @@ export function ShortcutsDialog({
 }) {
   const [value, setValue] = useState('')
 
+  const filteredShortcuts = useMemo(
+    () =>
+      shortcuts.filter(shortcut =>
+        shortcut.actions.some(action =>
+          action.label.toLowerCase().includes(value.toLowerCase()),
+        ),
+      ),
+    [value],
+  )
+
   return (
     <AppDialog
       open={open}
       onOpenChange={onOpenChange}
+      onOpenAutoFocus={e => e.preventDefault()}
       title="Keyboard Shortcuts"
       description="Use these keyboard shortcuts to navigate the app quickly and efficiently."
       className="-mt-1 px-1"
@@ -52,12 +84,23 @@ export function ShortcutsDialog({
             placeholder="Search for shortcuts"
           />
         </div>
-        <div className="grid gap-4 py-4">
-          {SHORTCUTS.filter(shortcut =>
-            shortcut.label.toLowerCase().includes(value.toLowerCase()),
-          ).map((shortcut, index) => (
-            <ShortcutItem key={index} {...shortcut} />
-          ))}
+        <div className="grid gap-5 py-4">
+          {filteredShortcuts.length === 0 ? (
+            <p className="text-muted-foreground py-6 text-center text-sm">
+              No shortcuts found.
+            </p>
+          ) : (
+            filteredShortcuts.map((shortcut, index) => (
+              <div key={index} className="grid gap-2">
+                <h3 className="text-muted-foreground px-1 text-sm font-medium">
+                  {shortcut.type === 'navigation' ? 'Navigation' : 'Commands'}
+                </h3>
+                {shortcut.actions.map((action, index) => (
+                  <ShortcutItem key={index} {...action} />
+                ))}
+              </div>
+            ))
+          )}
         </div>
       </div>
       <DialogFooter>

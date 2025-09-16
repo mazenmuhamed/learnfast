@@ -43,7 +43,7 @@ export function SkillGraphBox() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className="bg-secondary/80 dark:bg-input/40 flex size-full min-h-48 flex-col items-center justify-center gap-3 rounded-2xl border p-4">
+        <div className="bg-secondary/30 dark:bg-input/40 flex size-full min-h-48 flex-col items-center justify-center gap-3 rounded-2xl border p-4">
           <Telescope className="text-muted-foreground size-10" />
           <span className="text-muted-foreground text-center text-sm">
             Discover your strengths and unlock your personalized learning path

@@ -11,6 +11,7 @@ import {
 export type Props = {
   open: boolean
   onOpenChange: (open: boolean) => void
+  onOpenAutoFocus?: (event: Event) => void
   title: string
   description?: string
   children: React.ReactNode
@@ -22,12 +23,13 @@ export function AppDialog({
   description,
   children,
   open,
-  onOpenChange,
   className,
+  onOpenChange,
+  onOpenAutoFocus,
 }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="rounded-2xl">
+      <DialogContent className="rounded-2xl" onOpenAutoFocus={onOpenAutoFocus}>
         <DialogHeader className="-space-y-1">
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
