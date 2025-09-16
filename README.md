@@ -33,8 +33,11 @@ This project is still **under development**, but it demonstrates the foundation 
 
 - **Core Functionality**
   - Landing page with platform overview
+  - Pricing page with subscription plans
   - Courses page to browse available courses
+  - Course details page with interactive content
   - Modal with keyboard shortcuts for easier navigation
+  - Bookmarking functionality for courses
 
 ---
 
