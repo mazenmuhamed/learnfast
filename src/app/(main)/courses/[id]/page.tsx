@@ -7,6 +7,8 @@ import { caller, HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { CourseDetailsView } from '@/modules/views/course-details-view'
 
+export const dynamic = 'force-dynamic'
+
 type Props = {
   params: Promise<{ id: string }>
 }

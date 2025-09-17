@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Bookmarks - LearnFast',
   description: 'Your saved bookmarks on LearnFast',

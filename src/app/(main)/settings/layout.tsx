@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { AppTabs } from '@/modules/components/app-tabs'
 import { Separator } from '@/components/ui/separator'
 import { PageHeader } from '@/modules/components/page-header'
@@ -7,7 +9,12 @@ const tabs = [
   { label: 'Subscription', href: '/settings/subscription' },
 ]
 
-export function SettingsLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'Settings - LearnFast',
+  description: 'Manage and update your LearnFast account info',
+}
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mx-auto grid max-w-2xl gap-6">
       <div className="grid gap-4">

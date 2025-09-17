@@ -33,8 +33,6 @@ import { AppAlertDialog } from '@/modules/components/app-alert-dialog'
 import { LoadingIndicator } from '@/modules/components/loading-indicator'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
-import { SettingsLayout } from '../components/settings-layout'
-
 export function AccountSettingsView() {
   return (
     <ErrorBoundary fallback={<ErrorBoundaryMessage className="h-[75svh]" />}>
@@ -110,87 +108,83 @@ export function AccountSettingsSuspense() {
 
   return (
     <>
-      <SettingsLayout>
-        <div className="grid gap-8">
-          <div className="grid gap-2">
-            <h2 className="text-popover-foreground text-xl font-semibold">
-              General
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              Update your account settings.
-            </p>
-          </div>
-          <Form {...form}>
-            <form
-              className="space-y-5"
-              onSubmit={form.handleSubmit(handleSubmit)}
-            >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    <FormDescription className="text-muted-foreground text-[13px]">
-                      You can change your name once every 7 days.
-                    </FormDescription>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input {...field} disabled />
-                    </FormControl>
-                    <FormMessage />
-                    <FormDescription className="text-muted-foreground text-[13px]">
-                      Email cannot be changed at the moment
-                    </FormDescription>
-                  </FormItem>
-                )}
-              />
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={
-                  !form.formState.isDirty || form.formState.isSubmitting
-                }
-              >
-                {updateAccount.isPending && <Loader className="animate-spin" />}
-                Save changes
-              </Button>
-            </form>
-          </Form>
-          <Separator />
-          <div className="grid gap-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-popover-foreground text-xl font-semibold">
-                Delete Account
-              </h2>
-              <Button
-                size="sm"
-                variant="link"
-                className="text-destructive hover:no-underline"
-                onClick={() => setShowAlert(true)}
-              >
-                Delete Account
-              </Button>
-            </div>
-            <p className="text-muted-foreground text-sm">
-              We’d hate to see you go, but you’re welcome to delete your account
-              anytime. Just remember, once you delete it, it’s gone forever.
-            </p>
-          </div>
+      <div className="grid gap-8">
+        <div className="grid gap-2">
+          <h2 className="text-popover-foreground text-xl font-semibold">
+            General
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Update your account settings.
+          </p>
         </div>
-      </SettingsLayout>
+        <Form {...form}>
+          <form
+            className="space-y-5"
+            onSubmit={form.handleSubmit(handleSubmit)}
+          >
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                  <FormDescription className="text-muted-foreground text-[13px]">
+                    You can change your name once every 7 days.
+                  </FormDescription>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} disabled />
+                  </FormControl>
+                  <FormMessage />
+                  <FormDescription className="text-muted-foreground text-[13px]">
+                    Email cannot be changed at the moment
+                  </FormDescription>
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={!form.formState.isDirty || form.formState.isSubmitting}
+            >
+              {updateAccount.isPending && <Loader className="animate-spin" />}
+              Save changes
+            </Button>
+          </form>
+        </Form>
+        <Separator />
+        <div className="grid gap-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-popover-foreground text-xl font-semibold">
+              Delete Account
+            </h2>
+            <Button
+              size="sm"
+              variant="link"
+              className="text-destructive hover:no-underline"
+              onClick={() => setShowAlert(true)}
+            >
+              Delete Account
+            </Button>
+          </div>
+          <p className="text-muted-foreground text-sm">
+            We’d hate to see you go, but you’re welcome to delete your account
+            anytime. Just remember, once you delete it, it’s gone forever.
+          </p>
+        </div>
+      </div>
       <AppAlertDialog
         open={showAlert}
         onOpenChange={setShowAlert}

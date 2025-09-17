@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: 'Your saved bookmarks on LearnFast',
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function BookmarkedCoursesPage() {
   const session = await auth.api.getSession({
     headers: await headers(),

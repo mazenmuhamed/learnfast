@@ -7,6 +7,8 @@ import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { HomeView } from '@/modules/views/home-view'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Home - LearnFast',
 }

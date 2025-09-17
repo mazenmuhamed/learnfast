@@ -1,18 +1,17 @@
 'use client'
 
-import { PackageOpen } from 'lucide-react'
+import { PackageOpen, Search } from 'lucide-react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Suspense, useMemo, useState } from 'react'
 
 import { useTRPC } from '@/trpc/client'
 
+import { Input } from '@/components/ui/input'
 import { LoadingIndicator } from '@/modules/components/loading-indicator'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
 import { CourseBox } from '../components/course-box'
-import { BookmarksHeader } from '../components/bookmarks-header'
-import { SavedLayout } from '../components/saved-layout'
 
 export function BookmarkedCoursesView() {
   return (
@@ -40,25 +39,33 @@ function BookmarkedCoursesSuspense() {
   }, [bookmarks, value])
 
   return (
-    <SavedLayout bookmarksLength={bookmarks.length}>
-      <BookmarksHeader
-        searchValue={value}
-        setSearchValue={setValue}
-        bookmarksLength={bookmarks.length}
-      >
+    <div className="grid gap-6">
+      <div className="relative h-fit">
+        <Search className="absolute top-2/4 left-3 size-4 -translate-y-2/4" />
+        <Input
+          type="search"
+          id="bookmark-filter"
+          name="bookmark-filter"
+          value={value}
+          className="h-9 pl-9"
+          onChange={e => setValue(e.target.value)}
+          placeholder="Filter bookmarks"
+        />
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredBookmarks.length > 0 ? (
           filteredBookmarks.map(bookmark => (
             <CourseBox key={bookmark.id} course={bookmark.course} />
           ))
         ) : (
-          <div className="my-14 flex flex-col items-center justify-center gap-5">
+          <div className="col-span-3 my-14 flex flex-col items-center justify-center gap-5">
             <PackageOpen className="text-muted-foreground size-12" />
             <p className="text-muted-foreground text-center">
               No bookmarks found matching &ldquo;{value}&ldquo;
             </p>
           </div>
         )}
-      </BookmarksHeader>
-    </SavedLayout>
+      </div>
+    </div>
   )
 }

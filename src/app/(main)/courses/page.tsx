@@ -10,6 +10,8 @@ import { CoursesFilter } from '@/modules/course/components/courses-filter'
 import { Separator } from '@/components/ui/separator'
 import { CoursesList } from '@/modules/course/components/courses-list'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Courses - LearnFast',
 }

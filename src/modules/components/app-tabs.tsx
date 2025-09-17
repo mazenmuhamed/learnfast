@@ -15,21 +15,24 @@ export function AppTabs({ items }: Props) {
 
   return (
     <div className="flex items-center gap-2">
-      {items.map((item, index) => (
-        <Button
-          variant="outline"
-          key={index}
-          disabled={item.disabled}
-          onClick={() => router.push(item.href)}
-          className={cn(
-            'px-3',
-            pathname === item.href &&
-              '!bg-primary/10 !text-primary !border-primary',
-          )}
-        >
-          {item.label}
-        </Button>
-      ))}
+      {items.map((item, index) => {
+        const isActive = index === 0 || pathname === item.href
+
+        return (
+          <Button
+            variant="outline"
+            key={index}
+            disabled={item.disabled}
+            onClick={() => router.push(item.href)}
+            className={cn(
+              'px-3',
+              isActive && '!bg-primary/10 !text-primary !border-primary',
+            )}
+          >
+            {item.label}
+          </Button>
+        )
+      })}
     </div>
   )
 }

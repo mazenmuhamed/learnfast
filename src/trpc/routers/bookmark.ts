@@ -24,6 +24,6 @@ export const bookmarkRouter = createTRPCRouter({
       include: { course: { include: { author: true, lessons: true } } },
     })
 
-    return bookmarks.map(b => b) || []
+    return bookmarks.length ? bookmarks.map(b => b) : []
   }),
 })
