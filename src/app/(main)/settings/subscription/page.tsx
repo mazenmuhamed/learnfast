@@ -4,12 +4,15 @@ import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
 
+import { SubscriptionSettingsView } from '@/modules/settings/views/subscription-settings-view'
+
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
-  title: 'Bookmarks - LearnFast',
-  description: 'Your saved bookmarks on LearnFast',
+  title: 'Subscription Settings - LearnFast',
 }
 
-export default async function BookmarksPage() {
+export default async function SubscriptionSettingsPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   })
@@ -18,5 +21,5 @@ export default async function BookmarksPage() {
     return redirect('/sign-in')
   }
 
-  return redirect('/saved/courses')
+  return <SubscriptionSettingsView />
 }

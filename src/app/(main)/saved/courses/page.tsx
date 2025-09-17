@@ -3,13 +3,16 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
+import { HydrateClient, prefetch, trpc } from '@/trpc/server'
+
+import { BookmarkedCoursesView } from '@/modules/course/views/bookmarked-courses-view'
 
 export const metadata: Metadata = {
-  title: 'Bookmarks - LearnFast',
+  title: 'Bookmarked Courses - LearnFast',
   description: 'Your saved bookmarks on LearnFast',
 }
 
-export default async function BookmarksPage() {
+export default async function BookmarkedCoursesPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   })
@@ -18,5 +21,11 @@ export default async function BookmarksPage() {
     return redirect('/sign-in')
   }
 
-  return redirect('/saved/courses')
+  prefetch(trpc.bookmark.getUserBookmarks.queryOptions())
+
+  return (
+    <HydrateClient>
+      <BookmarkedCoursesView />
+    </HydrateClient>
+  )
 }

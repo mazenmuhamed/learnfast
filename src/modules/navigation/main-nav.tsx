@@ -31,9 +31,9 @@ export function MainNav({ items }: Props) {
                 <SidebarMenuButton
                   asChild
                   tooltip={item.title}
-                  isActive={pathname === item.url}
+                  isActive={pathname.startsWith(item.url)}
                   className={cn(
-                    pathname === item.url
+                    pathname.startsWith(item.url)
                       ? '!font-semibold'
                       : 'opacity-80 transition-all hover:opacity-100',
                   )}
