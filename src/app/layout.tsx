@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Outfit as FontSans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { Toaster } from '@/components/ui/sonner'
 import { TRPCReactProvider } from '@/trpc/client'
@@ -35,6 +36,7 @@ export default function RootLayout({
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Toaster />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
