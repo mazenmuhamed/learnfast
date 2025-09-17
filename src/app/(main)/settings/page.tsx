@@ -19,5 +19,5 @@ export default async function SettingsPage() {
     return redirect('/sign-in')
   }
 
-  return redirect('/settings/account')
+  redirect('/settings/account')
 }

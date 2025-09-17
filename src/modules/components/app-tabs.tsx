@@ -7,16 +7,19 @@ import { Button } from '@/components/ui/button'
 
 type Props = {
   items: { label: string; href: string; disabled?: boolean }[]
+  defaultActiveTab?: string
 }
 
-export function AppTabs({ items }: Props) {
+export function AppTabs({ items, defaultActiveTab }: Props) {
   const router = useRouter()
   const pathname = usePathname()
 
   return (
     <div className="flex items-center gap-2">
       {items.map((item, index) => {
-        const isActive = index === 0 || pathname === item.href
+        const isActive =
+          pathname === item.href ||
+          item.href === `${pathname}/${defaultActiveTab}`
 
         return (
           <Button

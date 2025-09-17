@@ -23,7 +23,7 @@ export function BookmarksHeader({
         description={`Browse your favorite ${bookmarksLength} learning resources.`}
         className="sm:[&_p]:text-lg"
       />
-      <AppTabs items={categories} />
+      <AppTabs items={categories} defaultActiveTab="courses" />
       <Separator />
     </>
   )

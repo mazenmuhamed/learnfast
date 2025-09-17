@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           description="Manage and update your LearnFast account info"
           className="sm:[&_p]:text-lg"
         />
-        <AppTabs items={tabs} />
+        <AppTabs items={tabs} defaultActiveTab="account" />
       </div>
       <Separator />
       <div className="sm:py-2">{children}</div>
