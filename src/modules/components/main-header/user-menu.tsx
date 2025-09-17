@@ -1,12 +1,16 @@
 'use client'
 
-import { User } from 'better-auth'
 import { toast } from 'sonner'
 import { useTheme } from 'next-themes'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { DoorOpen, Monitor, Moon, Sun, User2 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useTRPC } from '@/trpc/client'
 import { authClient } from '@/lib/auth-client'
+import { SHORTCUTS_STORAGE_KEY } from '@/lib/constants'
 
 import { Skeleton } from '@/components/ui/skeleton'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -22,7 +26,20 @@ import {
 
 import { ActionTooltip } from '../action-tooltip'
 
-export function UserMenu({ user }: { user: User }) {
+export function UserMenu() {
+  return (
+    <ErrorBoundary fallback={<Skeleton className="size-8 rounded-full" />}>
+      <Suspense fallback={<Skeleton className="size-8 rounded-full" />}>
+        <UserMenuSuspense />
+      </Suspense>
+    </ErrorBoundary>
+  )
+}
+
+function UserMenuSuspense() {
+  const trpc = useTRPC()
+  const { data: user } = useSuspenseQuery(trpc.user.me.queryOptions())
+
   const { theme, setTheme } = useTheme()
 
   async function handleLogout() {
@@ -30,6 +47,7 @@ export function UserMenu({ user }: { user: User }) {
       fetchOptions: {
         onSuccess: () => {
           window.location.href = '/'
+          localStorage.removeItem(SHORTCUTS_STORAGE_KEY)
         },
         onError: error => {
           console.log('[LOGOUT_ERROR]', error)
@@ -42,9 +60,9 @@ export function UserMenu({ user }: { user: User }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer overflow-hidden rounded-full">
-        <Avatar className="h-8 w-8 rounded-lg">
+        <Avatar className="rounded-full">
           <AvatarImage src={user.image || ''} alt={user.name} />
-          <AvatarFallback className="rounded-lg">
+          <AvatarFallback>
             <Skeleton className="size-full" />
           </AvatarFallback>
         </Avatar>

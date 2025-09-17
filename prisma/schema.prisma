@@ -14,11 +14,13 @@ model User {
   email         String
   emailVerified Boolean    @default(false)
   image         String?
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
   bookmarks     Bookmark[]
+  nameUpdatedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@unique([email])
   @@map("user")

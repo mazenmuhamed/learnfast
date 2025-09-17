@@ -4,6 +4,7 @@ import type { AppRouter } from '@/trpc/routers/_app'
 type RouterOutput = inferRouterOutputs<AppRouter>
 
 export type CourseOutput = RouterOutput['course']['getAll'][number]
+export type UserOutput = RouterOutput['user']['me']
 
 export interface ICourse {
   title: string

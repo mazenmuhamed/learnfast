@@ -48,3 +48,5 @@ export const navigationGrowItems = [
   },
   { title: 'Job Board', url: '#', icon: Briefcase },
 ]
+
+export const SHORTCUTS_STORAGE_KEY = 'shortcuts-has-been-shown'

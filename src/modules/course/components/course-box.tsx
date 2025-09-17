@@ -43,7 +43,7 @@ export function CourseBox({ course }: { course: CourseOutput }) {
             <Button
               size="icon"
               variant="ghost"
-              className="absolute top-2 right-2 size-8"
+              className="absolute top-2 right-2 size-8 max-sm:size-10 max-sm:[&_svg]:!size-6"
               onClick={handleAddBookmark}
             >
               {isPending ? (

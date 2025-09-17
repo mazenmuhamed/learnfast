@@ -1,3 +1,4 @@
+import z from 'zod'
 import { headers } from 'next/headers'
 
 import { TRPCError } from '@trpc/server'
@@ -38,5 +39,42 @@ export const userRouter = createTRPCRouter({
     }
 
     return user
+  }),
+  updateInformation: protectedProcedure
+    .input(z.object({ name: z.string().min(3).max(20).optional() }))
+    .mutation(async opts => {
+      const { session } = opts.ctx
+      const { name } = opts.input
+
+      const user = await prisma.user.findUnique({
+        where: { id: session.id },
+      })
+
+      if (!user) {
+        throw new TRPCError({ code: 'NOT_FOUND' })
+      }
+
+      // Check if last time user updated their name from more than 7 days ago
+      if (name && user.name !== name) {
+        const sevenDaysAgo = new Date()
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
+
+        if (user.nameUpdatedAt && user.nameUpdatedAt > sevenDaysAgo) {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'You can only change your name once every 7 days.',
+          })
+        }
+      }
+
+      await prisma.user.update({
+        where: { id: session.id },
+        data: { name, nameUpdatedAt: new Date() },
+      })
+    }),
+  deleteAccount: protectedProcedure.mutation(async opts => {
+    const { session } = opts.ctx
+
+    await prisma.user.delete({ where: { id: session.id } })
   }),
 })
