@@ -25,19 +25,25 @@ This project is still **under development**, but it demonstrates the foundation 
   - Email/Password login and signup
   - Social logins (Google, GitHub, etc.)
   - Email verification
+  - User profile management
 
 - **UI/UX**
   - Clean, modern, and responsive layout
   - Reusable components with Tailwind CSS and shadcn/ui
   - Accessible and user-friendly design
+  - Dark mode support
+  - Keyboard shortcuts for better efficiency
+  - Toast notifications for user feedback
 
 - **Core Functionality**
   - Landing page with platform overview
   - Pricing page with subscription plans
   - Courses page to browse available courses
   - Course details page with interactive content
+  - Settings page for account and subscription management
   - Modal with keyboard shortcuts for easier navigation
   - Bookmarking functionality for courses
+  - Full mobile responsiveness
 
 ---
 
@@ -56,6 +62,7 @@ This project is still **under development**, but it demonstrates the foundation 
 - **Styling**: Tailwind CSS v4, shadcn/ui
 - **Authentication**: BetterAuth
 - **Database**: PostgreSQL (Neon) + Prisma ORM
+- **State Management**: React Query + tRPC
 - **Deployment**: Vercel
 
 ---
