@@ -12,6 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from '@/components/ui/sidebar'
 
 type Props = {
@@ -20,6 +21,12 @@ type Props = {
 
 export function MainNav({ items }: Props) {
   const pathname = usePathname()
+  const { isMobile, setOpenMobile } = useSidebar()
+
+  function handleButtonClick() {
+    if (!isMobile) return
+    setOpenMobile(false)
+  }
 
   return (
     <SidebarGroup>
@@ -40,7 +47,10 @@ export function MainNav({ items }: Props) {
                 >
                   <Link
                     href={item.url}
-                    className={cn(pathname === item.url && '!text-primary')}
+                    className={cn(
+                      pathname.startsWith(item.url) && '!text-primary',
+                    )}
+                    onClick={handleButtonClick}
                   >
                     <item.icon />
                     <span>{item.title}</span>

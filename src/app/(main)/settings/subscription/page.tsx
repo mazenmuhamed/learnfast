@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
 
-import { SubscriptionSettingsView } from '@/modules/settings/subscription-settings-view'
+import { SubscriptionSettingsView } from '@/modules/settings/views/subscription-settings-view'
 
 export const dynamic = 'force-dynamic'
 

@@ -4,6 +4,7 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
+import { useBreakPoint } from '@/hooks/use-break-point'
 import { useKeyboardShortcut } from '@/hooks/use-keyboard-shortcut'
 import {
   navigationMainItems,
@@ -22,17 +23,19 @@ import {
 } from '@/components/ui/sidebar'
 
 import { Logo } from '@/modules/components/logo'
+
 import { SubNav } from './sub-nav'
 import { MainNav } from './main-nav'
 import { HelpButton } from './help-button'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router = useRouter()
+  const isMobile = useBreakPoint()
+
   const { state } = useSidebar()
 
-  const router = useRouter()
-
   useKeyboardShortcut('ctrl', 'h', () => router.push('/home'))
-  useKeyboardShortcut('ctrl', 's', () => router.push('/saved'))
+  useKeyboardShortcut('ctrl', 's', () => router.push('/saved/courses'))
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" {...props}>
@@ -61,9 +64,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         />
         <SubNav label="Grow" items={navigationGrowItems} />
       </SidebarContent>
-      <SidebarFooter>
-        <HelpButton />
-      </SidebarFooter>
+      {!isMobile && (
+        <SidebarFooter>
+          <HelpButton />
+        </SidebarFooter>
+      )}
       <SidebarRail />
     </Sidebar>
   )

@@ -13,6 +13,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from '@/components/ui/sidebar'
 
 type Props = {
@@ -22,6 +23,12 @@ type Props = {
 
 export function SubNav({ label, items }: Props) {
   const pathname = usePathname()
+  const { isMobile, setOpenMobile } = useSidebar()
+
+  function handleButtonClick() {
+    if (!isMobile) return
+    setOpenMobile(false)
+  }
 
   return (
     <SidebarGroup>
@@ -36,16 +43,19 @@ export function SubNav({ label, items }: Props) {
                 <SidebarMenuButton
                   asChild
                   tooltip={item.title}
-                  isActive={pathname === item.url}
+                  isActive={pathname.startsWith(item.url)}
                   className={cn(
-                    pathname === item.url
+                    pathname.startsWith(item.url)
                       ? '!font-semibold'
                       : 'opacity-80 transition-all hover:opacity-100',
                   )}
                 >
                   <Link
                     href={item.url}
-                    className={cn(pathname === item.url && 'text-primary')}
+                    className={cn(
+                      pathname.startsWith(item.url) && '!text-primary',
+                    )}
+                    onClick={handleButtonClick}
                   >
                     <item.icon />
                     <span>{item.title}</span>

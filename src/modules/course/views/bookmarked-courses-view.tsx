@@ -1,22 +1,22 @@
 'use client'
 
-import { PackageOpen, Search } from 'lucide-react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { PackageOpen, Search } from 'lucide-react'
 import { Suspense, useMemo, useState } from 'react'
 
 import { useTRPC } from '@/trpc/client'
 
 import { Input } from '@/components/ui/input'
-import { LoadingIndicator } from '@/modules/components/loading-indicator'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
 import { CourseBox } from '../components/course-box'
+import { BookmarksLoadingSkeleton } from '../components/bookmarks-loading-skeleton'
 
 export function BookmarkedCoursesView() {
   return (
-    <ErrorBoundary fallback={<ErrorBoundaryMessage className="h-[75svh]" />}>
-      <Suspense fallback={<LoadingIndicator className="h-[75svh]" />}>
+    <ErrorBoundary fallback={<ErrorBoundaryMessage className="h-[35svh]" />}>
+      <Suspense fallback={<BookmarksLoadingSkeleton />}>
         <BookmarkedCoursesSuspense />
       </Suspense>
     </ErrorBoundary>

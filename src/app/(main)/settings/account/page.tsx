@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
 import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
-import { AccountSettingsView } from '@/modules/settings/account-settings-view'
+import { AccountSettingsView } from '@/modules/settings/views/account-settings-view'
 
 export const dynamic = 'force-dynamic'
 

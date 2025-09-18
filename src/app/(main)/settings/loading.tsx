@@ -1,10 +1,5 @@
-import { LoaderIcon } from 'lucide-react'
+import { SettingsLoadingSkeleton } from '@/modules/settings/components/settings-loading-skeleton'
 
-// TODO: Replace with a better skeleton loader
 export default function Loading() {
-  return (
-    <div className="flex h-[35svh] items-center justify-center">
-      <LoaderIcon className="size-5 animate-spin" />
-    </div>
-  )
+  return <SettingsLoadingSkeleton />
 }

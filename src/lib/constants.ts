@@ -26,7 +26,7 @@ export const publicRoutes = [
 // TODO: Replace placeholder routes with actual routes when available
 export const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
-  { title: 'Bookmarks', url: '/saved', icon: Bookmark },
+  { title: 'Bookmarks', url: '/saved/courses', icon: Bookmark },
   { title: 'Leagues', url: '#', icon: Trophy },
 ]
 

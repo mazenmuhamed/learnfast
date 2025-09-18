@@ -45,7 +45,7 @@ export async function MainHeader() {
             aria-label="Open settings"
             className="size-8 max-sm:hidden"
           >
-            <Link href="/settings">
+            <Link href="/settings/account">
               <Settings aria-hidden="true" className="size-[18px]" />
             </Link>
           </Button>
