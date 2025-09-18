@@ -8,24 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            String     @id
-  name          String
-  email         String
-  emailVerified Boolean    @default(false)
-  image         String?
-  sessions      Session[]
-  accounts      Account[]
-  bookmarks     Bookmark[]
-  nameUpdatedAt DateTime?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  @@unique([email])
-  @@map("user")
-}
-
 model Session {
   id        String   @id
   expiresAt DateTime
@@ -69,6 +51,41 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model User {
+  id            String     @id
+  name          String
+  email         String
+  emailVerified Boolean    @default(false)
+  image         String?
+  sessions      Session[]
+  followers     Follow[]   @relation("following")
+  followings    Follow[]   @relation("follower")
+  accounts      Account[]
+  bookmarks     Bookmark[]
+  nameUpdatedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Follow {
+  id          String @id @default(uuid())
+  followerId  String
+  followingId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("follow")
 }
 
 model Course {

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
-import { Container } from '../_components/container'
-import { SignUpForm } from '../_components/forms/sign-up-form'
-import { SocialButton } from '../_components/social-button'
+import { Container } from '../../_components/container'
+import { SignUpForm } from '../../_components/forms/sign-up-form'
+import { SocialButton } from '../../_components/social-button'
 
 import { BackButton } from '@/modules/components/back-button'
 

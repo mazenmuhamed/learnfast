@@ -1,18 +1,18 @@
 'use client'
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { LoaderIcon, Eye, EyeOff, CircleQuestionMark } from 'lucide-react'
-import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { toast } from 'sonner'
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { LoaderIcon } from 'lucide-react'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { authClient } from '@/lib/auth-client'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { AppAlert } from '@/modules/components/app-alert'
-import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -22,63 +22,96 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 
-import { ActionTooltip } from '@/modules/components/action-tooltip'
-
 const formSchema = z.object({
   email: z.email('Invalid email address'),
-  password: z
-    .string()
-    .nonempty('Password is required')
-    .min(6, 'Password is to short'),
-  rememberMe: z.boolean().optional(),
+  // password: z
+  //   .string()
+  //   .nonempty('Password is required')
+  //   .min(6, 'Password is to short'),
+  // rememberMe: z.boolean().optional(),
 })
 
 export function SignInForm() {
-  const [showPassword, setShowPassword] = useState(false)
+  // const [showPassword, setShowPassword] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { email: '', password: '', rememberMe: false },
+    defaultValues: { email: '' },
   })
 
   async function handleSubmit(values: z.infer<typeof formSchema>) {
-    await authClient.signIn.email(
+    // await authClient.signIn.email(
+    //   {
+    //     ...values,
+    //     callbackURL: '/home',
+    //     rememberMe: values.rememberMe || false,
+    //   },
+    //   {
+    //     onRequest: () => {
+    //       setErrorMessage(null)
+    //     },
+    //     onError: ctx => {
+    //       switch (ctx.error.code as keyof typeof authClient.$ERROR_CODES) {
+    //         case 'USER_NOT_FOUND':
+    //           setErrorMessage(ctx.error.message)
+    //           break
+    //         case 'INVALID_EMAIL_OR_PASSWORD':
+    //           setErrorMessage(ctx.error.message)
+    //           break
+    //         case 'PASSWORD_TOO_SHORT':
+    //           setErrorMessage(ctx.error.message)
+    //           break
+    //         case 'PASSWORD_TOO_LONG':
+    //           setErrorMessage(ctx.error.message)
+    //           break
+    //         case 'EMAIL_NOT_VERIFIED':
+    //           setErrorMessage('Email not verified. Please check your inbox.')
+    //           authClient.emailOtp.sendVerificationOtp({
+    //             type: 'email-verification',
+    //             email: values.email,
+    //           })
+    //           break
+    //         default:
+    //           setErrorMessage('Something went wrong.')
+    //           break
+    //       }
+    //       console.error('[SIGN_IN_ERROR]', ctx.error)
+    //     },
+    //   },
+    // )
+    await authClient.emailOtp.sendVerificationOtp(
       {
-        ...values,
-        callbackURL: '/home',
-        rememberMe: values.rememberMe || false,
+        type: 'sign-in',
+        email: values.email,
       },
       {
         onRequest: () => {
           setErrorMessage(null)
         },
+        onSuccess: () => {
+          toast.success('OTP sent to your email')
+          router.push(`/verify-otp?email=${values.email}&type=sign-in`)
+        },
         onError: ctx => {
           switch (ctx.error.code as keyof typeof authClient.$ERROR_CODES) {
-            case 'USER_NOT_FOUND':
+            case 'USER_EMAIL_NOT_FOUND':
               setErrorMessage(ctx.error.message)
               break
-            case 'INVALID_EMAIL_OR_PASSWORD':
+            case 'INVALID_EMAIL':
               setErrorMessage(ctx.error.message)
               break
-            case 'PASSWORD_TOO_SHORT':
-              setErrorMessage(ctx.error.message)
-              break
-            case 'PASSWORD_TOO_LONG':
-              setErrorMessage(ctx.error.message)
-              break
-            case 'EMAIL_NOT_VERIFIED':
-              setErrorMessage('Email not verified. Please check your inbox.')
-              authClient.emailOtp.sendVerificationOtp({
-                type: 'email-verification',
-                email: values.email,
-              })
+            case 'SOCIAL_ACCOUNT_ALREADY_LINKED':
+              setErrorMessage(
+                'Email already associated with a social account. Please use social sign-in.',
+              )
               break
             default:
               setErrorMessage('Something went wrong.')
               break
           }
-          console.error('[SIGN_IN_ERROR]', ctx.error)
         },
       },
     )
@@ -100,19 +133,19 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <FormField
+        {/* <FormField
           control={form.control}
           name="password"
           render={({ field }) => (
             <FormItem>
               <div className="flex items-center justify-between">
                 <FormLabel>Password</FormLabel>
-                {/* <Link
+                <Link
                   href="/forgot-password"
                   className="text-muted-foreground text-[13px] hover:underline"
                 >
                   Forgot password?
-                </Link> */}
+                </Link>
               </div>
               <FormControl>
                 <div className="relative">
@@ -132,8 +165,8 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <div className="my-4" />
-        <FormField
+        <div className="my-4" /> */}
+        {/* <FormField
           control={form.control}
           name="rememberMe"
           render={({ field }) => (
@@ -154,7 +187,7 @@ export function SignInForm() {
               </ActionTooltip>
             </FormItem>
           )}
-        />
+        /> */}
         <div className="my-4">
           {errorMessage && (
             <AppAlert
@@ -176,16 +209,16 @@ export function SignInForm() {
             {form.formState.isSubmitting && (
               <LoaderIcon className="animate-spin" />
             )}
-            Sign in
+            Continue with Email
           </Button>
-          <div className="flex items-center gap-1 text-sm">
+          {/* <div className="flex items-center gap-1 text-sm">
             <p className="text-muted-foreground text-center">
               Don&apos;t have an account?
             </p>
             <Link href="/sign-up" className="font-medium hover:underline">
               Sign up
             </Link>
-          </div>
+          </div> */}
         </div>
       </form>
     </Form>

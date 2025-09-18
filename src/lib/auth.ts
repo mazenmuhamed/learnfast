@@ -8,19 +8,19 @@ import { sendEmail, sendOTPEmail } from './resend'
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
-  emailAndPassword: {
-    enabled: true,
-    autoSignIn: true,
-    minPasswordLength: 8,
-    requireEmailVerification: true,
-    sendResetPassword: async ({ user, url }) => {
-      await sendEmail({
-        to: user.email,
-        subject: 'Reset your password',
-        text: `Click the link to reset your password: <a href="${url}">Click here</a>`,
-      })
-    },
-  },
+  // emailAndPassword: {
+  //   enabled: true,
+  //   autoSignIn: true,
+  //   minPasswordLength: 8,
+  //   requireEmailVerification: true,
+  //   sendResetPassword: async ({ user, url }) => {
+  //     await sendEmail({
+  //       to: user.email,
+  //       subject: 'Reset your password',
+  //       text: `Click the link to reset your password: <a href="${url}">Click here</a>`,
+  //     })
+  //   },
+  // },
   socialProviders: {
     google: {
       prompt: 'consent',
@@ -37,7 +37,9 @@ export const auth = betterAuth({
   plugins: [
     emailOTP({
       async sendVerificationOTP({ email, otp, type }) {
-        if (type === 'email-verification') {
+        if (type === 'sign-in') {
+          await sendOTPEmail({ otp, email })
+        } else if (type === 'email-verification') {
           await sendOTPEmail({ otp, email })
         }
       },

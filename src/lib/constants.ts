@@ -20,7 +20,7 @@ export const publicRoutes = [
   '/sign-up',
   '/forgot-password',
   '/reset-password',
-  '/verify-account',
+  '/verify-otp',
 ]
 
 // TODO: Replace placeholder routes with actual routes when available

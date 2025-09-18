@@ -8,7 +8,7 @@ export async function sendOTPEmail({ otp, email }: SendOTPEmailProps) {
   try {
     await resend.emails.send({
       to: [email],
-      from: 'ShipX <onboarding@resend.dev>',
+      from: 'LearnFast <noreply@quotexfm.tech>',
       subject: 'Verification Code',
       text: `Your verification code is ${otp}`,
     })
@@ -29,7 +29,7 @@ export async function sendEmail({
   try {
     await resend.emails.send({
       to: [to],
-      from: 'ShipX <onboarding@resend.dev>',
+      from: 'LearnFast <noreply@quotexfm.tech>',
       subject,
       text,
     })
