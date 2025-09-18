@@ -32,10 +32,10 @@ export async function MainHeader() {
         <Searchbar />
       </div>
       <div className="flex items-center gap-3 sm:gap-5">
-        <UpgradeButton className="max-sm:hidden" />
+        <UpgradeButton className="max-md:hidden" />
         <Separator
           orientation="vertical"
-          className="data-[orientation=vertical]:h-5 max-sm:hidden"
+          className="data-[orientation=vertical]:h-5 max-md:hidden"
         />
         <div className="flex items-center gap-2">
           <Button
@@ -43,7 +43,7 @@ export async function MainHeader() {
             size="icon"
             variant="ghost"
             aria-label="Open settings"
-            className="size-8 max-sm:hidden"
+            className="size-8 max-md:hidden"
           >
             <Link href="/settings/account">
               <Settings aria-hidden="true" className="size-[18px]" />
@@ -53,7 +53,7 @@ export async function MainHeader() {
         </div>
         <Separator
           orientation="vertical"
-          className="data-[orientation=vertical]:h-5"
+          className="data-[orientation=vertical]:h-5 max-md:hidden"
         />
         <HydrateClient>
           <UserMenu />
