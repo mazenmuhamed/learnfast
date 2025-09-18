@@ -10,7 +10,7 @@ import { useTRPC } from '@/trpc/client'
 
 import { Button } from '@/components/ui/button'
 import { CourseBox } from '@/modules/course/components/course-box'
-import { LoadingIndicator } from '@/modules/components/loading-indicator'
+import { CardLoadingSkeleton } from '@/modules/components/card-loading-skeleton'
 import { ErrorBoundaryMessage } from '@/modules/components/error-boundary-message'
 
 type Props = {
@@ -27,7 +27,15 @@ export function RecommendedForYou({ numberOfCourses = 2 }: Props) {
 
   return (
     <ErrorBoundary fallback={<ErrorBoundaryMessage className="my-8" />}>
-      <Suspense fallback={<LoadingIndicator className="my-16" />}>
+      <Suspense
+        fallback={
+          <div className="grid gap-4 md:grid-cols-2">
+            {[...Array(numberOfCourses)].map((_, index) => (
+              <CardLoadingSkeleton key={index} />
+            ))}
+          </div>
+        }
+      >
         <RecommendedForYouSuspense numberOfCourses={numberOfCourses} />
       </Suspense>
     </ErrorBoundary>

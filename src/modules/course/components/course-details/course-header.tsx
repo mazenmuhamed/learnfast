@@ -92,11 +92,11 @@ export function CourseHeader({
               onClick={handleAddBookmark}
             >
               {isPending ? (
-                <Loader className="size-5 animate-spin" />
+                <Loader className="size-5 animate-spin max-sm:size-6" />
               ) : (
                 <Bookmark
                   className={cn(
-                    'size-5',
+                    'size-5 max-sm:size-6',
                     isBookmarked && 'text-primary fill-primary',
                   )}
                 />

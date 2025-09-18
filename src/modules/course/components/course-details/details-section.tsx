@@ -43,7 +43,7 @@ export function DetailsSection({
                 alt={instructorName}
                 width={22}
                 height={22}
-                className="h-full rounded-full object-cover"
+                className="h-full min-h-6 min-w-6 rounded-full object-cover"
               />
               <span className="text-sm font-medium">by {instructorName}</span>
             </div>
