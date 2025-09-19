@@ -1,12 +1,10 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
-
-import { authClient } from '@/lib/auth-client'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { REGEXP_ONLY_DIGITS } from 'input-otp'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -23,8 +21,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { REGEXP_ONLY_DIGITS } from 'input-otp'
-import { RotateCcw } from 'lucide-react'
 
 const formSchema = z.object({
   otp: z
@@ -35,7 +31,7 @@ const formSchema = z.object({
 
 export function OTPForm() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  // const searchParams = useSearchParams()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,6 +39,7 @@ export function OTPForm() {
   })
 
   async function handleFormSubmit(values: z.infer<typeof formSchema>) {
+    console.log({ values })
     // await authClient.emailOtp.verifyEmail(
     //   {
     //     email: searchParams.get('email') || '',
@@ -67,42 +64,6 @@ export function OTPForm() {
     //     },
     //   },
     // )
-    await authClient.signIn.emailOtp(
-      {
-        email: searchParams.get('email') || '',
-        otp: values.otp,
-      },
-      {
-        onRequest: () => {
-          toast.loading('Verifying OTP...', { id: 'verify_otp' })
-        },
-        onSuccess: () => {
-          form.reset()
-          toast.success('Welcome back! 🎉', { id: 'verify_otp' })
-          router.replace('/home')
-        },
-        onError: ctx => {
-          console.log(ctx)
-          switch (ctx.error.code as keyof typeof authClient.$ERROR_CODES) {
-            case 'INVALID_OTP':
-              toast.error('Invalid OTP. Please try again.', {
-                id: 'verify_otp',
-              })
-              break
-            case 'OTP_EXPIRED':
-              form.setError('otp', { message: 'OTP has expired' })
-              toast.error('OTP has expired. Please request a new one.', {
-                id: 'verify_otp',
-              })
-              router.replace('/sign-in')
-              break
-            default:
-              toast.error('Something went wrong.', { id: 'verify_otp' })
-              break
-          }
-        },
-      },
-    )
   }
 
   return (
