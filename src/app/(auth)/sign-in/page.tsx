@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 
+import { BackButton } from '@/modules/components/back-button'
+
 import { Container } from '../_components/container'
 import { SignInForm } from '../_components/forms/sign-in-form'
+import { AuthLayout } from '../_components/auth-layout'
 import { SocialButton } from '../_components/social-button'
-
-import { BackButton } from '@/modules/components/back-button'
 
 export const metadata: Metadata = {
   title: 'Sign in - LearnFast',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SignInPage() {
   return (
-    <>
+    <AuthLayout>
       <Container
         title="Welcome back"
         description="Fill in your details to sign in to your account. You can also continue using your Google or GitHub account."
@@ -34,6 +35,6 @@ export default function SignInPage() {
         and <a href="#">Privacy Policy</a>.
       </div>
       <BackButton className="fixed top-6 left-6 max-sm:hidden" />
-    </>
+    </AuthLayout>
   )
 }

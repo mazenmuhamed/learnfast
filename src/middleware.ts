@@ -1,21 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSessionCookie } from 'better-auth/cookies'
 
-import { publicRoutes } from './lib/constants'
+import { authRoutes, publicRoutes } from './lib/constants'
 
 export async function middleware(request: NextRequest) {
   const session = getSessionCookie(request)
 
   const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname)
+  const isAuthRoutes = authRoutes.includes(request.nextUrl.pathname)
 
-  if (isPublicRoute) return NextResponse.next()
-
-  if (!session && !isPublicRoute) {
-    return NextResponse.redirect(new URL('/sign-in', request.url))
-  }
-
-  if (session && isPublicRoute) {
-    return NextResponse.redirect(new URL('/home', request.url))
+  if (session) {
+    if (isPublicRoute) return NextResponse.next()
+    if (isAuthRoutes) {
+      return NextResponse.redirect(new URL('/home', request.url))
+    }
+  } else {
+    if (!isPublicRoute && !isAuthRoutes) {
+      return NextResponse.redirect(new URL('/sign-in', request.url))
+    }
   }
 
   return NextResponse.next()

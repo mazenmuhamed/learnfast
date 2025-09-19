@@ -42,7 +42,10 @@ export function UserMobileNavigation({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="cursor-pointer overflow-hidden rounded-full">
-        <Avatar className="rounded-full">
+        <Avatar
+          className="rounded-full"
+          style={{ backgroundColor: user.backgroundColor || undefined }}
+        >
           <AvatarImage src={user.image || ''} alt={user.name} />
           <AvatarFallback>
             <Skeleton className="size-full" />
@@ -56,7 +59,10 @@ export function UserMobileNavigation({
             Manage your app settings and personal information
           </SheetDescription>
           <div className="flex items-center gap-3 px-1 pt-4">
-            <Avatar className="size-9 rounded-lg">
+            <Avatar
+              className="size-9 rounded-lg"
+              style={{ backgroundColor: user.backgroundColor || undefined }}
+            >
               <AvatarImage src={user.image || ''} alt={user.name} />
               <AvatarFallback className="rounded-lg">
                 <Skeleton className="size-full" />

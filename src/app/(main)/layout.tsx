@@ -1,4 +1,3 @@
-import { MainLayout } from '@/modules/layouts/main-layout'
 import { ThemeProvider } from '@/components/theme-provider'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -10,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <MainLayout>{children}</MainLayout>
+      {children}
     </ThemeProvider>
   )
 }

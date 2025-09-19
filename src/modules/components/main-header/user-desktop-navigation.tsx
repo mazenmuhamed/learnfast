@@ -33,7 +33,10 @@ export function UserDesktopNavigation({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer overflow-hidden rounded-full">
-        <Avatar className="rounded-full">
+        <Avatar
+          className="rounded-full"
+          style={{ backgroundColor: user.backgroundColor || undefined }}
+        >
           <AvatarImage src={user.image || ''} alt={user.name} />
           <AvatarFallback>
             <Skeleton className="size-full" />
@@ -48,7 +51,10 @@ export function UserDesktopNavigation({
       >
         <DropdownMenuLabel className="px-2 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="size-9 rounded-lg">
+            <Avatar
+              className="size-9 rounded-lg"
+              style={{ backgroundColor: user.backgroundColor || undefined }}
+            >
               <AvatarImage src={user.image || ''} alt={user.name} />
               <AvatarFallback className="rounded-lg">
                 <Skeleton className="size-full" />

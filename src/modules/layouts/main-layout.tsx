@@ -1,10 +1,21 @@
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
+import { caller } from '@/trpc/server'
+
 import { AppSidebar } from '@/modules/navigation/app-sidebar'
 import { MainHeader } from '@/modules/components/main-header'
-import { UpgradeBanner } from '../components/upgrade-banner'
 
-export function MainLayout({ children }: React.PropsWithChildren) {
+import { UpgradeBanner } from '../components/upgrade-banner'
+import { SetupProfileDialog } from '../profile/components/setup-profile-dialog'
+
+export async function MainLayout({ children }: React.PropsWithChildren) {
+  const user = await caller.user.me()
+
+  // If user is not complete, show the setup profile dialog
+  if (!user.name && !user.image) {
+    return <SetupProfileDialog />
+  }
+
   return (
     <SidebarProvider
       defaultOpen={false}

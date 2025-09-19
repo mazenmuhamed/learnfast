@@ -24,11 +24,6 @@ import {
 } from '@/components/ui/form'
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .min(1, 'Name is required')
-    .min(3, 'Name must be at least 3 character(s)')
-    .max(20, 'Name must be at most 20 character(s)'),
   email: z.email('Invalid email address'),
   password: z
     .string()
@@ -44,38 +39,38 @@ export function SignUpForm() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: '', email: '', password: '' },
+    defaultValues: { email: '', password: '' },
   })
 
-  // TODO: Make user create their own avatar
   async function handleSubmit(values: z.infer<typeof formSchema>) {
     await authClient.signUp.email(
       {
-        name: values.name,
+        name: '',
         email: values.email,
         password: values.password,
+        callbackURL: '/home',
       },
       {
         onRequest: () => {
           setErrorMessage(null)
         },
+        onSuccess: () => {
+          toast.success('Your account has been created.')
+          router.replace('/profile-setup')
+        },
         onError: ctx => {
           switch (ctx.error.code as keyof typeof authClient.$ERROR_CODES) {
-            case 'EMAIL_NOT_VERIFIED':
-              setErrorMessage(ctx.error.message)
-              toast.warning('Please verify your email address to continue.')
+            case 'SOCIAL_ACCOUNT_ALREADY_LINKED':
+              setErrorMessage('An account with this email already exists.')
               break
-            case 'USER_ALREADY_EXISTS':
-              setErrorMessage(ctx.error.message)
-              break
-            case 'INVALID_EMAIL':
-              setErrorMessage(ctx.error.message)
+            case 'INVALID_EMAIL_OR_PASSWORD':
+              setErrorMessage('Invalid email or password.')
               break
             case 'PASSWORD_TOO_SHORT':
-              setErrorMessage(ctx.error.message)
+              setErrorMessage('Password is too short.')
               break
             case 'PASSWORD_TOO_LONG':
-              setErrorMessage(ctx.error.message)
+              setErrorMessage('Password is too long.')
               break
             default:
               setErrorMessage('Something went wrong.')
@@ -85,42 +80,11 @@ export function SignUpForm() {
         },
       },
     )
-
-    // Send the verification OTP
-    await authClient.emailOtp.sendVerificationOtp(
-      {
-        email: values.email,
-        type: 'email-verification',
-      },
-      {
-        onSuccess: () => {
-          toast.success('Verification OTP sent to your email.')
-          router.push(`/verify-account?email=${values.email}`)
-        },
-        onError: ctx => {
-          console.error('[SEND_OTP_ERROR]', ctx.error)
-          toast.error('Something went wrong.')
-        },
-      },
-    )
   }
 
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)}>
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"

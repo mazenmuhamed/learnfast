@@ -13,15 +13,8 @@ import {
   TvMinimal,
 } from 'lucide-react'
 
-export const publicRoutes = [
-  '/',
-  '/pricing',
-  '/sign-in',
-  '/sign-up',
-  '/forgot-password',
-  '/reset-password',
-  '/verify-otp',
-]
+export const publicRoutes = ['/', '/pricing']
+export const authRoutes = ['/sign-in', '/sign-up']
 
 // TODO: Replace placeholder routes with actual routes when available
 export const navigationMainItems = [

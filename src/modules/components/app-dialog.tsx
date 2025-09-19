@@ -34,9 +34,7 @@ export function AppDialog({
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        <div className="overflow-y-auto">
-          <div className={cn(className)}>{children}</div>
-        </div>
+        <div className={cn(className)}>{children}</div>
       </DialogContent>
     </Dialog>
   )
