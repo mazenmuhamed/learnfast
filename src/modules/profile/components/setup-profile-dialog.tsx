@@ -12,6 +12,8 @@ import { ControllerRenderProps, useForm } from 'react-hook-form'
 
 import { cn } from '@/lib/utils'
 import { useTRPC } from '@/trpc/client'
+import { authClient } from '@/lib/auth-client'
+import { avatarBackgroundColors } from '@/lib/constants'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -72,13 +74,16 @@ export function SetupProfileDialog() {
     }
   }, [dialogContent, form.formState.errors.name])
 
-  function handleSubmit(values: z.infer<typeof formSchema>) {
+  async function handleSubmit(values: z.infer<typeof formSchema>) {
+    await authClient.updateUser({ name: values.name, image: values.avatar })
+
     completeProfile.mutate(values, {
       onSuccess() {
         setOpen(false)
-        router.refresh()
-        router.replace('/home')
         toast.success('Your done! Welcome aboard 🚀')
+
+        // To force a reload and refetch of the user's session
+        window.location.href = '/home'
       },
       onError(error) {
         console.error('[UPDATE_PROFILE_ERROR]', error)
@@ -86,6 +91,8 @@ export function SetupProfileDialog() {
       },
     })
   }
+
+  const isLoading = completeProfile.isPending || form.formState.isSubmitting
 
   return (
     <Dialog open={open} onOpenChange={() => {}}>
@@ -127,21 +134,19 @@ export function SetupProfileDialog() {
                 type="submit"
                 form="setup-profile-form"
                 className="w-full"
-                aria-busy={completeProfile.isPending}
-                aria-disabled={completeProfile.isPending}
-                disabled={!form.formState.isDirty || completeProfile.isPending}
+                aria-busy={isLoading}
+                aria-disabled={isLoading}
+                disabled={!form.formState.isDirty || isLoading}
               >
-                {completeProfile.isPending && (
-                  <Loader className="animate-spin" />
-                )}
+                {isLoading && <Loader className="animate-spin" />}
                 Save Profile
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                disabled={completeProfile.isPending}
-                aria-busy={completeProfile.isPending}
-                aria-disabled={completeProfile.isPending}
+                disabled={isLoading}
+                aria-busy={isLoading}
+                aria-disabled={isLoading}
                 onClick={() => setDialogContent('name')}
               >
                 Back
@@ -183,18 +188,6 @@ function FullNameForm({ form }: FullNameFormProps) {
   )
 }
 
-const backgroundColors = [
-  'hsl(252, 100%, 80%)',
-  'hsl(4, 90%, 85%)',
-  'hsl(48, 100%, 85%)',
-  'hsl(141, 70%, 80%)',
-  'hsl(204, 100%, 80%)',
-  'hsl(338, 100%, 85%)',
-  'hsl(174, 100%, 80%)',
-  'hsl(0, 100%, 100%)',
-  'hsl(0, 0%, 20%)',
-]
-
 type AvatarPickerProps = FormItemsProps & {}
 
 function AvatarPicker({ form }: AvatarPickerProps) {
@@ -221,7 +214,7 @@ function AvatarPicker({ form }: AvatarPickerProps) {
             <FormControl>
               <ScrollArea>
                 <div className="flex items-center gap-3 p-1">
-                  {backgroundColors.map(color => (
+                  {avatarBackgroundColors.map(color => (
                     <div
                       key={color}
                       style={{ backgroundColor: color }}

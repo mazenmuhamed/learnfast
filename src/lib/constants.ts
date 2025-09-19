@@ -43,3 +43,15 @@ export const navigationGrowItems = [
 ]
 
 export const SHORTCUTS_STORAGE_KEY = 'shortcuts-has-been-shown'
+
+export const avatarBackgroundColors = [
+  'hsl(252, 100%, 80%)',
+  'hsl(4, 90%, 85%)',
+  'hsl(48, 100%, 85%)',
+  'hsl(141, 70%, 80%)',
+  'hsl(204, 100%, 80%)',
+  'hsl(338, 100%, 85%)',
+  'hsl(174, 100%, 80%)',
+  'hsl(0, 100%, 100%)',
+  'hsl(0, 0%, 20%)',
+]

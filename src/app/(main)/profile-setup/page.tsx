@@ -21,5 +21,10 @@ export default async function CompleteProfilePage() {
     return redirect('/sign-in')
   }
 
+  // If the user already has a name and image, redirect to home
+  if (session.user.name && session.user.image) {
+    return redirect('/home')
+  }
+
   return <SetupProfileDialog />
 }
