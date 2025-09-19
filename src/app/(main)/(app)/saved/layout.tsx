@@ -35,10 +35,7 @@ export default async function Layout({
           </h1>
           <p className="text-muted-foreground text-center">
             Explore LearnFast{' '}
-            <Link
-              href="/courses"
-              className="text-popover-foreground text-lg underline"
-            >
+            <Link href="/courses" className="text-popover-foreground underline">
               courses
             </Link>{' '}
             and start bookmarking your favorite learning resources.
