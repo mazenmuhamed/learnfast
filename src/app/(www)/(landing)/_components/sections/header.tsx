@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { UserOutput } from '@/lib/types'
+import { User } from 'better-auth'
 
 import { Button } from '@/components/ui/button'
 
@@ -16,7 +16,7 @@ const images = [
   '/images/users/user-4.jpg',
 ]
 
-export function Header({ user }: { user: UserOutput }) {
+export function Header({ user }: { user: User | undefined }) {
   return (
     <header className="main-container flex flex-col items-center space-y-8 py-10 md:space-y-10 md:py-16 lg:space-y-14 lg:py-20">
       <div className="bg-background relative flex w-fit items-center gap-2 overflow-hidden rounded-full border p-1.5 shadow-sm">

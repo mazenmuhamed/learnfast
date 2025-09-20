@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { caller } from '@/trpc/server'
+import { headers } from 'next/headers'
 
+import { auth } from '@/lib/auth'
 import { Separator } from '@/components/ui/separator'
 
 import { Header } from './_components/sections/header'
@@ -23,11 +24,13 @@ export const metadata: Metadata = {
 }
 
 export default async function LandingPage() {
-  const user = await caller.user.me()
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
 
   return (
     <>
-      <Header user={user} />
+      <Header user={session?.user} />
       <Features />
       <Institutions />
       <FeaturesCarousel />

@@ -10,6 +10,8 @@ import {
   TvMinimalPlay,
 } from 'lucide-react'
 
+import { User } from 'better-auth'
+
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import {
@@ -24,9 +26,8 @@ import {
 import { ProductMenuItems } from './product-menu-items'
 import { ResourcesMenuItem } from './resources-menu-item'
 import { MenuItem, MobileNavigationMenu } from './mobile-navigation-menu'
-import { UserOutput } from '@/lib/types'
 
-export function MobileNavigation({ user }: { user: UserOutput }) {
+export function MobileNavigation({ user }: { user: User }) {
   return (
     <div className="lg:hidden">
       <Sheet>
