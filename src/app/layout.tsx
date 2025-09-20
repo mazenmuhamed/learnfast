@@ -4,7 +4,10 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { Toaster } from '@/components/ui/sonner'
+import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
+import { ourFileRouter } from '@/app/api/uploadthing/core'
 import { TRPCReactProvider } from '@/trpc/client'
+import { extractRouterConfig } from 'uploadthing/server'
 
 import './globals.css'
 
@@ -39,8 +42,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={font.variable}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-        <Toaster />
+        <TRPCReactProvider>
+          <Toaster />
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+          {children}
+        </TRPCReactProvider>
         <Analytics />
         <SpeedInsights />
       </body>

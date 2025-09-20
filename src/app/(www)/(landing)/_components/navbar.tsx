@@ -1,22 +1,15 @@
-'use client'
-
 import Link from 'next/link'
-import { useSuspenseQuery } from '@tanstack/react-query'
 
-import { useTRPC } from '@/trpc/client'
+import { caller } from '@/trpc/server'
 
 import { Logo } from '@/modules/components/logo'
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { MobileNavigation } from './mobile-navigation'
 import { DesktopNavigation } from './desktop-navigation'
 
-export function Navbar() {
-  const trpc = useTRPC()
-  const { data: user, isPending } = useSuspenseQuery(
-    trpc.user.checkAuth.queryOptions(),
-  )
+export async function Navbar() {
+  const user = await caller.user.me()
 
   return (
     <nav className="bg-background sticky top-0 z-50 w-full">
@@ -28,13 +21,12 @@ export function Navbar() {
           <DesktopNavigation />
         </div>
         <div className="flex flex-1 items-center justify-end gap-2 max-lg:hidden">
-          {isPending && <Skeleton className="h-8 w-24 rounded-md" />}
-          {!isPending && user && (
+          {user && (
             <Button asChild className="text-[15px]">
               <Link href="/home">Go to App</Link>
             </Button>
           )}
-          {!isPending && !user && (
+          {!user && (
             <>
               <Button asChild variant="ghost" className="text-[15px]">
                 <Link href="/sign-in">Sign in</Link>
@@ -45,7 +37,7 @@ export function Navbar() {
             </>
           )}
         </div>
-        <MobileNavigation />
+        {user && <MobileNavigation user={user} />}
       </div>
     </nav>
   )

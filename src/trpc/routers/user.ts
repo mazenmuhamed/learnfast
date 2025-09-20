@@ -73,6 +73,34 @@ export const userRouter = createTRPCRouter({
         data: { name, nameUpdatedAt: new Date() },
       })
     }),
+  updateProfileAvatar: protectedProcedure
+    .input(
+      z.object({
+        avatar: z.string().optional(),
+        backgroundColor: z.string().optional(),
+      }),
+    )
+    .mutation(async opts => {
+      const { session } = opts.ctx
+      const { avatar, backgroundColor } = opts.input
+
+      const user = await prisma.user.findUnique({
+        where: { id: session.id },
+      })
+
+      if (!user) {
+        throw new TRPCError({ code: 'NOT_FOUND' })
+      }
+
+      if (avatar === user.image && backgroundColor === user.backgroundColor) {
+        return // No changes, exit early
+      }
+
+      await prisma.user.update({
+        where: { id: session.id },
+        data: { image: avatar, backgroundColor },
+      })
+    }),
   completeProfile: protectedProcedure
     .input(
       z.object({

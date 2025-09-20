@@ -1,18 +1,15 @@
 'use client'
 
 import z from 'zod'
-import Image from 'next/image'
 import { toast } from 'sonner'
 import { Loader } from 'lucide-react'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
-import { ControllerRenderProps, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import { cn } from '@/lib/utils'
 import { useTRPC } from '@/trpc/client'
 import { authClient } from '@/lib/auth-client'
-import { avatarBackgroundColors } from '@/lib/constants'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -36,6 +33,7 @@ import {
 } from '@/components/ui/form'
 
 import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
+import { AvatarPicker } from './avatar-picker'
 
 const formSchema = z.object({
   name: z
@@ -110,7 +108,10 @@ export function SetupProfileDialog() {
                 <FullNameForm form={form} />
               ) : (
                 <ScrollArea className="h-[60svh]">
-                  <AvatarPicker form={form} />
+                  <AvatarPicker
+                    form={form}
+                    description="You can change this later in your profile settings."
+                  />
                 </ScrollArea>
               )}
             </form>
@@ -160,9 +161,7 @@ type FormItemsProps = {
   form: ReturnType<typeof useForm<z.infer<typeof formSchema>>>
 }
 
-type FullNameFormProps = FormItemsProps & {}
-
-function FullNameForm({ form }: FullNameFormProps) {
+function FullNameForm({ form }: FormItemsProps) {
   return (
     <BlurFade direction="left" inView>
       <FormField
@@ -173,104 +172,6 @@ function FullNameForm({ form }: FullNameFormProps) {
             <FormLabel>What should we call you? (This is public)</FormLabel>
             <FormControl>
               <Input {...field} />
-            </FormControl>
-            <FormDescription>
-              You can change this later in your profile settings.
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    </BlurFade>
-  )
-}
-
-type AvatarPickerProps = FormItemsProps & {}
-
-function AvatarPicker({ form }: AvatarPickerProps) {
-  const [backgroundColor, setBackgroundColor] = useState(
-    form.getValues('backgroundColor'),
-  )
-
-  function handlePickColor(
-    field: ControllerRenderProps<z.infer<typeof formSchema>, 'backgroundColor'>,
-    color: string,
-  ) {
-    setBackgroundColor(color)
-    field.onChange(color)
-  }
-
-  return (
-    <BlurFade direction="left" inView className="space-y-5">
-      <FormField
-        control={form.control}
-        name="backgroundColor"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Pick a background color</FormLabel>
-            <FormControl>
-              <ScrollArea>
-                <div className="flex items-center gap-3 p-1">
-                  {avatarBackgroundColors.map(color => (
-                    <div
-                      key={color}
-                      style={{ backgroundColor: color }}
-                      onClick={() => handlePickColor(field, color)}
-                      className={cn(
-                        'size-8 cursor-pointer rounded-full border opacity-60 transition hover:scale-105 hover:opacity-100 dark:border-none',
-                        color === backgroundColor &&
-                          'ring-primary opacity-100 ring-2',
-                      )}
-                    />
-                  ))}
-                </div>
-              </ScrollArea>
-            </FormControl>
-            <FormDescription>
-              You can change this later in your profile settings.
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={form.control}
-        name="avatar"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="mb-2">Choose your avatar</FormLabel>
-            <FormControl>
-              <ScrollArea>
-                <div className="grid grid-cols-3 gap-2 p-1">
-                  {new Array(12).fill(null).map((_, index) => (
-                    <div
-                      key={index}
-                      style={{ backgroundColor }}
-                      onClick={() =>
-                        field.onChange(
-                          `/profile-avatars/avatar-${index + 1}.png`,
-                        )
-                      }
-                      className={cn(
-                        'group relative flex size-36 cursor-pointer items-center justify-center overflow-hidden rounded-full border opacity-70 transition hover:opacity-100 dark:border-none',
-                        field.value ===
-                          `/profile-avatars/avatar-${index + 1}.png` &&
-                          'ring-primary opacity-100 ring-3',
-                      )}
-                    >
-                      <Image
-                        key={index}
-                        src={`/profile-avatars/avatar-${index + 1}.png`}
-                        alt={`Avatar ${index + 1}`}
-                        quality={100}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 36px"
-                        className="translate-y-1 scale-105 object-contain transition-transform group-hover:scale-110"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </ScrollArea>
             </FormControl>
             <FormDescription>
               You can change this later in your profile settings.

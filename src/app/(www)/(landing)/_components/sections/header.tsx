@@ -1,14 +1,9 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
-import { Suspense } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
 
-import { authClient } from '@/lib/auth-client'
+import { UserOutput } from '@/lib/types'
 
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { BlurFade } from '@/app/(www)/(landing)/_components/animations/blur-fade'
 import { BorderBeam } from '@/app/(www)/(landing)/_components/animations/border-beam'
@@ -21,9 +16,7 @@ const images = [
   '/images/users/user-4.jpg',
 ]
 
-export function Header() {
-  const { data: user } = authClient.useSession()
-
+export function Header({ user }: { user: UserOutput }) {
   return (
     <header className="main-container flex flex-col items-center space-y-8 py-10 md:space-y-10 md:py-16 lg:space-y-14 lg:py-20">
       <div className="bg-background relative flex w-fit items-center gap-2 overflow-hidden rounded-full border p-1.5 shadow-sm">
@@ -80,16 +73,11 @@ export function Header() {
           <Button asChild size="lg" variant="outline" className="text-base">
             <Link href="/courses">Discover Courses</Link>
           </Button>
-          {/* TODO: Change this later */}
-          <ErrorBoundary fallback={<div>Failed to load data</div>}>
-            <Suspense fallback={<Skeleton className="h-10 w-32 rounded-md" />}>
-              <Button asChild size="lg" className="text-base">
-                <Link href={user ? '/home' : '/sign-in'}>
-                  {user ? 'Go to App' : 'Get Started'}
-                </Link>
-              </Button>
-            </Suspense>
-          </ErrorBoundary>
+          <Button asChild size="lg" className="text-base">
+            <Link href={user ? '/home' : '/sign-in'}>
+              {user ? 'Go to App' : 'Get Started'}
+            </Link>
+          </Button>
         </BlurFade>
       </div>
       <BlurFade inView direction="up" delay={0.5}>

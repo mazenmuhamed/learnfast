@@ -23,18 +23,21 @@ export function AppDialog({
   description,
   children,
   open,
-  className,
   onOpenChange,
   onOpenAutoFocus,
+  className,
 }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="rounded-2xl" onOpenAutoFocus={onOpenAutoFocus}>
+      <DialogContent
+        className={cn('rounded-2xl', className)}
+        onOpenAutoFocus={onOpenAutoFocus}
+      >
         <DialogHeader className="-space-y-1">
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        <div className={cn(className)}>{children}</div>
+        {children}
       </DialogContent>
     </Dialog>
   )

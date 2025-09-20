@@ -71,9 +71,8 @@ export function ShortcutsDialog({
       onOpenAutoFocus={e => e.preventDefault()}
       title="Keyboard Shortcuts"
       description="Use these keyboard shortcuts to navigate the app quickly and efficiently."
-      className="-mt-1 px-1"
     >
-      <div className="py-2">
+      <div className="-mt-1 px-1 py-2">
         <div className="relative w-full">
           <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 transform" />
           <Input

@@ -73,7 +73,7 @@ export function DesktopNavigation() {
         variant="ghost"
         className="ml-1 px-2 text-base max-lg:hidden"
       >
-        <Link href="/">For Teams</Link>
+        <Link href="https://github.com/mazenmuhamed/learnfast">GitHub</Link>
       </Button>
     </>
   )

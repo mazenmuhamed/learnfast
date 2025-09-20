@@ -11,9 +11,9 @@ export function DiscountBanner() {
   const [hide, setHide] = useState(false)
 
   const trpc = useTRPC()
-  const { data } = useQuery(trpc.user.checkAuth.queryOptions())
+  const { data, isLoading } = useQuery(trpc.user.checkAuth.queryOptions())
 
-  if (hide || data) return null
+  if (hide || data || isLoading) return null
 
   return (
     <div className="bg-secondary dark:bg-popover dark:text-popover-foreground text-secondary-foreground relative px-4 py-3 max-sm:hidden">

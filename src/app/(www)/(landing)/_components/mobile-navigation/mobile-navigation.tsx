@@ -1,6 +1,7 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSuspenseQuery } from '@tanstack/react-query'
 import {
   MenuIcon,
   User2,
@@ -9,10 +10,7 @@ import {
   TvMinimalPlay,
 } from 'lucide-react'
 
-import { useTRPC } from '@/trpc/client'
-
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 import { Separator } from '@/components/ui/separator'
 import {
   Sheet,
@@ -26,13 +24,9 @@ import {
 import { ProductMenuItems } from './product-menu-items'
 import { ResourcesMenuItem } from './resources-menu-item'
 import { MenuItem, MobileNavigationMenu } from './mobile-navigation-menu'
+import { UserOutput } from '@/lib/types'
 
-export function MobileNavigation() {
-  const trpc = useTRPC()
-  const { data: user, isPending } = useSuspenseQuery(
-    trpc.user.checkAuth.queryOptions(),
-  )
-
+export function MobileNavigation({ user }: { user: UserOutput }) {
   return (
     <div className="lg:hidden">
       <Sheet>
@@ -80,17 +74,19 @@ export function MobileNavigation() {
                 <MenuItem href="/" label="For Teams" icon={Users2} />
               </div>
             </MobileNavigationMenu>
-            <Link href="/" className="py-2 font-medium">
-              For Teams
+            <Link
+              className="py-2 font-medium"
+              href="https://github.com/mazenmuhamed/learnfast"
+            >
+              GitHub
             </Link>
             <Separator className="my-4" />
-            {isPending && <Skeleton className="h-8 w-full rounded-md" />}
-            {!isPending && user && (
+            {user && (
               <Button asChild variant="outline" className="text-[15px]">
                 <Link href="/home">Go to App</Link>
               </Button>
             )}
-            {!isPending && !user && (
+            {!user && (
               <div className="flex flex-col gap-2">
                 <Button asChild variant="outline" className="text-[15px]">
                   <Link href="/sign-in">Sign in</Link>
