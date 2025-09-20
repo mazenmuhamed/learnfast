@@ -3,19 +3,21 @@
 import { usePathname, useRouter } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
+
 import { Button } from '@/components/ui/button'
 
 type Props = {
   items: { label: string; href: string; disabled?: boolean }[]
   defaultActiveTab?: string
+  className?: string
 }
 
-export function AppTabs({ items, defaultActiveTab }: Props) {
+export function AppTabs({ items, defaultActiveTab, className }: Props) {
   const router = useRouter()
   const pathname = usePathname()
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn('flex items-center gap-2', className)}>
       {items.map((item, index) => {
         const isActive =
           pathname === item.href ||

@@ -12,8 +12,8 @@ import { Logo } from '@/modules/components/logo'
 import { UserMenu } from './user-menu'
 import { Searchbar } from './searchbar'
 import { UpgradeButton } from './upgrade-button'
-import { NotificationButton } from './notification-button'
 import { ActionTooltip } from '../action-tooltip'
+import { NotificationButton } from './notification-button'
 
 export async function MainHeader() {
   prefetch(trpc.user.me.queryOptions())

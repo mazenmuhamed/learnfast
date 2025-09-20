@@ -4,7 +4,6 @@ import z from 'zod'
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { Loader } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
@@ -51,8 +50,6 @@ const formSchema = z.object({
 export function SetupProfileDialog() {
   const [open, setOpen] = useState(true)
   const [dialogContent, setDialogContent] = useState<'name' | 'avatar'>('name')
-
-  const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

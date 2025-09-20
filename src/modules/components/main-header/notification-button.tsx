@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { BellIcon } from 'lucide-react'
+import { BellIcon, Dot } from 'lucide-react'
+
+import { useIsHover } from '@/hooks/use-is-hover'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -64,25 +66,17 @@ const initialNotifications = [
   },
 ]
 
-function Dot({ className }: { className?: string }) {
-  return (
-    <svg
-      width="6"
-      height="6"
-      fill="currentColor"
-      viewBox="0 0 6 6"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <circle cx="3" cy="3" r="3" />
-    </svg>
-  )
-}
-
 export function NotificationButton() {
   const [notifications, setNotifications] = useState(initialNotifications)
-  const unreadCount = notifications.filter(n => n.unread).length
+
+  const {
+    isOpened,
+    onOpenChange,
+    containerRef,
+    handleTriggerClick,
+    onMouseEnter,
+    onMouseLeave,
+  } = useIsHover()
 
   const handleMarkAllAsRead = () => {
     setNotifications(
@@ -100,73 +94,85 @@ export function NotificationButton() {
     )
   }
 
+  const unreadCount = notifications.filter(n => n.unread).length
+
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="size-8"
-          aria-label="Open notifications"
-        >
-          <BellIcon aria-hidden="true" className="size-[18px]" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="min-w-96 -translate-x-4 p-1 drop-shadow-xl">
-        <div className="flex items-baseline justify-between gap-4 px-3 py-2">
-          <div className="pt-1 text-sm font-semibold">Notifications</div>
-          {unreadCount > 0 && (
-            <button
-              className="cursor-pointer text-xs font-medium hover:underline"
-              onClick={handleMarkAllAsRead}
-            >
-              Mark all as read
-            </button>
-          )}
-        </div>
-        <Separator className="my-1.5" />
-        {notifications.map(notification => (
-          <div
-            key={notification.id}
-            className="hover:bg-accent rounded-md px-3 py-2 text-sm transition-colors"
+    <div ref={containerRef}>
+      <Popover open={isOpened} onOpenChange={onOpenChange}>
+        <PopoverTrigger asChild>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="size-8"
+            onClick={handleTriggerClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            aria-label="Open notifications"
           >
-            <div className="relative flex items-start gap-3 pe-3">
-              <Avatar className="size-11">
-                <AvatarImage
-                  src={`https://avatar.vercel.sh/${notification.user}`}
-                  alt={notification.user}
-                />
-                <AvatarFallback>
-                  {notification.user[0].toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex-1 space-y-1">
-                <button
-                  className="text-foreground/80 text-left after:absolute after:inset-0"
-                  onClick={() => handleNotificationClick(notification.id)}
-                >
-                  <span className="text-foreground font-medium hover:underline">
-                    {notification.user}
-                  </span>{' '}
-                  {notification.action}{' '}
-                  <span className="text-foreground font-medium hover:underline">
-                    {notification.target}
-                  </span>
-                  .
-                </button>
-                <div className="text-muted-foreground text-xs">
-                  {notification.timestamp}
-                </div>
-              </div>
-              {notification.unread && (
-                <div className="absolute end-0 self-center">
-                  <Dot />
-                </div>
-              )}
-            </div>
+            <BellIcon aria-hidden="true" className="size-[18px]" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          className="min-w-96 -translate-x-4 p-1 drop-shadow-xl"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onCloseAutoFocus={e => e.preventDefault()}
+        >
+          <div className="flex items-baseline justify-between gap-4 px-3 py-2">
+            <div className="pt-1 text-sm font-semibold">Notifications</div>
+            {unreadCount > 0 && (
+              <button
+                className="cursor-pointer text-xs font-medium hover:underline"
+                onClick={handleMarkAllAsRead}
+              >
+                Mark all as read
+              </button>
+            )}
           </div>
-        ))}
-      </PopoverContent>
-    </Popover>
+          <Separator className="my-1.5" />
+          {notifications.map(notification => (
+            <div
+              key={notification.id}
+              className="hover:bg-accent rounded-md px-3 py-2 text-sm transition-colors"
+            >
+              <div className="relative flex items-start gap-3 pe-3">
+                <Avatar className="size-11">
+                  <AvatarImage
+                    src={`https://avatar.vercel.sh/${notification.user}`}
+                    alt={notification.user}
+                  />
+                  <AvatarFallback>
+                    {notification.user[0].toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 space-y-1">
+                  <button
+                    className="text-foreground/80 text-left after:absolute after:inset-0"
+                    onClick={() => handleNotificationClick(notification.id)}
+                  >
+                    <span className="text-foreground font-medium hover:underline">
+                      {notification.user}
+                    </span>{' '}
+                    {notification.action}{' '}
+                    <span className="text-foreground font-medium hover:underline">
+                      {notification.target}
+                    </span>
+                    .
+                  </button>
+                  <div className="text-muted-foreground text-xs">
+                    {notification.timestamp}
+                  </div>
+                </div>
+                {notification.unread && (
+                  <div className="absolute end-0 self-center">
+                    <Dot />
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </PopoverContent>
+      </Popover>
+    </div>
   )
 }

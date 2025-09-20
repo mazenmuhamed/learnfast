@@ -6,6 +6,7 @@ import { AppSidebar } from '@/modules/navigation/app-sidebar'
 import { MainHeader } from '@/modules/components/main-header'
 
 import { UpgradeBanner } from '../components/upgrade-banner'
+import { UserStatusBanner } from '../profile/components/user-status-banner'
 import { SetupProfileDialog } from '../profile/components/setup-profile-dialog'
 
 export async function MainLayout({ children }: React.PropsWithChildren) {
@@ -31,6 +32,7 @@ export async function MainLayout({ children }: React.PropsWithChildren) {
       <SidebarInset>
         <MainHeader />
         <UpgradeBanner />
+        <UserStatusBanner />
         <main className="relative flex flex-1 p-4 pt-8">
           <div className="mx-auto w-full max-w-6xl p-4">{children}</div>
         </main>

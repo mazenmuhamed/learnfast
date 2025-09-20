@@ -8,27 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id              String     @id
-  name            String
-  email           String
-  emailVerified   Boolean    @default(false)
-  image           String?
-  backgroundColor String?
-  sessions        Session[]
-  followers       Follow[]   @relation("following")
-  followings      Follow[]   @relation("follower")
-  accounts        Account[]
-  bookmarks       Bookmark[]
-  nameUpdatedAt   DateTime?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  @@unique([email])
-  @@map("user")
-}
-
 model Session {
   id        String   @id
   expiresAt DateTime
@@ -72,6 +51,32 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model User {
+  id               String     @id
+  name             String
+  email            String
+  emailVerified    Boolean    @default(false)
+  bio              String?
+  nickname         String?
+  country          String?
+  image            String?
+  backgroundColor  String?
+  nameUpdatedAt    DateTime?
+  isPrivateAccount Boolean    @default(false)
+  followers        Follow[]   @relation("following")
+  followings       Follow[]   @relation("follower")
+  sessions         Session[]
+  accounts         Account[]
+  bookmarks        Bookmark[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@unique([email])
+  @@index([name, nickname])
+  @@map("user")
 }
 
 model Follow {

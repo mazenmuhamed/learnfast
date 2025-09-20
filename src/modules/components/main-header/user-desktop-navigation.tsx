@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { DoorOpen, Monitor, Moon, Sun, User2 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -31,8 +32,11 @@ export function UserDesktopNavigation({
   handleLogout,
 }: Props) {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="cursor-pointer overflow-hidden rounded-full">
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger
+        className="cursor-pointer overflow-hidden rounded-full"
+        aria-label="User menu"
+      >
         <Avatar
           className="rounded-full"
           style={{ backgroundColor: user.backgroundColor || undefined }}
@@ -47,6 +51,7 @@ export function UserDesktopNavigation({
         align="end"
         side="bottom"
         sideOffset={4}
+        onCloseAutoFocus={e => e.preventDefault()}
         className="min-w-56 rounded-2xl border-none shadow-none drop-shadow-xl"
       >
         <DropdownMenuLabel className="px-2 font-normal">
@@ -112,9 +117,11 @@ export function UserDesktopNavigation({
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="py-1">
-          <DropdownMenuItem>
-            <User2 />
-            Account
+          <DropdownMenuItem asChild>
+            <Link href="/profile">
+              <User2 />
+              Account
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={handleLogout}>
             <DoorOpen />

@@ -8,7 +8,13 @@ import { TRPCReactProvider } from '@/trpc/client'
 
 import './globals.css'
 
-const font = FontSans({ subsets: ['latin'] })
+const font = FontSans({
+  display: 'swap',
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  fallback: ['ui-sans-serif', 'system-ui', 'sans-serif'],
+})
 
 export const metadata: Metadata = {
   title: 'LearnFast',
@@ -32,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={font.className}>
+      <body className={font.variable}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Toaster />
         <Analytics />
