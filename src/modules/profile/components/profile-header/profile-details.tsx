@@ -136,6 +136,7 @@ export function ProfileDetails({ user }: { user: UserOutput }) {
                   align="end"
                   side="bottom"
                   className="min-w-56 rounded-xl"
+                  onCloseAutoFocus={e => e.preventDefault()}
                 >
                   <DropdownMenuItem
                     className="rounded-lg"
@@ -162,6 +163,7 @@ export function ProfileDetails({ user }: { user: UserOutput }) {
                   align="end"
                   side="bottom"
                   className="min-w-56 rounded-xl"
+                  onCloseAutoFocus={e => e.preventDefault()}
                 >
                   <DropdownMenuItem
                     className="rounded-lg"
