@@ -34,7 +34,7 @@ export function AppDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={cn('rounded-2xl max-sm:h-svh max-sm:w-svh', className)}
+        className={cn('rounded-2xl', className)}
         onOpenAutoFocus={onOpenAutoFocus}
         onEscapeKeyDown={onEscapeKeyDown}
         onPointerDownOutside={onClickOutside}

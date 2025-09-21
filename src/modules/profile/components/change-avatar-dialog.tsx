@@ -216,9 +216,9 @@ export function ChangeAvatarDialog({
       title="Change Avatar"
       description="Change your avatar or upload a new one."
       onOpenAutoFocus={e => e.preventDefault()}
-      className="flex h-full max-h-[90vh] flex-col rounded-2xl sm:max-w-xl 2xl:max-h-[55rem]"
+      className="flex h-full max-h-[80vh] flex-col rounded-2xl sm:max-h-[90vh] sm:max-w-xl 2xl:max-h-[55rem]"
     >
-      <ScrollArea className="-mx-6 h-3/4 flex-1 grow px-6">
+      <ScrollArea className="-mx-6 h-[70%] flex-1 grow px-6 sm:h-3/4">
         <Form {...form}>
           <form
             id="change-avatar-form"
@@ -286,7 +286,7 @@ export function ChangeAvatarDialog({
           </form>
         </Form>
       </ScrollArea>
-      <DialogFooter className="mt-auto">
+      <DialogFooter className="sm:mt-auto">
         <Button
           size="lg"
           type="submit"
