@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils'
 import { avatarBackgroundColors } from '@/lib/constants'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
-
 import {
   FormControl,
   FormDescription,
@@ -39,7 +38,7 @@ export function AvatarPicker({
   )
 
   return disableTransition ? (
-    <div className="space-y-6">
+    <div className="grid gap-y-6">
       <BackgroundPicker
         form={form}
         backgroundColor={backgroundColor}
@@ -53,7 +52,7 @@ export function AvatarPicker({
       />
     </div>
   ) : (
-    <BlurFade direction="left" inView className="space-y-6">
+    <BlurFade direction="left" inView className="grid gap-y-6">
       <BackgroundPicker
         form={form}
         backgroundColor={backgroundColor}
@@ -96,22 +95,20 @@ export function BackgroundPicker({
         <FormItem>
           <FormLabel>Pick a background color</FormLabel>
           <FormControl>
-            <ScrollArea>
-              <div className="flex items-center gap-3 p-1">
-                {avatarBackgroundColors.map(color => (
-                  <div
-                    key={color}
-                    style={{ backgroundColor: color }}
-                    onClick={() => handlePickColor(field, color)}
-                    className={cn(
-                      'size-8 cursor-pointer rounded-full border opacity-60 transition hover:scale-105 hover:opacity-100 dark:border-none',
-                      color === backgroundColor &&
-                        'ring-primary opacity-100 ring-2',
-                    )}
-                  />
-                ))}
-              </div>
-            </ScrollArea>
+            <div className="flex flex-wrap items-center gap-3 p-1">
+              {avatarBackgroundColors.map(color => (
+                <div
+                  key={color}
+                  style={{ backgroundColor: color }}
+                  onClick={() => handlePickColor(field, color)}
+                  className={cn(
+                    'size-8 cursor-pointer rounded-full border opacity-60 transition hover:scale-105 hover:opacity-100 dark:border-none',
+                    color === backgroundColor &&
+                      'ring-primary opacity-100 ring-2',
+                  )}
+                />
+              ))}
+            </div>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
@@ -139,7 +136,7 @@ export function SelectAvatar({
           <FormLabel className="mb-2">Choose your avatar</FormLabel>
           <FormControl>
             <ScrollArea>
-              <div className="grid grid-cols-3 gap-3 p-1">
+              <div className="grid w-full place-items-center gap-3 p-1 max-[640px]:grid-cols-[repeat(2,auto)] max-[430px]:place-items-baseline sm:grid-cols-[repeat(3,auto)] sm:justify-between">
                 {new Array(12).fill(null).map((_, index) => (
                   <div
                     key={index}
@@ -148,7 +145,7 @@ export function SelectAvatar({
                       field.onChange(`/profile-avatars/avatar-${index + 1}.png`)
                     }
                     className={cn(
-                      'group relative flex size-36 cursor-pointer items-center justify-center overflow-hidden rounded-full border opacity-70 transition hover:opacity-100 dark:border-none',
+                      'group flex size-40 cursor-pointer items-center justify-center overflow-hidden rounded-full border opacity-70 transition hover:opacity-100 dark:border-none',
                       field.value ===
                         `/profile-avatars/avatar-${index + 1}.png` &&
                         'ring-primary opacity-100 ring-3',
@@ -159,9 +156,10 @@ export function SelectAvatar({
                       src={`/profile-avatars/avatar-${index + 1}.png`}
                       alt={`Avatar ${index + 1}`}
                       quality={100}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 36px"
-                      className="translate-y-1 scale-105 object-contain transition-transform group-hover:scale-110"
+                      width={80}
+                      height={80}
+                      sizes="(max-width: 640px) 100vw, 40px"
+                      className="min-h-fit w-full min-w-fit translate-y-1 scale-105 object-contain transition-transform group-hover:scale-110"
                     />
                   </div>
                 ))}

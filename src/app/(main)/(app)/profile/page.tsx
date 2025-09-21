@@ -7,6 +7,8 @@ import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
 import { ProfileView } from '@/modules/profile/views/profile-view'
 
+import 'flag-icons/css/flag-icons.min.css'
+
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
@@ -26,8 +28,10 @@ export default async function ProfilePage() {
   prefetch(trpc.user.me.queryOptions())
 
   return (
-    <HydrateClient>
-      <ProfileView />
-    </HydrateClient>
+    <>
+      <HydrateClient>
+        <ProfileView />
+      </HydrateClient>
+    </>
   )
 }

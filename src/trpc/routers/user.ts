@@ -120,6 +120,37 @@ export const userRouter = createTRPCRouter({
         data: { coverUrl },
       })
     }),
+  updateProfile: protectedProcedure
+    .input(
+      z.object({
+        nickname: z.string().min(2).max(10).optional(),
+        bio: z.string().max(160).optional(),
+        country: z.string().optional(),
+        is_account_private: z.boolean().optional(),
+      }),
+    )
+    .mutation(async opts => {
+      const { session } = opts.ctx
+      const { nickname, bio, country, is_account_private } = opts.input
+
+      const user = await prisma.user.findUnique({
+        where: { id: session.id },
+      })
+
+      if (!user) {
+        throw new TRPCError({ code: 'NOT_FOUND' })
+      }
+
+      await prisma.user.update({
+        where: { id: session.id },
+        data: {
+          nickname,
+          bio,
+          country,
+          isPrivateAccount: is_account_private,
+        },
+      })
+    }),
   completeProfile: protectedProcedure
     .input(
       z.object({

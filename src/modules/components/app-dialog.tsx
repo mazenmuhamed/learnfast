@@ -12,6 +12,8 @@ export type Props = {
   open: boolean
   onOpenChange: (open: boolean) => void
   onOpenAutoFocus?: (event: Event) => void
+  onEscapeKeyDown?: (event: KeyboardEvent) => void
+  onClickOutside?: (event: Event) => void
   title: string
   description?: string
   children: React.ReactNode
@@ -26,12 +28,16 @@ export function AppDialog({
   onOpenChange,
   onOpenAutoFocus,
   className,
+  onEscapeKeyDown,
+  onClickOutside,
 }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={cn('rounded-2xl', className)}
+        className={cn('rounded-2xl max-sm:h-svh max-sm:w-svh', className)}
         onOpenAutoFocus={onOpenAutoFocus}
+        onEscapeKeyDown={onEscapeKeyDown}
+        onPointerDownOutside={onClickOutside}
       >
         <DialogHeader className="-space-y-1">
           <DialogTitle>{title}</DialogTitle>
