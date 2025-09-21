@@ -79,7 +79,7 @@ export function ProfileDetails({ user }: { user: UserOutput }) {
                 <span className="text-muted-foreground">({user.nickname})</span>
               )}
             </h1>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 max-md:justify-center">
               {user.country && (
                 <div className="flex items-center gap-1">
                   <div className="flex items-center gap-1.5">
