@@ -5,19 +5,13 @@ import Image from 'next/image'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useDropzone } from '@uploadthing/react'
+import { useRef, useEffect } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { ControllerRenderProps, useForm, useWatch } from 'react-hook-form'
-import { ChangeEvent, useCallback, useRef, useState, useEffect } from 'react'
-import imageCompression, { Options } from 'browser-image-compression'
-import {
-  generateClientDropzoneAccept,
-  generatePermittedFileTypes,
-} from '@uploadthing/shared'
 
 import { useTRPC } from '@/trpc/client'
 import { authClient } from '@/lib/auth-client'
-import { useUploadThing } from '@/lib/uploadthing'
+import { useUploadImage } from '@/hooks/use-upload-image'
 
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -54,8 +48,8 @@ export function ChangeAvatarDialog({
   currentAvatar,
   currentBackgroundColor,
 }: Props) {
-  const [files, setFiles] = useState<File[]>([])
-
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const inputRef = useRef<HTMLInputElement>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,35 +61,32 @@ export function ChangeAvatarDialog({
     },
   })
 
-  const trpc = useTRPC()
-  const queryClient = useQueryClient()
+  const {
+    setFiles,
+    isUploading,
+    startUploadMedia,
+    getRootProps,
+    getInputProps,
+    handleUploadFiles,
+    handleDeletePreview,
+  } = useUploadImage({
+    onCompressionComplete: url => form.setValue('imageUrl', url),
+    onDeletePreview: () => {
+      form.setValue('imageUrl', undefined)
+      form.trigger() // Reset form state to avoid stale validation errors
+    },
+  })
 
   const updateProfileAvatar = useMutation(
     trpc.user.updateProfileAvatar.mutationOptions(),
   )
 
-  const { startUpload, isUploading, routeConfig } = useUploadThing(
-    'imageUploader',
-    {
-      onUploadBegin: () => {
-        toast.loading('Uploading...', { id: 'upload-image' })
-      },
-      // Reset the preview image and files after submitting post form
-      onClientUploadComplete: () => {
-        setFiles([])
-      },
-      onUploadError: e => {
-        console.log('[UPLOAD_ERROR]', e)
-        toast.error('Something went wrong while uploading the image.')
-      },
-    },
-  )
-
   // Watch all form values to detect changes
-  const watchedValues = useWatch({ control: form.control })
-  const imagePreview = watchedValues.imageUrl
-  const selectedAvatar = watchedValues.avatar
-  const selectedBackgroundColor = watchedValues.backgroundColor
+  const {
+    avatar: selectedAvatar,
+    imageUrl: imagePreview,
+    backgroundColor: selectedBackgroundColor,
+  } = useWatch({ control: form.control })
 
   // Check if form has meaningful changes
   const hasChanges =
@@ -113,69 +104,7 @@ export function ChangeAvatarDialog({
       })
       setFiles([])
     }
-  }, [open, currentAvatar, currentBackgroundColor, form])
-
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    setFiles(acceptedFiles)
-  }, [])
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: generateClientDropzoneAccept(
-      generatePermittedFileTypes(routeConfig).fileTypes,
-    ),
-  })
-
-  async function handleUploadFiles(
-    event: ChangeEvent<HTMLInputElement>,
-    field: ControllerRenderProps<z.infer<typeof formSchema>, 'imageUrl'>,
-  ) {
-    if (isUploading) return
-
-    getInputProps?.().onChange?.(event)
-
-    const file = event.target.files?.[0]
-
-    if (!file) return
-
-    const options: Options = {
-      maxSizeMB: 2, // Target size in MB
-      maxWidthOrHeight: 800, // Resize dimensions
-      useWebWorker: true,
-    }
-
-    try {
-      const compressedFile = await imageCompression(file, options)
-      const url = await imageCompression.getDataUrlFromFile(compressedFile)
-
-      // setPreviewImage(url)
-      field.onChange(url)
-      setFiles([compressedFile])
-    } catch (error) {
-      console.error('[COMPRESSION_ERROR]', error)
-    }
-  }
-
-  async function startUploadMedia(): Promise<string | null> {
-    if (files.length === 0) return null
-
-    const res = await startUpload(files)
-
-    if (!res || !res[0]?.ufsUrl) {
-      return null
-    }
-
-    return res[0].ufsUrl
-  }
-
-  /**
-   * This function is used to clear the preview image and files when needed.
-   */
-  function handleDeletePreview() {
-    setFiles([])
-    form.setValue('imageUrl', undefined)
-    form.trigger() // Trigger form state recalculation
-  }
+  }, [open, currentAvatar, currentBackgroundColor, form, setFiles])
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
     const url = await startUploadMedia()
@@ -189,11 +118,12 @@ export function ChangeAvatarDialog({
     updateProfileAvatar.mutate(finalData, {
       onSuccess: async () => {
         onOpenChange(false)
+
         toast.success('Your profile avatar has been updated.', {
           id: 'upload-image',
         })
+
         queryClient.invalidateQueries({ queryKey: trpc.user.me.queryKey() })
-        // Update the auth client user profile
         await authClient.updateUser({ image: finalData.imageUrl })
       },
       onError: error => {
@@ -215,9 +145,10 @@ export function ChangeAvatarDialog({
       onOpenChange={onOpenChange}
       title="Change Avatar"
       description="Change your avatar or upload a new one."
+      className="min-h-[90svh] sm:max-w-xl"
       onOpenAutoFocus={e => e.preventDefault()}
     >
-      <ScrollArea className="-mx-6 h-[60svh] px-6">
+      <ScrollArea className="-mx-6 h-[70svh] px-6">
         <Form {...form}>
           <form
             id="change-avatar-form"
@@ -233,7 +164,7 @@ export function ChangeAvatarDialog({
               <FormField
                 control={form.control}
                 name="imageUrl"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormControl>
                       <div
@@ -244,7 +175,7 @@ export function ChangeAvatarDialog({
                           {...getInputProps()}
                           hidden
                           ref={inputRef}
-                          onChange={e => handleUploadFiles(e, field)}
+                          onChange={e => handleUploadFiles(e)}
                         />
                         <Image
                           src="/icons/profile-cover-icon.svg"

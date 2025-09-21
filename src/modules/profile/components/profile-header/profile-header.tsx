@@ -11,7 +11,7 @@ export function ProfileHeader({ user }: { user: UserOutput }) {
         id={user.id}
         name={user.name}
         avatar={user.image}
-        coverUrl={null}
+        coverUrl={user.coverUrl}
         backgroundColor={user.backgroundColor}
       />
       <div className="mt-12 grid gap-6 px-2 md:px-8">

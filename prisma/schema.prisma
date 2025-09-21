@@ -62,6 +62,7 @@ model User {
   nickname         String?
   country          String?
   image            String?
+  coverUrl         String?
   backgroundColor  String?
   nameUpdatedAt    DateTime?
   isPrivateAccount Boolean    @default(false)

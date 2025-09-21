@@ -101,6 +101,25 @@ export const userRouter = createTRPCRouter({
         data: { image: avatar, backgroundColor },
       })
     }),
+  uploadProfileCover: protectedProcedure
+    .input(z.object({ coverUrl: z.string().optional() }))
+    .mutation(async opts => {
+      const { session } = opts.ctx
+      const { coverUrl } = opts.input
+
+      const user = await prisma.user.findUnique({
+        where: { id: session.id },
+      })
+
+      if (!user) {
+        throw new TRPCError({ code: 'NOT_FOUND' })
+      }
+
+      await prisma.user.update({
+        where: { id: session.id },
+        data: { coverUrl },
+      })
+    }),
   completeProfile: protectedProcedure
     .input(
       z.object({
