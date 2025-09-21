@@ -216,7 +216,7 @@ export function ChangeAvatarDialog({
       title="Change Avatar"
       description="Change your avatar or upload a new one."
       onOpenAutoFocus={e => e.preventDefault()}
-      className="flex h-full max-h-[90svh] flex-col rounded-2xl max-sm:max-h-screen max-sm:max-w-screen max-sm:rounded-none sm:max-w-xl 2xl:max-h-[55rem]"
+      className="flex h-full max-h-[90svh] flex-col rounded-2xl sm:max-w-xl 2xl:max-h-[55rem]"
     >
       <ScrollArea className="-mx-6 h-3/4 flex-1 grow px-6">
         <Form {...form}>

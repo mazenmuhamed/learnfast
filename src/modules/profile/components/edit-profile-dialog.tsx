@@ -96,7 +96,7 @@ export function EditProfileDialog({ user, open, onOpenChange }: Props) {
       onOpenChange={onOpenChange}
       title="Edit Profile"
       description="Make changes to your profile here."
-      className="flex max-h-[90svh] flex-col rounded-2xl max-sm:max-h-screen max-sm:max-w-screen max-sm:rounded-none sm:max-w-xl 2xl:max-h-[55rem]"
+      className="flex max-h-[90svh] flex-col rounded-2xl sm:max-w-xl 2xl:max-h-[55rem]"
       onOpenAutoFocus={e => e.preventDefault()}
       onClickOutside={e => e.preventDefault()}
       onEscapeKeyDown={e => e.preventDefault()}

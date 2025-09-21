@@ -68,8 +68,6 @@ export function ProfileDetails({ user }: { user: UserOutput }) {
     return { name: country.label, flag: country.code.toLowerCase() }
   }, [user.country])
 
-  console.log(userCountry)
-
   return (
     <>
       <div className="grid w-full gap-6">

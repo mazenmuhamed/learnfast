@@ -145,7 +145,7 @@ export function SelectAvatar({
                       field.onChange(`/profile-avatars/avatar-${index + 1}.png`)
                     }
                     className={cn(
-                      'group flex size-40 cursor-pointer items-center justify-center overflow-hidden rounded-full border opacity-70 transition hover:opacity-100 dark:border-none',
+                      'group flex size-40 cursor-pointer items-center justify-center overflow-hidden rounded-full border opacity-70 transition hover:opacity-100 max-sm:size-36 dark:border-none',
                       field.value ===
                         `/profile-avatars/avatar-${index + 1}.png` &&
                         'ring-primary opacity-100 ring-3',
