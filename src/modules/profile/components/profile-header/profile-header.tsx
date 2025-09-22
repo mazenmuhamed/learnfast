@@ -1,6 +1,7 @@
 import { UserOutput } from '@/lib/types'
 
 import { Separator } from '@/components/ui/separator'
+
 import { ProfileCover } from './profile-cover'
 import { ProfileDetails } from './profile-details'
 

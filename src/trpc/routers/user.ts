@@ -141,15 +141,32 @@ export const userRouter = createTRPCRouter({
         throw new TRPCError({ code: 'NOT_FOUND' })
       }
 
-      await prisma.user.update({
-        where: { id: session.id },
-        data: {
-          nickname,
-          bio,
-          country,
-          isPrivateAccount: is_account_private,
-        },
-      })
+      const updates: Record<string, any> = {}
+
+      if (nickname && nickname !== user.nickname) {
+        updates.nickname = nickname
+      }
+
+      if (bio !== undefined && bio !== user.bio) {
+        updates.bio = bio
+      }
+
+      if (country !== undefined && country !== user.country) {
+        updates.country = country
+      }
+
+      if (
+        is_account_private !== undefined &&
+        is_account_private !== user.isPrivateAccount
+      ) {
+        updates.isPrivateAccount = is_account_private
+      }
+
+      if (Object.keys(updates).length === 0) {
+        return // No changes, exit early
+      }
+
+      await prisma.user.update({ where: { id: session.id }, data: updates })
     }),
   completeProfile: protectedProcedure
     .input(

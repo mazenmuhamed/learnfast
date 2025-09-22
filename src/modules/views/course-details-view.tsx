@@ -9,6 +9,7 @@ import { useTRPC } from '@/trpc/client'
 
 import { Separator } from '@/components/ui/separator'
 
+import { Container } from '../components/container'
 import { CourseHeader } from '../course/components/course-details/course-header'
 import { LoadingIndicator } from '../components/loading-indicator'
 import { ErrorBoundaryMessage } from '../components/error-boundary-message'
@@ -47,8 +48,8 @@ function CourseDetailsViewSuspense({ id }: Props) {
 
   return (
     <div className="grid gap-20">
-      <div className="relative grid grid-cols-[1.8fr_1fr] gap-10 max-[1100px]:grid-cols-1 xl:gap-20">
-        <div className="grid gap-12">
+      <Container>
+        <Container.Content>
           <CourseHeader
             id={course.id}
             title={course.title}
@@ -69,14 +70,12 @@ function CourseDetailsViewSuspense({ id }: Props) {
           />
           <SkillsGainSection data={course.whatYouWillLearn} />
           <LessonsSection lessons={course.lessons} />
-        </div>
-        <div className="relative h-full max-[1100px]:hidden">
-          <div className="sticky top-28 grid gap-5">
-            <CourseOverview cover={course.cover} title={course.title} />
-            <UpgradeBox />
-          </div>
-        </div>
-      </div>
+        </Container.Content>
+        <Container.StickyAside>
+          <CourseOverview cover={course.cover} title={course.title} />
+          <UpgradeBox />
+        </Container.StickyAside>
+      </Container>
       <InstructorSection
         bio={course.author.bio}
         avatar={course.author.avatar}

@@ -16,10 +16,12 @@ export function UserStatusBanner() {
   if (!routes.some(route => pathname.startsWith(route))) return null
 
   return (
-    <div className="bg-secondary/40 dark:bg-popover dark:text-popover-foreground text-secondary-foreground sticky inset-x-0 top-14 z-50 px-4 py-3 max-[780]:hidden">
+    <div className="bg-accent dark:bg-popover dark:text-popover-foreground text-secondary-foreground sticky inset-x-0 top-14 z-50 px-4 py-3 max-[780]:hidden">
       <div className="flex items-center justify-center gap-2">
         <div className="size-2.5 rounded-full bg-green-600 dark:bg-green-500" />
-        <p className="text-center text-sm md:text-[15px]">Available for work</p>
+        <p className="text-center text-sm font-medium md:text-[15px]">
+          Available for work
+        </p>
       </div>
     </div>
   )

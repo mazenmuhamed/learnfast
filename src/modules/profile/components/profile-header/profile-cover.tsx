@@ -93,7 +93,7 @@ export function ProfileCover({
         />
         {coverUrl ? (
           <>
-            <div className="bg absolute inset-0 z-10 flex flex-col items-center justify-center rounded-2xl bg-zinc-900/60 opacity-0 transition-opacity hover:opacity-100">
+            <div className="bg absolute inset-0 z-10 flex flex-col items-center justify-center rounded-3xl bg-zinc-900/60 opacity-0 transition-opacity hover:opacity-100">
               <span className="text-secondary text-sm font-medium">
                 Change cover
               </span>
@@ -130,7 +130,7 @@ export function ProfileCover({
         )}
         <Avatar
           style={{ backgroundColor: backgroundColor || 'transparent' }}
-          className="dark:border-input/80 group ring-input/80 absolute -bottom-16 left-9 z-20 size-32 cursor-pointer rounded-full ring-4 max-md:left-2/4 max-md:-translate-x-2/4"
+          className="dark:border-input/80 group ring-accent/80 absolute -bottom-16 left-9 z-20 size-32 cursor-pointer rounded-full ring-4 max-md:left-2/4 max-md:-translate-x-2/4"
           onClick={e => {
             e.stopPropagation()
             setOpen(true)

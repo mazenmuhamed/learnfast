@@ -44,6 +44,8 @@ This project is still **under development**, but it demonstrates the foundation 
   - Modal with keyboard shortcuts for easier navigation
   - Bookmarking functionality for courses
   - Full mobile responsiveness
+  - SEO optimization for better visibility
+  - API integration with tRPC and React Query
 
 ---
 

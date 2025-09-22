@@ -98,8 +98,6 @@ export function EditProfileDialog({ user, open, onOpenChange }: Props) {
       description="Make changes to your profile here."
       className="flex max-h-[90vh] flex-col rounded-2xl sm:max-w-xl 2xl:max-h-[55rem]"
       onOpenAutoFocus={e => e.preventDefault()}
-      onClickOutside={e => e.preventDefault()}
-      onEscapeKeyDown={e => e.preventDefault()}
     >
       <ScrollArea className="-mx-6 h-3/4 flex-1 grow px-5">
         <Form {...form}>
