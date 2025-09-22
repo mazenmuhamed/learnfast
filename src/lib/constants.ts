@@ -20,7 +20,7 @@ export const authRoutes = ['/sign-in', '/sign-up']
 export const navigationMainItems = [
   { title: 'Home', url: '/home', icon: Home },
   { title: 'Bookmarks', url: '/saved/courses', icon: Bookmark },
-  { title: 'Leagues', url: '#', icon: Trophy },
+  { title: 'Leagues', url: '/leagues', icon: Trophy },
 ]
 
 export const navigationLearnItems = [
