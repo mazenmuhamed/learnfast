@@ -4,7 +4,6 @@ LearnFast is an interactive learning platform inspired by [uxcel.com](https://ux
 It’s designed to provide users with a clean and intuitive experience while exploring courses and improving their skills.
 
 🚀 **Live Demo**: [https://learnfast-ecru.vercel.app](https://learnfast-ecru.vercel.app)  
-💻 **GitHub Repository**: [https://github.com/mazenmuhamed/learnfast](https://github.com/mazenmuhamed/learnfast)
 
 ---
 
